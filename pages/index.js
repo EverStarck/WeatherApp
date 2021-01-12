@@ -1,65 +1,68 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React, { useState } from "react";
+import Head from "next/head";
+import { MainFrame, Frame80 } from "../styles/Main";
+import ImageBackground from "../components/ImageBackground";
 
-export default function Home() {
+export default function Home({
+  userIpState,
+  backgroundPixabayState,
+  WeatherInfoState,
+}) {
+  const [searchValue, setSearchValue] = useState("");
+  const [userDataIp] = useState(userIpState.location);
+  const [backgroundPixabay, setBackgroundPixabay] = useState(
+    backgroundPixabayState.hits[0]
+  );
+  const [WeatherInfo] = useState(WeatherInfoState);
+
+  const { country, region, city, lat, lng } = userDataIp;
+
+  console.log(city,"country: ", country);
+  console.log(backgroundPixabay);
+  console.log(WeatherInfo);
+
   return (
-    <div className={styles.container}>
+    <MainFrame>
       <Head>
-        <title>Create Next App</title>
+        <title>WeatherApp</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <ImageBackground
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
+    </MainFrame>
+  );
+}
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+// This gets called on every request
+export async function getStaticProps({ city }) {
+  // Fetch data from external API
+  // GET IP
+  let res = await fetch(
+    `https://geo.ipify.org/api/v1?apiKey=${process.env.IPIFY_KEY}`
+  );
+  const userIpState = await res.json();
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+  //GET BACKGROUND from PIXABAY
+  res = await fetch(
+    `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}&q=${city}&per_page=3`
+  );
+  const backgroundPixabayState = await res.json();
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+  //GET WEATHER Info
+  res = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=MX&appid=${process.env.OPENWEATHERMAP_KEY}`
+  );
+  const WeatherInfoState = await res.json();
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+    console.log("aa" + userIpState )
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+  console.log("IP," + process.env.IPIFY_KEY);
+  console.log("WEATHER," + process.env.OPENWEATHERMAP_KEY);
+  console.log("PIXABAY," + process.env.PIXABAY_KEY);
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+  // Pass data to the page via props
+  return { props: { userIpState, backgroundPixabayState, WeatherInfoState } };
 }
