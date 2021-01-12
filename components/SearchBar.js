@@ -28,7 +28,7 @@ const SearchBar = ({searchValue, setSearchValue}) => {
   return (
     <div>
       <Input
-        type="text"
+        type="search"
         placeholder="Search city"
         value={searchValue}
         onChange={refreshInput}
