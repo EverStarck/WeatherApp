@@ -1,17 +1,16 @@
 import styled from "@emotion/styled";
 
 export const MainFrame = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
-  font-family: "Montserrat", sans-serif;
-  font-size: 62.5%;
-
+  /* background-color: violet; */
 
   /* Variables */
   --main-bg-color: #fff;
-  --main-color: #1D3B88;
+  --main-color: #1d3b88;
   --black: #000;
+  --black-forecast: #0C193B;
   --gray-search: #b7b7b7;
-
+  --gray-date: #E5E5E5;
+  --card-info-color: #fcfafa;
   --border-radius: 8px;
 
   /* Desktop */
@@ -23,7 +22,7 @@ export const MainFrame = styled.div`
 
 export const Frame80 = styled.div`
   margin: 0 auto;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
 
   /* Desktop */
   min-width: 80vw;

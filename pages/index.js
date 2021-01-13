@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { MainFrame, Frame80 } from "../styles/Main";
-import ImageBackground from "../components/ImageBackground";
+import ImageBackground from "../components/frame80/ImageBackground";
+import CardForecast from "../components/frame80/CardForecast";
 
 export default function Home({ userIpState, title }) {
   //Value of the input search
@@ -13,13 +14,12 @@ export default function Home({ userIpState, title }) {
   //Info from the weather api
   const [WeatherInfo, setWeatherInfo] = useState([]);
 
-
   const { country, city } = userDataIp;
 
   async function fetchData() {
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=16548154-5a2a1bb33b7d39c9155307e21&q=${city}&per_page=3`
+      `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}=${city}&per_page=3`
     );
 
     //If the api don't response, show default Image
@@ -47,7 +47,7 @@ export default function Home({ userIpState, title }) {
 
     //Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=8fd68c9d020a9bf0f2a7482a46cf04a0`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${process.env.OPENWEATHERMAP_KEY}`
     );
 
     //If the api don't response, show error text
@@ -78,6 +78,9 @@ export default function Home({ userIpState, title }) {
         searchValue={searchValue}
         setSearchValue={setSearchValue}
       />
+
+      <CardForecast/>
+
     </MainFrame>
   );
 }
