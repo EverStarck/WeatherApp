@@ -10,6 +10,7 @@ const CardForecastFrame = styled.article`
   justify-content: center;
   text-align: center;
   padding: 10px 20px;
+  /* margin-right: 80px; */
   position: relative;
   /* background-color: red; */
   h2 {

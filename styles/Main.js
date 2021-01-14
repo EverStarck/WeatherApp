@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const MainFrame = styled.div`
+export const MainFrame = styled.main`
   /* background-color: violet; */
 
   /* Variables */
@@ -20,13 +20,13 @@ export const MainFrame = styled.div`
   max-height: 100vh;
 `;
 
-export const Frame80 = styled.div`
+export const Frame80 = styled.section`
   margin: 0 auto;
   /* background-color: aliceblue; */
 
   /* Desktop */
-  min-width: 80vw;
-  max-width: 80vw;
+  min-width: 70vw;
+  max-width: 70vw;
   /* min-height: 80vh;
   max-height: 80vh; */
 `;

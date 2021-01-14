@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar";
 import CardInfo from "./CardInfo";
 import TextMain from "./TextMain";
 
-const ImgFrame = styled.div`
+const ImgFrame = styled.section`
   background-color: #a4a8a4;
   background-image: linear-gradient(
       rgba(255, 255, 255, 0.1),
@@ -20,15 +20,44 @@ const ImgFrame = styled.div`
   width: 100vw;
   height: 80vh;
   /* color: #fff; */
+  nav {
+    height: 5vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    /* background: red; */
+  }
+`;
+
+const BacgroundLayout = styled.div`
+  /* margin-top: 30px; */
+  /* background-color: green; */
+  height: 75vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export default function ImageBackground({ searchValue, setSearchValue }) {
   return (
     <ImgFrame>
       <Frame80>
-        <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
-        <CardInfo />
-        <TextMain />
+        <nav>
+          <SearchBar
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
+        </nav>
+        <BacgroundLayout>
+          <TextMain />
+          <aside>
+            <CardInfo />
+            <CardInfo />
+            <CardInfo />
+            <CardInfo />
+          </aside>
+        </BacgroundLayout>
       </Frame80>
     </ImgFrame>
   );

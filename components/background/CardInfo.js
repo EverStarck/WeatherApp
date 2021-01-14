@@ -10,6 +10,7 @@ const CardInfoFrame = styled.article`
   text-align: center;
   color: var(--card-info-color);
   padding: 10px 20px;
+  margin-top: 25px;
   /* background-color: red; */
   position: relative;
   h3 {

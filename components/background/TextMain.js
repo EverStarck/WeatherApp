@@ -2,27 +2,28 @@ import React from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
 
-const TextMainFrame = styled.div`
-  width: 400px;
+const TextMainFrame = styled.article`
+  /* width: 400px; */
   display: flex;
   flex-direction: column;
   text-align: center;
   color: #fff;
   /* background-color: red; */
   h2 {
-    font-size: 4.8rem;
+    /* font-size: 4.8rem; */
+    font-size: clamp(1.8rem, 5vw, 4.8rem);
     color: var(--card-info-color);
     font-weight: 500;
     margin: 0;
   }
   h3 {
-    font-size: 3rem;
+    font-size: clamp(1.4rem, 3vw, 3rem);
     color: var(--gray-date);
     font-weight: 400;
     margin: 0;
   }
   h1 {
-    font-size: 9.6rem;
+    font-size: clamp(3.6rem, 10vw, 9.6rem);
     color: var(--main-bg-color);
     font-weight: 600;
     margin: 50px 0;

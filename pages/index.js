@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { MainFrame, Frame80 } from "../styles/Main";
-import ImageBackground from "../components/frame80/ImageBackground";
-import CardForecast from "../components/frame80/CardForecast";
+import ImageBackground from "../components/background/ImageBackground";
+import ForecastFrame from "../components/forcast/forecastFrame";
 
 export default function Home({ userIpState, title }) {
   //Value of the input search
@@ -79,8 +79,9 @@ export default function Home({ userIpState, title }) {
         setSearchValue={setSearchValue}
       />
 
-      <CardForecast/>
-
+      <Frame80>
+        <ForecastFrame />
+      </Frame80>
     </MainFrame>
   );
 }
