@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
+import dayjs from "dayjs";
 
 const TextMainFrame = styled.article`
   /* width: 400px; */
@@ -33,24 +34,32 @@ const TextMainFrame = styled.article`
   }
 `;
 
-const TextMain = () => {
+const TextMain = ({ weatherInfo, isReady }) => {
+  let fecha = dayjs().format("MM/DD/YYYY");
+  // console.log(fecha); //2021/01/13
+
   return (
     <TextMainFrame>
-      <h2>London</h2>
-      <h3>05/06/2021</h3>
-      <h1>
-        24 <span>&#176;C</span>
-      </h1>
-      <div className="imgFrame">
-        <Image
-          src="/icons/01d.svg"
-          alt="Icon of "
-          width={200}
-          height={190}
-        />
-      </div>
+      {isReady ? (
+        <>
+          <h2>{weatherInfo.name} <span>({weatherInfo.sys.country})</span></h2>
+          <h3>{fecha}</h3>
+          <h1>
+            {weatherInfo.main.temp} <span>&#176;C</span>
+          </h1>
+          <div className="imgFrame">
+            <Image
+              src={`/icons/${weatherInfo.weather[0].icon}.svg`}
+              alt={`Icon of ${weatherInfo.weather[0].description}`}
+              width={200}
+              height={190}
+            />
+          </div>
+        </>
+      ) : (
+        <h1>Waiting</h1>
+      )}
     </TextMainFrame>
   );
 };
-
 export default TextMain;

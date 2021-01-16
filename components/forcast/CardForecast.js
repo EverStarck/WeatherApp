@@ -3,7 +3,7 @@ import Image from "next/image";
 import styled from "@emotion/styled";
 
 const CardForecastFrame = styled.article`
-  width: 200px;
+  min-width: 200px;
   /* font-size: 5rem; */
   display: flex;
   flex-direction: column;
@@ -15,15 +15,19 @@ const CardForecastFrame = styled.article`
   /* background-color: red; */
   h2 {
     margin: 0;
-    font-size: 1.8rem;
+    font-size: clamp(1rem, 2vw, 1.8rem);
     font-weight: 500;
     color: var(--main-color);
   }
   h4 {
+    white-space: pre;
     margin: 0;
-    font-size: 2.4rem;
+    font-size: clamp(1.4rem, 2vw, 2.4rem);
     font-weight: 500;
     color: var(--black-forecast);
+    &:first-child {
+      margin-right: 15px;
+    }
   }
   .imgForecast {
     margin: 10px 0;
@@ -44,7 +48,7 @@ const CardForecastFrame = styled.article`
   }
 `;
 
-const CardForecast = () => {
+const CardForecast = ({ minWeather, maxWeather }) => {
   return (
     <CardForecastFrame>
       <h2>Tomorrow</h2>
@@ -53,10 +57,10 @@ const CardForecast = () => {
       </div>
       <div className="degreesForecast">
         <h4>
-          11 <span>&#176;C</span>
+          {minWeather} <span>&#176;C</span>
         </h4>
         <h4>
-          20 <span>&#176;C</span>
+          {maxWeather} <span>&#176;C</span>
         </h4>
       </div>
     </CardForecastFrame>

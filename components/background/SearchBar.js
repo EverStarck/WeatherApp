@@ -15,25 +15,26 @@ const Input = styled.input`
   &::placeholder {
     color: var(--gray-search);
   }
-  &:hover, :focus {
+  &:hover,
+  :focus {
     border: 2px solid var(--main-color);
   }
 `;
 
-const SearchBar = ({ searchValue, setSearchValue }) => {
+const SearchBar = ({ searchValue, setSearchValue, searchFetchData }) => {
   const refreshInput = (e) => {
     setSearchValue(e.target.value);
   };
 
   return (
-    <div>
+    <form onSubmit={searchFetchData}>
       <Input
         type="search"
         placeholder="Search city"
         value={searchValue}
         onChange={refreshInput}
       />
-    </div>
+    </form>
   );
 };
 

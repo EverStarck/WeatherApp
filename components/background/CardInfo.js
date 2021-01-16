@@ -33,7 +33,7 @@ const CardInfoFrame = styled.article`
     content: "";
     width: 200px;
     height: 2px;
-    background-color:var(--gray-search);
+    background-color: var(--gray-search);
     position: absolute;
     bottom: 0;
     left: 50;
@@ -41,12 +41,12 @@ const CardInfoFrame = styled.article`
   }
 `;
 
-const CardInfo = () => {
+const CardInfo = ({ nameWeather, numberWeather, descriptionWeather }) => {
   return (
     <CardInfoFrame>
-      <h3>Humidity</h3>
-      <p className="cardInfoNumber">24</p>
-      <p>Amet minim mollit non</p>
+      <h3>{nameWeather}</h3>
+      <p className="cardInfoNumber">{numberWeather}</p>
+      <p>{descriptionWeather}</p>
     </CardInfoFrame>
   );
 };

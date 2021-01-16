@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 
 import { Frame80 } from "../../styles/Main";
@@ -12,8 +12,7 @@ const ImgFrame = styled.section`
       rgba(255, 255, 255, 0.1),
       rgba(000, 000, 0, 0.5)
     ),
-    url("/assets/mountain.jpg");
-  backdrop-filter: saturate(200%);
+    url("${(props) => props.backgroundPixabay.fullHDURL}");
   background-repeat: no-repeat;
   background-position: 50% 25%;
   background-size: cover;
@@ -37,28 +36,76 @@ const BacgroundLayout = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  h2 {
+    font-size: 2rem;
+    color: #fff;
+  }
 `;
 
-export default function ImageBackground({ searchValue, setSearchValue }) {
+export default function ImageBackground({
+  searchValue,
+  setSearchValue,
+  searchFetchData,
+  backgroundPixabay,
+  weatherInfo,
+  isReady,
+  pixabayIsReady,
+}) {
   return (
-    <ImgFrame>
-      <Frame80>
-        <nav>
-          <SearchBar
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-          />
-        </nav>
-        <BacgroundLayout>
-          <TextMain />
-          <aside>
-            <CardInfo />
-            <CardInfo />
-            <CardInfo />
-            <CardInfo />
-          </aside>
-        </BacgroundLayout>
-      </Frame80>
-    </ImgFrame>
+    <>
+      {pixabayIsReady ? (
+        <ImgFrame
+          backgroundPixabay={backgroundPixabay}
+        >
+          <Frame80>
+            <nav>
+              <SearchBar
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                searchFetchData={searchFetchData}
+              />
+            </nav>
+            <BacgroundLayout>
+              <TextMain weatherInfo={weatherInfo} isReady={isReady} />
+              <aside>
+                {isReady ? (
+                  <>
+                    <CardInfo
+                      isReady={isReady}
+                      nameWeather="Feels like"
+                      numberWeather={weatherInfo.main.feels_like}
+                      descriptionWeather="yes"
+                    />
+                    <CardInfo
+                      isReady={isReady}
+                      nameWeather="Humidity"
+                      numberWeather={weatherInfo.main.humidity}
+                      descriptionWeather="yes"
+                    />
+                    <CardInfo
+                      isReady={isReady}
+                      nameWeather="Pressure"
+                      numberWeather={weatherInfo.main.pressure}
+                      descriptionWeather="yes"
+                    />
+                    <CardInfo
+                      isReady={isReady}
+                      nameWeather="Wind Speed"
+                      numberWeather={weatherInfo.wind.speed}
+                      descriptionWeather="yes"
+                    />
+                  </>
+                ) : (
+                  <h2>Loading</h2>
+                )}
+              </aside>
+            </BacgroundLayout>
+          </Frame80>
+        </ImgFrame>
+      ) : (
+        <h1>Loading</h1>
+      )}
+    </>
   );
 }
