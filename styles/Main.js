@@ -22,6 +22,7 @@ export const MainFrame = styled.main`
 
 export const Frame80 = styled.section`
   margin: 0 auto;
+
   /* background-color: aliceblue; */
 
   /* Desktop */

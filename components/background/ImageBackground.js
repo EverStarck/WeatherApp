@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 
 import { Frame80 } from "../../styles/Main";
 import SearchBar from "./SearchBar";
-import CardInfo from "./CardInfo";
 import TextMain from "./TextMain";
+import AsideCardInfo from "./containers/AsideCardInfo";
+import { BackgroundLoader, TextMainLoader } from "./SkeletonLoadears";
 
 const ImgFrame = styled.section`
   background-color: #a4a8a4;
@@ -43,6 +44,12 @@ const BacgroundLayout = styled.div`
   }
 `;
 
+const LoaderFlex = styled.section`
+  position: absolute;
+  top: 0;
+  left: 18%;
+`;
+
 export default function ImageBackground({
   searchValue,
   setSearchValue,
@@ -55,9 +62,7 @@ export default function ImageBackground({
   return (
     <>
       {pixabayIsReady ? (
-        <ImgFrame
-          backgroundPixabay={backgroundPixabay}
-        >
+        <ImgFrame backgroundPixabay={backgroundPixabay}>
           <Frame80>
             <nav>
               <SearchBar
@@ -68,43 +73,17 @@ export default function ImageBackground({
             </nav>
             <BacgroundLayout>
               <TextMain weatherInfo={weatherInfo} isReady={isReady} />
-              <aside>
-                {isReady ? (
-                  <>
-                    <CardInfo
-                      isReady={isReady}
-                      nameWeather="Feels like"
-                      numberWeather={weatherInfo.main.feels_like}
-                      descriptionWeather="yes"
-                    />
-                    <CardInfo
-                      isReady={isReady}
-                      nameWeather="Humidity"
-                      numberWeather={weatherInfo.main.humidity}
-                      descriptionWeather="yes"
-                    />
-                    <CardInfo
-                      isReady={isReady}
-                      nameWeather="Pressure"
-                      numberWeather={weatherInfo.main.pressure}
-                      descriptionWeather="yes"
-                    />
-                    <CardInfo
-                      isReady={isReady}
-                      nameWeather="Wind Speed"
-                      numberWeather={weatherInfo.wind.speed}
-                      descriptionWeather="yes"
-                    />
-                  </>
-                ) : (
-                  <h2>Loading</h2>
-                )}
-              </aside>
+              <AsideCardInfo weatherInfo={weatherInfo} isReady={isReady} />
             </BacgroundLayout>
           </Frame80>
         </ImgFrame>
       ) : (
-        <h1>Loading</h1>
+        <>
+          <BackgroundLoader />
+          <LoaderFlex>
+            <TextMainLoader />
+          </LoaderFlex>
+        </>
       )}
     </>
   );

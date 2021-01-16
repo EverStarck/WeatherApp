@@ -10,7 +10,7 @@ const CardInfoFrame = styled.article`
   text-align: center;
   color: var(--card-info-color);
   padding: 10px 20px;
-  margin-top: 25px;
+  margin-top: ${props => props.marginTop};
   /* background-color: red; */
   position: relative;
   h3 {
@@ -41,9 +41,9 @@ const CardInfoFrame = styled.article`
   }
 `;
 
-const CardInfo = ({ nameWeather, numberWeather, descriptionWeather }) => {
+const CardInfo = ({ nameWeather, numberWeather, descriptionWeather, marginTop='25px' }) => {
   return (
-    <CardInfoFrame>
+    <CardInfoFrame marginTop={marginTop}>
       <h3>{nameWeather}</h3>
       <p className="cardInfoNumber">{numberWeather}</p>
       <p>{descriptionWeather}</p>

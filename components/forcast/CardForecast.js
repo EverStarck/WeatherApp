@@ -25,7 +25,7 @@ const CardForecastFrame = styled.article`
     font-size: clamp(1.4rem, 2vw, 2.4rem);
     font-weight: 500;
     color: var(--black-forecast);
-    &:first-child {
+    &:first-of-type {
       margin-right: 15px;
     }
   }
@@ -48,12 +48,12 @@ const CardForecastFrame = styled.article`
   }
 `;
 
-const CardForecast = ({ minWeather, maxWeather }) => {
+const CardForecast = ({ minWeather, maxWeather, date, icon,iconDescription}) => {
   return (
     <CardForecastFrame>
-      <h2>Tomorrow</h2>
+      <h2>{date}</h2>
       <div className="imgForecast">
-        <Image src="/icons/01d.svg" alt="Icon of " width={30} height={28} />
+        <Image src={`/icons/${icon}.svg`} alt={`Icon of ${iconDescription}`} width={30} height={28} />
       </div>
       <div className="degreesForecast">
         <h4>

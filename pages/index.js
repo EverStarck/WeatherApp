@@ -3,7 +3,6 @@ import Head from "next/head";
 import { MainFrame, Frame80 } from "../styles/Main";
 import ImageBackground from "../components/background/ImageBackground";
 import ForecastFrame from "../components/forcast/forecastFrame";
-import dayjs from "dayjs";
 
 export default function Home({ userIpState }) {
   //Value of the input search
@@ -13,10 +12,14 @@ export default function Home({ userIpState }) {
   const { country, city } = userDataIp;
   //Background from pixabay
   const [backgroundPixabay, setBackgroundPixabay] = useState([]);
-  //Info from the weather api
+  //DAY Info from the weather api
   const [weatherInfo, setWeatherInfo] = useState([]);
-  //OpenWeatherApi is loaded when the web is opened? //False
+  //FORECAST Info from the weather api
+  const [forecastWeatherInfo, setForecastWeatherInfo] = useState([]);
+  //DAY OpenWeatherApi is loaded when the web is opened? //False
   const [isReady, setIsReady] = useState(false);
+  //FORECAST OpenWeatherApi is loaded when the web is opened? //False
+  const [isReadyForcast, setIsReadyForcast] = useState(false);
   //PixabayApi is loaded when the web is opened? //False
   const [pixabayIsReady, setPixabayIsReady] = useState(false);
 
@@ -24,7 +27,7 @@ export default function Home({ userIpState }) {
   async function fetchData() {
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}=${city}&per_page=3`
+      `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}&q=${city}&per_page=3`
     );
 
     const pixabayJson = await req.json();
@@ -40,7 +43,7 @@ export default function Home({ userIpState }) {
     }
     setPixabayIsReady(true);
 
-    //Openweathermap
+    //DAY Openweathermap
     req = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${process.env.OPENWEATHERMAP_KEY}`
     );
@@ -54,8 +57,19 @@ export default function Home({ userIpState }) {
       setIsReady(true);
     }
 
-    setWeatherInfo(weatherData);
-    setIsReady(true);
+    //FORECAST Openweathermap
+    req = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&appid=${process.env.OPENWEATHERMAP_KEY}`
+    );
+
+    const forecastWeatherData = await req.json();
+    //If the api don't response, show error text
+    if (!req.ok || forecastWeatherData.cod === "404") {
+      setIsReadyForcast(false);
+    } else {
+      setForecastWeatherInfo(forecastWeatherData);
+      setIsReadyForcast(true);
+    }
   }
 
   useEffect(() => {
@@ -67,11 +81,10 @@ export default function Home({ userIpState }) {
     e.preventDefault();
     setIsReady(false);
     setPixabayIsReady(false);
-    // alert(searchValue);
 
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}&q=${searchValue}&per_page=3`
+      `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}=${searchValue}&per_page=3`
     );
 
     const pixabayJson = await req.json();
@@ -87,7 +100,7 @@ export default function Home({ userIpState }) {
     }
     setPixabayIsReady(true);
 
-    //Openweathermap
+    //DAY Openweathermap
     req = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=${process.env.OPENWEATHERMAP_KEY}`
     );
@@ -99,6 +112,20 @@ export default function Home({ userIpState }) {
     } else {
       setWeatherInfo(weatherData);
       setIsReady(true);
+    }
+
+    //FORECAST Openweathermap
+    req = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&units=metric&appid=${process.env.OPENWEATHERMAP_KEY}`
+    );
+
+    const forecastWeatherData = await req.json();
+    //If the api don't response, show error text
+    if (!req.ok || forecastWeatherData.cod === "404") {
+      setIsReadyForcast(false);
+    } else {
+      setForecastWeatherInfo(forecastWeatherData);
+      setIsReadyForcast(true);
     }
   }
 
@@ -120,7 +147,10 @@ export default function Home({ userIpState }) {
       />
 
       <Frame80>
-        <ForecastFrame weatherInfo={weatherInfo} isReady={isReady} />
+        <ForecastFrame
+          forecastWeatherInfo={forecastWeatherInfo.list}
+          isReadyForcast={isReadyForcast}
+        />
       </Frame80>
     </MainFrame>
   );

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
 import dayjs from "dayjs";
+import { TextMainLoader } from "./SkeletonLoadears";
 
 const TextMainFrame = styled.article`
   /* width: 400px; */
@@ -34,16 +35,20 @@ const TextMainFrame = styled.article`
   }
 `;
 
-const TextMain = ({ weatherInfo, isReady }) => {
-  let fecha = dayjs().format("MM/DD/YYYY");
+const TextMain = ({ props, weatherInfo, isReady }) => {
+  let dateToday = dayjs().format("MM/DD/YYYY");
   // console.log(fecha); //2021/01/13
+
+  console.log(dayjs().add(1, "days").format("ddd, DD MMM"));
 
   return (
     <TextMainFrame>
       {isReady ? (
         <>
-          <h2>{weatherInfo.name} <span>({weatherInfo.sys.country})</span></h2>
-          <h3>{fecha}</h3>
+          <h2>
+            {weatherInfo.name} <span>({weatherInfo.sys.country})</span>
+          </h2>
+          <h3>{dateToday}</h3>
           <h1>
             {weatherInfo.main.temp} <span>&#176;C</span>
           </h1>
@@ -57,7 +62,7 @@ const TextMain = ({ weatherInfo, isReady }) => {
           </div>
         </>
       ) : (
-        <h1>Waiting</h1>
+        <TextMainLoader />
       )}
     </TextMainFrame>
   );
