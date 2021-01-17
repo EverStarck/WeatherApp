@@ -27,7 +27,7 @@ export default function Home({ userIpState }) {
   async function fetchData() {
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}&q=${city}&per_page=3`
+      `https://pixabay.com/api/?key=${procces.env.PIXABAY_KEY}&q=${city}&per_page=3`
     );
 
     const pixabayJson = await req.json();
@@ -45,7 +45,8 @@ export default function Home({ userIpState }) {
 
     //DAY Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${process.env.OPENWEATHERMAP_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${procces.env.OPENWEATHERMAP_KEY}
+`
     );
 
     const weatherData = await req.json();
@@ -59,7 +60,8 @@ export default function Home({ userIpState }) {
 
     //FORECAST Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&appid=${process.env.OPENWEATHERMAP_KEY}`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&appid=${procces.env.OPENWEATHERMAP_KEY}
+`
     );
 
     const forecastWeatherData = await req.json();
@@ -84,7 +86,8 @@ export default function Home({ userIpState }) {
 
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}=${searchValue}&per_page=3`
+      `https://pixabay.com/api/?key=${procces.env.PIXABAY_KEY}
+&q=${searchValue}&per_page=3`
     );
 
     const pixabayJson = await req.json();
@@ -102,7 +105,8 @@ export default function Home({ userIpState }) {
 
     //DAY Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=${process.env.OPENWEATHERMAP_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=${procces.env.OPENWEATHERMAP_KEY}
+`
     );
 
     const weatherData = await req.json();
@@ -116,7 +120,8 @@ export default function Home({ userIpState }) {
 
     //FORECAST Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&units=metric&appid=${process.env.OPENWEATHERMAP_KEY}`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&units=metric&appid=${procces.env.OPENWEATHERMAP_KEY}
+`
     );
 
     const forecastWeatherData = await req.json();
@@ -193,20 +198,3 @@ export async function getStaticProps() {
   // Pass data to the page via props
   return { props: { userIpState } };
 }
-
-//Info of the days with moment.js
-// const [daysMoment, setDaysMoment] = useState({
-//   "actualDay":
-// });
-
-// let fecha = dayjs().format("YYYY/MM/DD");
-// // console.log(fecha); //2021/01/13
-
-// let noc = dayjs().format("ddd, DD MMM");
-// console.log(noc) //Thu, 14 Jan
-
-// let today = dayjs().day();
-// console.log(today)
-
-// let noc =  dayjs().day(today+1).toString();
-// console.log(noc)

@@ -3,14 +3,25 @@ import CardInfo from "../CardInfo";
 import { AsideCardLoader } from "../SkeletonLoadears";
 import styled from "@emotion/styled";
 
+const AsideCardInfoStyles = styled.aside`
+  /* Height overflow for tvs */
+  @media only screen and (max-height: 889px) {
+    margin-top: 150px;
+  }
+`;
+
 const AsideLoaderStyles = styled.aside`
   display: flex;
   flex-direction: column;
+  /* Height overflow for tvs */
+  @media only screen and (max-height: 889px) {
+    margin-top: 150px;
+  }
 `;
 
 const AsideCardInfo = ({ isReady, weatherInfo }) => {
   return (
-    <aside>
+    <AsideCardInfoStyles>
       {isReady ? (
         <>
           <CardInfo
@@ -47,7 +58,7 @@ const AsideCardInfo = ({ isReady, weatherInfo }) => {
           <AsideCardLoader />
         </AsideLoaderStyles>
       )}
-    </aside>
+    </AsideCardInfoStyles>
   );
 };
 

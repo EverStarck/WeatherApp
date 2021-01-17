@@ -6,10 +6,9 @@ export const MainFrame = styled.main`
   /* Variables */
   --main-bg-color: #fff;
   --main-color: #1d3b88;
-  --black: #000;
-  --black-forecast: #0C193B;
+  --black-forecast: #0c193b;
   --gray-search: #b7b7b7;
-  --gray-date: #E5E5E5;
+  --gray-date: #e5e5e5;
   --card-info-color: #fcfafa;
   --border-radius: 8px;
 
@@ -30,4 +29,10 @@ export const Frame80 = styled.section`
   max-width: 70vw;
   /* min-height: 80vh;
   max-height: 80vh; */
+
+  /* Tablet */
+  @media only screen and (max-width: 768px) {
+    min-width: 90vw;
+  max-width: 90vw;
+  }
 `;

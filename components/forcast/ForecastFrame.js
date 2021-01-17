@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import CardForecast from "./CardForecast";
-import {ForecastCardLoader} from '../background/SkeletonLoadears';
+import { ForecastCardLoader } from "../background/SkeletonLoadears";
 import dayjs from "dayjs";
 
 const TextForecast = styled.div`
@@ -19,8 +19,8 @@ const ForecastFrameLayaout = styled.section`
   justify-content: center;
 
   h2 {
-    font-size: 2rem;
-    color: #000;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    color: var(--main-color);
   }
 `;
 

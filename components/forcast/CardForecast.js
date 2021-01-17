@@ -46,14 +46,30 @@ const CardForecastFrame = styled.article`
     top: 0;
     right: 0;
   }
+  /* Tablet */
+  @media only screen and (max-width: 768px) {
+    min-width: 150px;
+    max-width: 150px;
+  }
 `;
 
-const CardForecast = ({ minWeather, maxWeather, date, icon,iconDescription}) => {
+const CardForecast = ({
+  minWeather,
+  maxWeather,
+  date,
+  icon,
+  iconDescription,
+}) => {
   return (
     <CardForecastFrame>
       <h2>{date}</h2>
       <div className="imgForecast">
-        <Image src={`/icons/${icon}.svg`} alt={`Icon of ${iconDescription}`} width={30} height={28} />
+        <Image
+          src={`/icons/${icon}.svg`}
+          alt={`Icon of ${iconDescription}`}
+          width={30}
+          height={28}
+        />
       </div>
       <div className="degreesForecast">
         <h4>

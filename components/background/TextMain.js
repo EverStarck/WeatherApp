@@ -31,15 +31,21 @@ const TextMainFrame = styled.article`
     margin: 50px 0;
   }
   .imgFrame {
-    font-size: 4rem;
+    font-size: clamp(2.4rem, 3vw, 4rem);
+  }
+
+  /* Height overflow for tvs */
+  @media only screen and (max-height: 889px) {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
   }
 `;
 
-const TextMain = ({ props, weatherInfo, isReady }) => {
+const TextMain = ({ weatherInfo, isReady }) => {
   let dateToday = dayjs().format("MM/DD/YYYY");
   // console.log(fecha); //2021/01/13
-
-  console.log(dayjs().add(1, "days").format("ddd, DD MMM"));
+  // console.log(dayjs().add(1, "days").format("ddd, DD MMM"));
 
   return (
     <TextMainFrame>

@@ -14,18 +14,19 @@ const CardInfoFrame = styled.article`
   /* background-color: red; */
   position: relative;
   h3 {
-    font-size: 2rem;
+    font-size: clamp(1rem, 2vw, 2rem);
     margin: 0;
     font-weight: 500;
+    /* color: red; */
   }
   .cardInfoNumber {
-    font-size: 3.6rem;
+    font-size: clamp(1.6rem, 3vw, 3.6rem);;
     text-align: center;
     margin: 10px;
     font-weight: 600;
   }
   p {
-    font-size: 1.2rem;
+    font-size: clamp(.9rem, 1.5vw, 1.2rem);;
     margin: 0;
     font-weight: 400;
   }

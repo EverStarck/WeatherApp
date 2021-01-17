@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 const Input = styled.input`
-  font-size: 1.2rem; //14px
+  font-size: clamp(1rem, 10vw, 1.4rem);
   background: url("https://api.iconify.design/feather-search.svg?color=%23B7B7B7")
     no-repeat 15px center / 20px 20px;
   background-color: var(--main-bg-color);

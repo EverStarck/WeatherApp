@@ -8,7 +8,7 @@ import AsideCardInfo from "./containers/AsideCardInfo";
 import { BackgroundLoader, TextMainLoader } from "./SkeletonLoadears";
 
 const ImgFrame = styled.section`
-  background-color: #a4a8a4;
+  background-color: var(--gray-search);
   background-image: linear-gradient(
       rgba(255, 255, 255, 0.1),
       rgba(000, 000, 0, 0.5)
@@ -40,7 +40,12 @@ const BacgroundLayout = styled.div`
 
   h2 {
     font-size: 2rem;
-    color: #fff;
+    color: var(--main-bg-color);
+  }
+
+  /* Height overflow for tvs */
+  @media only screen and (max-height: 889px) {
+    overflow: scroll;
   }
 `;
 
