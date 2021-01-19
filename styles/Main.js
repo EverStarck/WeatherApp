@@ -10,6 +10,7 @@ export const MainFrame = styled.main`
   --gray-search: #b7b7b7;
   --gray-date: #e5e5e5;
   --card-info-color: #fcfafa;
+  --mobile-card-color: #DFE3EE;
   --border-radius: 8px;
 
   /* Desktop */
@@ -19,7 +20,7 @@ export const MainFrame = styled.main`
   max-height: 100vh;
 `;
 
-export const Frame80 = styled.section`
+export const Frame80 = styled.div`
   margin: 0 auto;
 
   /* background-color: aliceblue; */
@@ -33,6 +34,13 @@ export const Frame80 = styled.section`
   /* Tablet */
   @media only screen and (max-width: 768px) {
     min-width: 90vw;
-  max-width: 90vw;
+    max-width: 90vw;
+  }
+
+  /* MOBILE 375 */
+  @media only screen and (max-width: 375px) {
+    min-width: 90vw;
+    max-width: 90vw;
+    /* background-color: aliceblue; */
   }
 `;

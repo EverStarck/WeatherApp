@@ -1,5 +1,8 @@
-import ContentLoader from "react-content-loader";
-
+// import ContentLoader from "react-content-loader";
+import dynamic from "next/dynamic";
+const ContentLoader = dynamic(() => import("react-content-loader"), {
+  ssr: false,
+});
 export const BackgroundLoader = () => (
   <ContentLoader
     speed={1}

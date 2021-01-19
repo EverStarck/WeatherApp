@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 
 const Input = styled.input`
@@ -18,6 +18,14 @@ const Input = styled.input`
   &:hover,
   :focus {
     border: 2px solid var(--main-color);
+  }
+
+  /* MOBILE 375 */
+  @media only screen and (max-width: 767px) {
+    min-width: 90vw;
+    max-width: 90vw;
+    margin-top: 20px;
+    /* background-color: red; */
   }
 `;
 

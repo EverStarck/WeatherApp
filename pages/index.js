@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import { MainFrame, Frame80 } from "../styles/Main";
-import ImageBackground from "../components/background/ImageBackground";
-import ForecastFrame from "../components/forcast/forecastFrame";
+// Custom Hook
+import useWindoSize from "../customHooks/useWindowSize";
+
+import { MainFrame } from "../styles/Main";
+// Desktop
+import DesktopApp from "../components/Desktop/DesktopApp";
+
+// Mobile
+import MobileApp from "../components/Mobile/MobileApp";
 
 export default function Home({ userIpState }) {
   //Value of the input search
@@ -22,12 +28,13 @@ export default function Home({ userIpState }) {
   const [isReadyForcast, setIsReadyForcast] = useState(false);
   //PixabayApi is loaded when the web is opened? //False
   const [pixabayIsReady, setPixabayIsReady] = useState(false);
+  const winwdowsSizeHook = useWindoSize();
 
   // Fetch data at the open of the web
   async function fetchData() {
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=${procces.env.PIXABAY_KEY}&q=${city}&per_page=3`
+      `https://pixabay.com/api/?key=16548154-${procces.env.PIXABAY_KEY}&q=${city}&per_page=3`
     );
 
     const pixabayJson = await req.json();
@@ -86,8 +93,7 @@ export default function Home({ userIpState }) {
 
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=${procces.env.PIXABAY_KEY}
-&q=${searchValue}&per_page=3`
+      `https://pixabay.com/api/?key=16548154-${procces.env.PIXABAY_KEY}&q=${searchValue}&per_page=3`
     );
 
     const pixabayJson = await req.json();
@@ -141,22 +147,32 @@ export default function Home({ userIpState }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ImageBackground
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        searchFetchData={searchFetchData}
-        backgroundPixabay={backgroundPixabay}
-        weatherInfo={weatherInfo}
-        isReady={isReady}
-        pixabayIsReady={pixabayIsReady}
-      />
-
-      <Frame80>
-        <ForecastFrame
-          forecastWeatherInfo={forecastWeatherInfo.list}
+      {winwdowsSizeHook.width > 767 ? (
+        <DesktopApp
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          searchFetchData={searchFetchData}
+          backgroundPixabay={backgroundPixabay}
+          weatherInfo={weatherInfo}
+          isReady={isReady}
+          pixabayIsReady={pixabayIsReady}
+          forecastWeatherInfo={forecastWeatherInfo}
           isReadyForcast={isReadyForcast}
         />
-      </Frame80>
+      ) : (
+        <MobileApp
+          //Header
+          backgroundPixabay={backgroundPixabay}
+          weatherInfo={weatherInfo}
+          isReady={isReady}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          searchFetchData={searchFetchData}
+          // Main
+          forecastWeatherInfo={forecastWeatherInfo}
+          isReadyForcast={isReadyForcast}
+        />
+      )}
     </MainFrame>
   );
 }

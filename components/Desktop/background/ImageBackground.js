@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import { Frame80 } from "../../styles/Main";
+import { Frame80 } from "../../../styles/Main";
 import SearchBar from "./SearchBar";
 import TextMain from "./TextMain";
 import AsideCardInfo from "./containers/AsideCardInfo";
