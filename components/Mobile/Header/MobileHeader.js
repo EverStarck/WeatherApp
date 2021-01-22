@@ -14,16 +14,15 @@ const MobileBackground = styled.div`
       rgba(255, 255, 255, 0.1),
       rgba(000, 000, 0, 0.5)
     ),
-    url("${(props) => props.backgroundPixabay.fullHDURL}");
+    url("${(props) => props.apiData.pixabayBackground.fullHDURL}");
   background-repeat: no-repeat;
   background-position: 50% 25%;
   background-size: cover;
 `;
 
 const MobileHeader = ({
-  backgroundPixabay,
-  weatherInfo,
-  isReady,
+  apiData,
+  apiIsReady,
   searchValue,
   setSearchValue,
   searchFetchData,
@@ -33,7 +32,7 @@ const MobileHeader = ({
   return (
     <>
       <MobileBackground
-        backgroundPixabay={backgroundPixabay}
+        apiData={apiData}
         mobileDetailInfo={mobileDetailInfo}
       >
         <Frame80>
@@ -46,8 +45,8 @@ const MobileHeader = ({
           ) : null}
 
           <TextMain
-            weatherInfo={weatherInfo}
-            isReady={isReady}
+            apiData={apiData}
+            apiIsReady={apiIsReady}
             mobileDetailInfo={mobileDetailInfo}
           />
           {!mobileDetailInfo ? (

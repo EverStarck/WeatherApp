@@ -79,7 +79,7 @@ const TextMainFrame = styled.article`
   }
 `;
 
-const TextMain = ({ weatherInfo, isReady, mobileDetailInfo }) => {
+const TextMain = ({ apiData, apiIsReady, mobileDetailInfo }) => {
   let dateToday = dayjs().format("MM/DD/YYYY");
   // console.log(fecha); //2021/01/13
   // console.log(dayjs().add(1, "days").format("ddd, DD MMM"));
@@ -88,34 +88,35 @@ const TextMain = ({ weatherInfo, isReady, mobileDetailInfo }) => {
 
   return (
     <TextMainFrame mobileDetailInfo={mobileDetailInfo}>
-      {isReady ? (
+      {apiIsReady.dayWheater ? (
         <>
           <h2>
-            {weatherInfo.name} <span>({weatherInfo.sys.country})</span>
+            {apiData.dayWheaterInfo.name}{" "}
+            <span>({apiData.dayWheaterInfo.sys.country})</span>
           </h2>
           <h3>{dateToday}</h3>
           <div className="mobileDetailsFlex">
             <h1>
-              {weatherInfo.main.temp} <span>&#176;C</span>
+              {apiData.dayWheaterInfo.main.temp} <span>&#176;C</span>
             </h1>
             <div className="imgFrame">
               {windowsSize.width > 767 ? (
                 <Image
-                  src={`/icons/${weatherInfo.weather[0].icon}.svg`}
-                  alt={`Icon of ${weatherInfo.weather[0].description}`}
+                  src={`/icons/${apiData.dayWheaterInfo.weather[0].icon}.svg`}
+                  alt={`Icon of ${apiData.dayWheaterInfo.weather[0].description}`}
                   width={200}
                   height={190}
                 />
               ) : (
                 <Image
-                  src={`/icons/${weatherInfo.weather[0].icon}.svg`}
-                  alt={`Icon of ${weatherInfo.weather[0].description}`}
+                  src={`/icons/${apiData.dayWheaterInfo.weather[0].icon}.svg`}
+                  alt={`Icon of ${apiData.dayWheaterInfo.weather[0].description}`}
                   width={60}
                   height={58}
                 />
               )}
               <p>
-                <small>{weatherInfo.weather[0].description}</small>{" "}
+                <small>{apiData.dayWheaterInfo.weather[0].description}</small>{" "}
               </p>
             </div>
           </div>

@@ -43,9 +43,8 @@ const MobileDetailButton = styled.button`
 `;
 
 const MobileDetailWeather = ({
-  backgroundPixabay,
-  weatherInfo,
-  isReady,
+  apiIsReady,
+  apiData,
   searchValue,
   setSearchValue,
   searchFetchData,
@@ -59,9 +58,8 @@ const MobileDetailWeather = ({
       ></MobileDetailButton>
 
       <MobileHeader
-        backgroundPixabay={backgroundPixabay}
-        weatherInfo={weatherInfo}
-        isReady={isReady}
+        apiData={apiData}
+        apiIsReady={apiIsReady}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         searchFetchData={searchFetchData}

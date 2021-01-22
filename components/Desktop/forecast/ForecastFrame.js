@@ -24,7 +24,7 @@ const ForecastFrameLayaout = styled.section`
   }
 `;
 
-const ForecastFrame = ({ isReadyForcast, forecastWeatherInfo }) => {
+const ForecastFrame = ({ apiIsReady, apiData }) => {
   const dateForecast = (add) => {
     return dayjs().add(add, "days").format("ddd, DD MMM"); //tomorrow //Sat, 16 Jan
   };
@@ -35,42 +35,42 @@ const ForecastFrame = ({ isReadyForcast, forecastWeatherInfo }) => {
         <h2>Next 5 Days</h2>
       </TextForecast>
       <ForecastFrameLayaout>
-        {isReadyForcast ? (
+        {apiIsReady.forecastWeather ? (
           <>
             <CardForecast
               date="Tomorrow"
-              minWeather={forecastWeatherInfo[3].main.temp_min}
-              maxWeather={forecastWeatherInfo[3].main.temp_max}
-              icon={forecastWeatherInfo[3].weather[0].icon}
-              iconDescription={forecastWeatherInfo[3].weather[0].description}
+              minWeather={apiData.list[3].main.temp_min}
+              maxWeather={apiData.list[3].main.temp_max}
+              icon={apiData.list[3].weather[0].icon}
+              iconDescription={apiData.list[3].weather[0].description}
             />
             <CardForecast
               date={dateForecast(1)}
-              minWeather={forecastWeatherInfo[11].main.temp_min}
-              maxWeather={forecastWeatherInfo[11].main.temp_max}
-              icon={forecastWeatherInfo[11].weather[0].icon}
-              iconDescription={forecastWeatherInfo[11].weather[0].description}
+              minWeather={apiData.list[11].main.temp_min}
+              maxWeather={apiData.list[11].main.temp_max}
+              icon={apiData.list[11].weather[0].icon}
+              iconDescription={apiData.list[11].weather[0].description}
             />
             <CardForecast
               date={dateForecast(2)}
-              minWeather={forecastWeatherInfo[19].main.temp_min}
-              maxWeather={forecastWeatherInfo[19].main.temp_max}
-              icon={forecastWeatherInfo[19].weather[0].icon}
-              iconDescription={forecastWeatherInfo[19].weather[0].description}
+              minWeather={apiData.list[19].main.temp_min}
+              maxWeather={apiData.list[19].main.temp_max}
+              icon={apiData.list[19].weather[0].icon}
+              iconDescription={apiData.list[19].weather[0].description}
             />
             <CardForecast
               date={dateForecast(3)}
-              minWeather={forecastWeatherInfo[27].main.temp_min}
-              maxWeather={forecastWeatherInfo[27].main.temp_max}
-              icon={forecastWeatherInfo[27].weather[0].icon}
-              iconDescription={forecastWeatherInfo[27].weather[0].description}
+              minWeather={apiData.list[27].main.temp_min}
+              maxWeather={apiData.list[27].main.temp_max}
+              icon={apiData.list[27].weather[0].icon}
+              iconDescription={apiData.list[27].weather[0].description}
             />
             <CardForecast
               date={dateForecast(4)}
-              minWeather={forecastWeatherInfo[35].main.temp_min}
-              maxWeather={forecastWeatherInfo[35].main.temp_max}
-              icon={forecastWeatherInfo[35].weather[0].icon}
-              iconDescription={forecastWeatherInfo[35].weather[0].description}
+              minWeather={apiData.list[35].main.temp_min}
+              maxWeather={apiData.list[35].main.temp_max}
+              icon={apiData.list[35].weather[0].icon}
+              iconDescription={apiData.list[35].weather[0].description}
             />
           </>
         ) : (

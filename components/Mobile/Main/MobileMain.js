@@ -23,9 +23,9 @@ const MobileMainStyles = styled.section`
 `;
 
 const MobileMain = ({
+  apiIsReady,
+  apiData,
   setMobileDetailInfo,
-  forecastWeatherInfo,
-  isReadyForcast,
 }) => {
   return (
     <MobileMainStyles>
@@ -34,8 +34,8 @@ const MobileMain = ({
 
         <MobileForecastFrame
           setMobileDetailInfo={setMobileDetailInfo}
-          isReadyForcast={isReadyForcast}
-          forecastWeatherInfo={forecastWeatherInfo}
+          apiIsReady={apiIsReady}
+          apiData={apiData}
         />
       </Frame80>
     </MobileMainStyles>

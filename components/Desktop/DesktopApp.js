@@ -5,33 +5,24 @@ import ImageBackground from "./background/ImageBackground";
 import ForecastFrame from "./forecast/ForecastFrame";
 
 const DesktopApp = ({
-    searchValue,
-    setSearchValue,
-    searchFetchData,
-    backgroundPixabay,
-    weatherInfo,
-    isReady,
-    pixabayIsReady,
-    forecastWeatherInfo,
-    isReadyForcast,
+  apiIsReady,
+  apiData,
+  searchValue,
+  setSearchValue,
+  searchFetchData,
 }) => {
   return (
     <>
       <ImageBackground
+        apiData={apiData}
+        apiIsReady={apiIsReady}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         searchFetchData={searchFetchData}
-        backgroundPixabay={backgroundPixabay}
-        weatherInfo={weatherInfo}
-        isReady={isReady}
-        pixabayIsReady={pixabayIsReady}
       />
 
       <Frame80>
-        <ForecastFrame
-          forecastWeatherInfo={forecastWeatherInfo.list}
-          isReadyForcast={isReadyForcast}
-        />
+        <ForecastFrame apiData={apiData.forecastWeatherInfo} apiIsReady={apiIsReady} />
       </Frame80>
     </>
   );

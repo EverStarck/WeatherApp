@@ -63,9 +63,8 @@ const MobileCardForecast = ({
   mobileTempForecast,
   mobileIcon,
   mobileDescription,
-  setMobileDetailInfo
+  setMobileDetailInfo,
 }) => {
-  // console.log(daysForecastTest(0))
   return (
     <MobileCardForecastStyles onClick={() => setMobileDetailInfo(true)}>
       <div className="dayDate">

@@ -13,7 +13,7 @@ const ImgFrame = styled.section`
       rgba(255, 255, 255, 0.1),
       rgba(000, 000, 0, 0.5)
     ),
-    url("${(props) => props.backgroundPixabay.fullHDURL}");
+    url("${(props) => props.apiData.pixabayBackground.fullHDURL}");
   background-repeat: no-repeat;
   background-position: 50% 25%;
   background-size: cover;
@@ -56,18 +56,16 @@ const LoaderFlex = styled.section`
 `;
 
 export default function ImageBackground({
+  apiIsReady,
+  apiData,
   searchValue,
   setSearchValue,
   searchFetchData,
-  backgroundPixabay,
-  weatherInfo,
-  isReady,
-  pixabayIsReady,
 }) {
   return (
     <>
-      {pixabayIsReady ? (
-        <ImgFrame backgroundPixabay={backgroundPixabay}>
+      {apiIsReady.pixabay ? (
+        <ImgFrame apiData={apiData}>
           <Frame80>
             <nav>
               <SearchBar
@@ -77,8 +75,8 @@ export default function ImageBackground({
               />
             </nav>
             <BacgroundLayout>
-              <TextMain weatherInfo={weatherInfo} isReady={isReady} />
-              <AsideCardInfo weatherInfo={weatherInfo} isReady={isReady} />
+              <TextMain apiData={apiData} apiIsReady={apiIsReady} />
+              <AsideCardInfo apiData={apiData} apiIsReady={apiIsReady} />
             </BacgroundLayout>
           </Frame80>
         </ImgFrame>

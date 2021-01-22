@@ -4,24 +4,22 @@ import MobileMain from "./Main/MobileMain";
 import MobileDetailWeather from "./DetailScreen/MobileDetailWeather";
 
 const MobileApp = ({
+  apiData,
+  apiIsReady,
   backgroundPixabay,
   weatherInfo,
   isReady,
   searchValue,
   setSearchValue,
   searchFetchData,
-  forecastWeatherInfo,
-  isReadyForcast,
 }) => {
   const [mobileDetailInfo, setMobileDetailInfo] = useState(false);
-
   return (
     <>
       {/* Click on any button? */}
       <MobileDetailWeather
-        backgroundPixabay={backgroundPixabay}
-        weatherInfo={weatherInfo}
-        isReady={isReady}
+        apiData={apiData}
+        apiIsReady={apiIsReady}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         searchFetchData={searchFetchData}
@@ -31,9 +29,8 @@ const MobileApp = ({
 
       {/* Start app */}
       <MobileHeader
-        backgroundPixabay={backgroundPixabay}
-        weatherInfo={weatherInfo}
-        isReady={isReady}
+        apiData={apiData}
+        apiIsReady={apiIsReady}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         searchFetchData={searchFetchData}
@@ -41,8 +38,8 @@ const MobileApp = ({
       />
 
       <MobileMain
-        isReadyForcast={isReadyForcast}
-        forecastWeatherInfo={forecastWeatherInfo}
+        apiData={apiData}
+        apiIsReady={apiIsReady}
         setMobileDetailInfo={setMobileDetailInfo}
       />
     </>

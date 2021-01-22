@@ -19,34 +19,34 @@ const AsideLoaderStyles = styled.aside`
   }
 `;
 
-const AsideCardInfo = ({ isReady, weatherInfo }) => {
+const AsideCardInfo = ({ apiIsReady, apiData }) => {
   return (
     <AsideCardInfoStyles>
-      {isReady ? (
+      {apiIsReady.dayWheater ? (
         <>
           <CardInfo
-            isReady={isReady}
+            apiIsReady={apiIsReady}
             nameWeather="Feels like"
-            numberWeather={weatherInfo.main.feels_like}
+            numberWeather={apiData.dayWheaterInfo.main.feels_like}
             descriptionWeather="This temperature parameter is the human perception of weather"
             marginTop="-10px"
           />
           <CardInfo
-            isReady={isReady}
+            apiIsReady={apiIsReady}
             nameWeather="Humidity"
-            numberWeather={weatherInfo.main.humidity}
+            numberWeather={apiData.dayWheaterInfo.main.humidity}
             descriptionWeather="The amount of water vapor in the air"
           />
           <CardInfo
-            isReady={isReady}
+            apiIsReady={apiIsReady}
             nameWeather="Pressure"
-            numberWeather={weatherInfo.main.pressure}
+            numberWeather={apiData.dayWheaterInfo.main.pressure}
             descriptionWeather="Force exerted on a surface by the air above it"
           />
           <CardInfo
-            isReady={isReady}
+            apiIsReady={apiIsReady}
             nameWeather="Wind Speed"
-            numberWeather={weatherInfo.wind.speed}
+            numberWeather={apiData.dayWheaterInfo.wind.speed}
             descriptionWeather="Is a fundamental atmospheric quantity caused by air moving from high to low pressure"
           />
         </>

@@ -16,25 +16,28 @@ export default function Home({ userIpState }) {
   //Data about the user (location)
   const [userDataIp] = useState(userIpState.location);
   const { country, city } = userDataIp;
-  //Background from pixabay
-  const [backgroundPixabay, setBackgroundPixabay] = useState([]);
-  //DAY Info from the weather api
-  const [weatherInfo, setWeatherInfo] = useState([]);
-  //FORECAST Info from the weather api
-  const [forecastWeatherInfo, setForecastWeatherInfo] = useState([]);
-  //DAY OpenWeatherApi is loaded when the web is opened? //False
-  const [isReady, setIsReady] = useState(false);
-  //FORECAST OpenWeatherApi is loaded when the web is opened? //False
-  const [isReadyForcast, setIsReadyForcast] = useState(false);
-  //PixabayApi is loaded when the web is opened? //False
-  const [pixabayIsReady, setPixabayIsReady] = useState(false);
+
+  // All data from the apis. OpenWeatherMap and Pixebay
+  const [apiData, setApiData] = useState({
+    dayWheaterInfo: {},
+    forecastWeatherInfo: {},
+    pixabayBackground: {},
+  });
+
+  //Are the apis loaded when the web is opened? //False
+  const [apiIsReady, setApiIsReady] = useState({
+    dayWheater: false,
+    forecastWeather: false,
+    pixabay: false,
+  });
+
   const winwdowsSizeHook = useWindoSize();
 
   // Fetch data at the open of the web
   async function fetchData() {
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=16548154-${procces.env.PIXABAY_KEY}
+      `https://pixabay.com/api/?key=${proccess.env.PIXABAY_KEY}
 &q=${city}&per_page=3`
     );
 
@@ -42,43 +45,73 @@ export default function Home({ userIpState }) {
 
     //If the API don't have imgs, put one
     if (!req.ok || pixabayJson.total === 0) {
-      setBackgroundPixabay({
-        fullHDURL: "/assets/mountain.jpg",
-      });
+      setApiData((apiData) => ({
+        ...apiData,
+        pixabayBackground: {
+          fullHDURL: "/assets/mountain.jpg",
+        },
+      }));
     } else {
       //Set the first img only
-      setBackgroundPixabay(pixabayJson.hits[0]);
+      setApiData((apiData) => ({
+        ...apiData,
+        pixabayBackground: pixabayJson.hits[0],
+      }));
     }
-    setPixabayIsReady(true);
+    // Pixabay is Ready
+    setApiIsReady((apiIsReady) => ({
+      ...apiIsReady,
+      pixabay: true,
+    }));
 
     //DAY Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${procces.env.OPENWEATHERMAP_KEY}
-`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${proccess.env.OPENWEATHERMAP_KEY}`
     );
 
     const weatherData = await req.json();
     //If the api don't response, show error text
     if (!req.ok || weatherData.cod === "404") {
-      setIsReady(false);
+      setApiIsReady((apiIsReady) => ({
+        ...apiIsReady,
+        dayWheater: false,
+      }));
     } else {
-      setWeatherInfo(weatherData);
-      setIsReady(true);
+      setApiData((apiData) => ({
+        ...apiData,
+        dayWheaterInfo: weatherData,
+      }));
+
+      //dayWheater is Ready
+      setApiIsReady((apiIsReady) => ({
+        ...apiIsReady,
+        dayWheater: true,
+      }));
     }
 
     //FORECAST Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&appid=${procces.env.OPENWEATHERMAP_KEY}
-`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&appid=${proccess.env.OPENWEATHERMAP_KEY}`
     );
 
     const forecastWeatherData = await req.json();
     //If the api don't response, show error text
     if (!req.ok || forecastWeatherData.cod === "404") {
-      setIsReadyForcast(false);
+      setApiIsReady((apiIsReady) => ({
+        ...apiIsReady,
+        forecastWeather: false,
+      }));
     } else {
-      setForecastWeatherInfo(forecastWeatherData);
-      setIsReadyForcast(true);
+      setApiData((apiData) => ({
+        ...apiData,
+        forecastWeatherInfo: forecastWeatherData,
+      }));
+
+      //forecastWeather is Ready
+      setApiIsReady((apiIsReady) => ({
+        ...apiIsReady,
+        forecastWeather: true,
+      }));
     }
   }
 
@@ -89,12 +122,17 @@ export default function Home({ userIpState }) {
   // Fetch data at search city
   async function searchFetchData(e) {
     e.preventDefault();
-    setIsReady(false);
-    setPixabayIsReady(false);
+
+    // All the apis don't load yet
+    setApiIsReady((apiIsReady) => ({
+      dayWheater: false,
+      forecastWeather: false,
+      pixabay: false,
+    }));
 
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=16548154-${procces.env.PIXABAY_KEY}
+      `https://pixabay.com/api/?key=16548154-${proccess.env.PIXABAY_KEY}
 &q=${searchValue}&per_page=3`
     );
 
@@ -102,43 +140,73 @@ export default function Home({ userIpState }) {
 
     //If the API don't have imgs, put one
     if (!req.ok || pixabayJson.total === 0) {
-      setBackgroundPixabay({
-        fullHDURL: "/assets/mountain.jpg",
-      });
+      setApiData((apiData) => ({
+        ...apiData,
+        pixabayBackground: {
+          fullHDURL: "/assets/mountain.jpg",
+        },
+      }));
     } else {
       //Set the first img only
-      setBackgroundPixabay(pixabayJson.hits[0]);
+      setApiData((apiData) => ({
+        ...apiData,
+        pixabayBackground: pixabayJson.hits[0],
+      }));
     }
-    setPixabayIsReady(true);
+    //pixabay is Ready
+    setApiIsReady((apiIsReady) => ({
+      ...apiIsReady,
+      pixabay: true,
+    }));
 
     //DAY Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=${procces.env.OPENWEATHERMAP_KEY}
-`
+      `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=${proccess.env.OPENWEATHERMAP_KEY}`
     );
 
     const weatherData = await req.json();
     //If the api don't response, show error text
     if (!req.ok || weatherData.cod === "404") {
-      setIsReady(false);
+      setApiIsReady((apiIsReady) => ({
+        ...apiIsReady,
+        dayWheater: false,
+      }));
     } else {
-      setWeatherInfo(weatherData);
-      setIsReady(true);
+      setApiData((apiData) => ({
+        ...apiData,
+        dayWheaterInfo: weatherData,
+      }));
+
+      //dayWheater is Ready
+      setApiIsReady((apiIsReady) => ({
+        ...apiIsReady,
+        dayWheater: true,
+      }));
     }
 
     //FORECAST Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&units=metric&appid=${procces.env.OPENWEATHERMAP_KEY}
-`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&units=metric&appid=${proccess.env.OPENWEATHERMAP_KEY}`
     );
 
     const forecastWeatherData = await req.json();
     //If the api don't response, show error text
     if (!req.ok || forecastWeatherData.cod === "404") {
-      setIsReadyForcast(false);
+      setApiIsReady((apiIsReady) => ({
+        ...apiIsReady,
+        forecastWeather: false,
+      }));
     } else {
-      setForecastWeatherInfo(forecastWeatherData);
-      setIsReadyForcast(true);
+      setApiData((apiData) => ({
+        ...apiData,
+        forecastWeatherInfo: forecastWeatherData,
+      }));
+
+      //forecastWeather is Ready
+      setApiIsReady((apiIsReady) => ({
+        ...apiIsReady,
+        forecastWeather: true,
+      }));
     }
   }
 
@@ -151,28 +219,19 @@ export default function Home({ userIpState }) {
 
       {winwdowsSizeHook.width > 767 ? (
         <DesktopApp
+          apiData={apiData}
+          apiIsReady={apiIsReady}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           searchFetchData={searchFetchData}
-          backgroundPixabay={backgroundPixabay}
-          weatherInfo={weatherInfo}
-          isReady={isReady}
-          pixabayIsReady={pixabayIsReady}
-          forecastWeatherInfo={forecastWeatherInfo}
-          isReadyForcast={isReadyForcast}
         />
       ) : (
         <MobileApp
-          //Header
-          backgroundPixabay={backgroundPixabay}
-          weatherInfo={weatherInfo}
-          isReady={isReady}
+          apiData={apiData}
+          apiIsReady={apiIsReady}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           searchFetchData={searchFetchData}
-          // Main
-          forecastWeatherInfo={forecastWeatherInfo}
-          isReadyForcast={isReadyForcast}
         />
       )}
     </MainFrame>
