@@ -31,17 +31,18 @@ const MobileButtonDetailStyle = styled.div`
       /* border: 2px solid var(--main-color); */
       color: var(--main-color);
       span {
-        filter: brightness(50%) sepia(1)  hue-rotate(174deg) saturate(59%) brightness(25%);
+        filter: brightness(50%) sepia(1) hue-rotate(174deg) saturate(59%)
+          brightness(25%);
       }
     }
   }
 `;
 
-const MobileButtonDetails = () => {
+const MobileButtonDetails = ({ setMobileDetailInfo }) => {
   return (
     <MobileButtonDetailStyle>
-      <button>
-        See details <span></span>{" "}
+      <button onClick={() => setMobileDetailInfo(true)}>
+        See details <span></span>
       </button>
     </MobileButtonDetailStyle>
   );

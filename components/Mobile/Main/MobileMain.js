@@ -4,8 +4,8 @@ import { Frame80 } from "../../../styles/Main";
 import MobileForecastFrame from "./MobileForecastFrame";
 
 const MobileMainStyles = styled.section`
-  min-height: 66vh;
-  max-height: 100%;
+  min-height: calc(66vh + 16px);
+  max-height: calc(100% + 16px);
   /* min-width: 100vw; */
   /* max-width: 100vw; */
   background-color: aliceblue;
@@ -22,13 +22,18 @@ const MobileMainStyles = styled.section`
   }
 `;
 
-const MobileMain = ({ forecastWeatherInfo, isReadyForcast }) => {
+const MobileMain = ({
+  setMobileDetailInfo,
+  forecastWeatherInfo,
+  isReadyForcast,
+}) => {
   return (
     <MobileMainStyles>
       <Frame80>
         <h3 className="next5daysh3">Next 5 days</h3>
 
         <MobileForecastFrame
+          setMobileDetailInfo={setMobileDetailInfo}
           isReadyForcast={isReadyForcast}
           forecastWeatherInfo={forecastWeatherInfo}
         />

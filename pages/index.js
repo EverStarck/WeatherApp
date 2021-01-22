@@ -34,7 +34,8 @@ export default function Home({ userIpState }) {
   async function fetchData() {
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=16548154-${procces.env.PIXABAY_KEY}&q=${city}&per_page=3`
+      `https://pixabay.com/api/?key=16548154-${procces.env.PIXABAY_KEY}
+&q=${city}&per_page=3`
     );
 
     const pixabayJson = await req.json();
@@ -93,7 +94,8 @@ export default function Home({ userIpState }) {
 
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=16548154-${procces.env.PIXABAY_KEY}&q=${searchValue}&per_page=3`
+      `https://pixabay.com/api/?key=16548154-${procces.env.PIXABAY_KEY}
+&q=${searchValue}&per_page=3`
     );
 
     const pixabayJson = await req.json();

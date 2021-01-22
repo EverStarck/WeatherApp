@@ -6,8 +6,8 @@ import TextMain from "../../Desktop/background/TextMain";
 import MobileButtonDetails from "./MobileButtonDetails";
 
 const MobileBackground = styled.div`
-  max-height: 60vh;
-  min-height: 60vh;
+  max-height: ${(props) => (props.mobileDetailInfo ? "30vh" : "60vh")};
+  min-height: ${(props) => (props.mobileDetailInfo ? "30vh" : "60vh")};
 
   background-color: var(--gray-search);
   background-image: linear-gradient(
@@ -27,21 +27,33 @@ const MobileHeader = ({
   searchValue,
   setSearchValue,
   searchFetchData,
+  setMobileDetailInfo,
+  mobileDetailInfo,
 }) => {
   return (
     <>
-      <MobileBackground backgroundPixabay={backgroundPixabay}>
+      <MobileBackground
+        backgroundPixabay={backgroundPixabay}
+        mobileDetailInfo={mobileDetailInfo}
+      >
         <Frame80>
-          <SearchBar
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-            searchFetchData={searchFetchData}
+          {!mobileDetailInfo ? (
+            <SearchBar
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+              searchFetchData={searchFetchData}
+            />
+          ) : null}
+
+          <TextMain
+            weatherInfo={weatherInfo}
+            isReady={isReady}
+            mobileDetailInfo={mobileDetailInfo}
           />
-
-          <TextMain weatherInfo={weatherInfo} isReady={isReady} />
+          {!mobileDetailInfo ? (
+            <MobileButtonDetails setMobileDetailInfo={setMobileDetailInfo} />
+          ) : null}
         </Frame80>
-
-        <MobileButtonDetails/>
       </MobileBackground>
     </>
   );

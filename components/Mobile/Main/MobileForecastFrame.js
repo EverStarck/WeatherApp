@@ -2,7 +2,11 @@ import React from "react";
 import MobileCardForecast from "./MobileCardForecast";
 import dayjs from "dayjs";
 
-const MobileForecastFrame = ({ isReadyForcast, forecastWeatherInfo }) => {
+const MobileForecastFrame = ({
+  setMobileDetailInfo,
+  isReadyForcast,
+  forecastWeatherInfo,
+}) => {
   const mobileDaysForecast = (add) => {
     return {
       letter: dayjs().add(add, "days").format("ddd, DD MMM"),
@@ -14,6 +18,7 @@ const MobileForecastFrame = ({ isReadyForcast, forecastWeatherInfo }) => {
       {isReadyForcast ? (
         <>
           <MobileCardForecast
+            setMobileDetailInfo={setMobileDetailInfo}
             mobileDateCardForecast="Tomorrow"
             mobileDaysForecast={mobileDaysForecast(0)}
             forecastWeatherInfo={forecastWeatherInfo}
@@ -31,6 +36,7 @@ const MobileForecastFrame = ({ isReadyForcast, forecastWeatherInfo }) => {
             mobileDescriptio={
               forecastWeatherInfo.list[11].weather[0].description
             }
+            setMobileDetailInfo={setMobileDetailInfo}
           />
           <MobileCardForecast
             mobileDaysForecast={mobileDaysForecast(2)}
@@ -40,6 +46,7 @@ const MobileForecastFrame = ({ isReadyForcast, forecastWeatherInfo }) => {
             mobileDescriptio={
               forecastWeatherInfo.list[19].weather[0].description
             }
+            setMobileDetailInfo={setMobileDetailInfo}
           />
           <MobileCardForecast
             mobileDaysForecast={mobileDaysForecast(3)}
@@ -58,6 +65,7 @@ const MobileForecastFrame = ({ isReadyForcast, forecastWeatherInfo }) => {
             mobileDescriptio={
               forecastWeatherInfo.list[27].weather[0].description
             }
+            setMobileDetailInfo={setMobileDetailInfo}
           />
         </>
       ) : (
