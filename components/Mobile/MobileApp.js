@@ -6,14 +6,20 @@ import MobileDetailWeather from "./DetailScreen/MobileDetailWeather";
 const MobileApp = ({
   apiData,
   apiIsReady,
-  backgroundPixabay,
-  weatherInfo,
-  isReady,
+  setApiIsReady,
   searchValue,
   setSearchValue,
   searchFetchData,
 }) => {
   const [mobileDetailInfo, setMobileDetailInfo] = useState(false);
+  const [idForecastButton, setIdForecastButton] = useState({
+    id1: { active: false },
+    id2: { active: false },
+    id3: { active: false },
+    id4: { active: false },
+    id5: { active: false },
+    id6: { active: false },
+  });
   return (
     <>
       {/* Click on any button? */}
@@ -27,6 +33,7 @@ const MobileApp = ({
         setMobileDetailInfo={setMobileDetailInfo}
       />
 
+
       {/* Start app */}
       <MobileHeader
         apiData={apiData}
@@ -35,6 +42,9 @@ const MobileApp = ({
         setSearchValue={setSearchValue}
         searchFetchData={searchFetchData}
         setMobileDetailInfo={setMobileDetailInfo}
+        setIdForecastButton={setIdForecastButton}
+        idForecastButton={idForecastButton}
+        setApiIsReady={setApiIsReady}
       />
 
       <MobileMain

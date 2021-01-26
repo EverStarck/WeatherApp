@@ -4,6 +4,10 @@ import { Frame80 } from "../../../styles/Main";
 import SearchBar from "../../Desktop/background/SearchBar";
 import TextMain from "../../Desktop/background/TextMain";
 import MobileButtonDetails from "./MobileButtonDetails";
+import ModalWeatherError from "../../ModalWeatherError";
+
+// Loader
+import { MobileHeaderLoader } from "../MobileSkeletonLoader";
 
 const MobileBackground = styled.div`
   max-height: ${(props) => (props.mobileDetailInfo ? "30vh" : "60vh")};
@@ -23,37 +27,76 @@ const MobileBackground = styled.div`
 const MobileHeader = ({
   apiData,
   apiIsReady,
+  setApiIsReady,
   searchValue,
   setSearchValue,
   searchFetchData,
   setMobileDetailInfo,
   mobileDetailInfo,
+  setIdForecastButton,
+  idForecastButton,
 }) => {
   return (
     <>
-      <MobileBackground
-        apiData={apiData}
-        mobileDetailInfo={mobileDetailInfo}
-      >
-        <Frame80>
-          {!mobileDetailInfo ? (
-            <SearchBar
+      {apiIsReady.pixabay ? (
+        <>
+          <MobileBackground
+            apiData={apiData}
+            mobileDetailInfo={mobileDetailInfo}
+          >
+            <Frame80>
+              {!mobileDetailInfo ? (
+                <>
+                  {apiIsReady.dayWeather ? (
+                    <SearchBar
+                      searchValue={searchValue}
+                      setSearchValue={setSearchValue}
+                      searchFetchData={searchFetchData}
+                    />
+                  ) : null}
+                </>
+              ) : null}
+
+              <TextMain
+                apiData={apiData}
+                apiIsReady={apiIsReady}
+                mobileDetailInfo={mobileDetailInfo}
+              />
+              {!mobileDetailInfo ? (
+                <>
+                  {apiIsReady.dayWeather ? (
+                    <MobileButtonDetails
+                      setMobileDetailInfo={setMobileDetailInfo}
+                      setIdForecastButton={setIdForecastButton}
+                      idForecastButton={idForecastButton}
+                    />
+                  ) : null}
+                </>
+              ) : null}
+            </Frame80>
+          </MobileBackground>
+
+          {apiIsReady.modal ? (
+            <ModalWeatherError
               searchValue={searchValue}
-              setSearchValue={setSearchValue}
-              searchFetchData={searchFetchData}
+              apiIsReady={apiIsReady}
+              setApiIsReady={setApiIsReady}
             />
           ) : null}
-
-          <TextMain
-            apiData={apiData}
-            apiIsReady={apiIsReady}
-            mobileDetailInfo={mobileDetailInfo}
-          />
-          {!mobileDetailInfo ? (
-            <MobileButtonDetails setMobileDetailInfo={setMobileDetailInfo} />
+        </>
+      ) : (
+        <>
+          {apiIsReady.modal ? (
+            <ModalWeatherError
+              searchValue={searchValue}
+              apiIsReady={apiIsReady}
+              setApiIsReady={setApiIsReady}
+            />
           ) : null}
-        </Frame80>
-      </MobileBackground>
+          {/* {apiIsReady.dayWeather ? <MobileHeaderLoader /> : null} */}
+          <MobileHeaderLoader />
+        </>
+      )}
     </>
   );
 };

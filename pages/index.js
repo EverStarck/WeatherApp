@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
+// import dynamic from "next/dynamic";
+
 // Custom Hook
 import useWindoSize from "../customHooks/useWindowSize";
 
-import { MainFrame } from "../styles/Main";
-// Desktop
 import DesktopApp from "../components/Desktop/DesktopApp";
-
-// Mobile
 import MobileApp from "../components/Mobile/MobileApp";
+
+import { MainFrame } from "../styles/Main";
 
 export default function Home({ userIpState }) {
   //Value of the input search
@@ -19,16 +19,17 @@ export default function Home({ userIpState }) {
 
   // All data from the apis. OpenWeatherMap and Pixebay
   const [apiData, setApiData] = useState({
-    dayWheaterInfo: {},
+    dayWeatherInfo: {},
     forecastWeatherInfo: {},
     pixabayBackground: {},
   });
 
   //Are the apis loaded when the web is opened? //False
   const [apiIsReady, setApiIsReady] = useState({
-    dayWheater: false,
+    dayWeather: false,
     forecastWeather: false,
     pixabay: false,
+    modal: false,
   });
 
   const winwdowsSizeHook = useWindoSize();
@@ -74,18 +75,19 @@ export default function Home({ userIpState }) {
     if (!req.ok || weatherData.cod === "404") {
       setApiIsReady((apiIsReady) => ({
         ...apiIsReady,
-        dayWheater: false,
+        dayWeather: false,
+        modal: true,
       }));
     } else {
       setApiData((apiData) => ({
         ...apiData,
-        dayWheaterInfo: weatherData,
+        dayWeatherInfo: weatherData,
       }));
 
-      //dayWheater is Ready
+      //dayWeather is Ready
       setApiIsReady((apiIsReady) => ({
         ...apiIsReady,
-        dayWheater: true,
+        dayWeather: true,
       }));
     }
 
@@ -100,6 +102,7 @@ export default function Home({ userIpState }) {
       setApiIsReady((apiIsReady) => ({
         ...apiIsReady,
         forecastWeather: false,
+        modal: true,
       }));
     } else {
       setApiData((apiData) => ({
@@ -125,9 +128,10 @@ export default function Home({ userIpState }) {
 
     // All the apis don't load yet
     setApiIsReady((apiIsReady) => ({
-      dayWheater: false,
+      dayWeather: false,
       forecastWeather: false,
       pixabay: false,
+      modal: false,
     }));
 
     //Pixabay Background
@@ -169,18 +173,19 @@ export default function Home({ userIpState }) {
     if (!req.ok || weatherData.cod === "404") {
       setApiIsReady((apiIsReady) => ({
         ...apiIsReady,
-        dayWheater: false,
+        dayWeather: false,
       }));
     } else {
       setApiData((apiData) => ({
         ...apiData,
-        dayWheaterInfo: weatherData,
+        dayWeatherInfo: weatherData,
+        modal: true,
       }));
 
-      //dayWheater is Ready
+      //dayWeather is Ready
       setApiIsReady((apiIsReady) => ({
         ...apiIsReady,
-        dayWheater: true,
+        dayWeather: true,
       }));
     }
 
@@ -195,6 +200,7 @@ export default function Home({ userIpState }) {
       setApiIsReady((apiIsReady) => ({
         ...apiIsReady,
         forecastWeather: false,
+        modal: true,
       }));
     } else {
       setApiData((apiData) => ({
@@ -210,6 +216,21 @@ export default function Home({ userIpState }) {
     }
   }
 
+  // Dynamic import
+  // Desktop
+  // const DesktopApp = dynamic(
+  //   () => import("../components/Desktop/DesktopApp"),
+  //   // { loading: () => <h1>LOADING</h1> }
+  // );
+  // import DesktopApp from "../components/Desktop/DesktopApp";
+
+  // Mobile
+  // const MobileApp = dynamic(
+  //   () => import("../components/Mobile/MobileApp"),
+  //   // { loading: () => <h1>LOADING</h1> }
+  // );
+  // import MobileApp from "../components/Mobile/MobileApp";
+
   return (
     <MainFrame>
       <Head>
@@ -224,11 +245,13 @@ export default function Home({ userIpState }) {
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           searchFetchData={searchFetchData}
+          setApiIsReady={setApiIsReady}
         />
       ) : (
         <MobileApp
           apiData={apiData}
           apiIsReady={apiIsReady}
+          setApiIsReady={setApiIsReady}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           searchFetchData={searchFetchData}

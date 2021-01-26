@@ -7,6 +7,7 @@ import ForecastFrame from "./forecast/ForecastFrame";
 const DesktopApp = ({
   apiIsReady,
   apiData,
+  setApiIsReady,
   searchValue,
   setSearchValue,
   searchFetchData,
@@ -16,13 +17,17 @@ const DesktopApp = ({
       <ImageBackground
         apiData={apiData}
         apiIsReady={apiIsReady}
+        setApiIsReady={setApiIsReady}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         searchFetchData={searchFetchData}
       />
 
       <Frame80>
-        <ForecastFrame apiData={apiData.forecastWeatherInfo} apiIsReady={apiIsReady} />
+        <ForecastFrame
+          apiData={apiData.forecastWeatherInfo}
+          apiIsReady={apiIsReady}
+        />
       </Frame80>
     </>
   );

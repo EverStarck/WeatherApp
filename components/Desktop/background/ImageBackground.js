@@ -6,6 +6,7 @@ import SearchBar from "./SearchBar";
 import TextMain from "./TextMain";
 import AsideCardInfo from "./containers/AsideCardInfo";
 import { BackgroundLoader, TextMainLoader } from "./SkeletonLoadears";
+import ModalWeatherError from "../../ModalWeatherError";
 
 const ImgFrame = styled.section`
   background-color: var(--gray-search);
@@ -58,6 +59,7 @@ const LoaderFlex = styled.section`
 export default function ImageBackground({
   apiIsReady,
   apiData,
+  setApiIsReady,
   searchValue,
   setSearchValue,
   searchFetchData,
@@ -65,23 +67,34 @@ export default function ImageBackground({
   return (
     <>
       {apiIsReady.pixabay ? (
-        <ImgFrame apiData={apiData}>
-          <Frame80>
-            <nav>
-              <SearchBar
-                searchValue={searchValue}
-                setSearchValue={setSearchValue}
-                searchFetchData={searchFetchData}
-              />
-            </nav>
-            <BacgroundLayout>
-              <TextMain apiData={apiData} apiIsReady={apiIsReady} />
-              <AsideCardInfo apiData={apiData} apiIsReady={apiIsReady} />
-            </BacgroundLayout>
-          </Frame80>
-        </ImgFrame>
+        <>
+          <ImgFrame apiData={apiData}>
+            <Frame80>
+              <nav>
+                <SearchBar
+                  searchValue={searchValue}
+                  setSearchValue={setSearchValue}
+                  searchFetchData={searchFetchData}
+                />
+              </nav>
+              <BacgroundLayout>
+                <TextMain apiData={apiData} apiIsReady={apiIsReady} />
+                <AsideCardInfo apiData={apiData} apiIsReady={apiIsReady} />
+              </BacgroundLayout>
+            </Frame80>
+          </ImgFrame>
+
+          {apiIsReady.modal ? (
+            <ModalWeatherError searchValue={searchValue} apiIsReady={apiIsReady} setApiIsReady={setApiIsReady} />
+          ) : null}
+        </>
       ) : (
         <>
+          {apiIsReady.modal ? (
+            <ModalWeatherError searchValue={searchValue} apiIsReady={apiIsReady} setApiIsReady={setApiIsReady} />
+          ) : null}
+
+          {/* Loader */}
           <BackgroundLoader />
           <LoaderFlex>
             <TextMainLoader />

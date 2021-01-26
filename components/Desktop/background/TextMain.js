@@ -1,11 +1,19 @@
 import React from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+import styled from "@emotion/styled";
+import dayjs from "dayjs";
+
 // Custom Hook
 import useWindoSize from "../../../customHooks/useWindowSize";
 
-import styled from "@emotion/styled";
-import dayjs from "dayjs";
+
 import { TextMainLoader } from "./SkeletonLoadears";
+
+// const MobileHeaderLoader = dynamic(() =>
+//   import("../../Mobile/MobileSkeletonLoader")
+// );
+import { MobileHeaderLoader } from "../../Mobile/MobileSkeletonLoader";
 
 const TextMainFrame = styled.article`
   /* width: 400px; */
@@ -79,6 +87,12 @@ const TextMainFrame = styled.article`
   }
 `;
 
+const MobileLoaderWeatherCenter = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+
 const TextMain = ({ apiData, apiIsReady, mobileDetailInfo }) => {
   let dateToday = dayjs().format("MM/DD/YYYY");
   // console.log(fecha); //2021/01/13
@@ -88,41 +102,50 @@ const TextMain = ({ apiData, apiIsReady, mobileDetailInfo }) => {
 
   return (
     <TextMainFrame mobileDetailInfo={mobileDetailInfo}>
-      {apiIsReady.dayWheater ? (
+      {apiIsReady.dayWeather ? (
         <>
           <h2>
-            {apiData.dayWheaterInfo.name}{" "}
-            <span>({apiData.dayWheaterInfo.sys.country})</span>
+            {apiData.dayWeatherInfo.name}{" "}
+            <span>({apiData.dayWeatherInfo.sys.country})</span>
           </h2>
           <h3>{dateToday}</h3>
           <div className="mobileDetailsFlex">
             <h1>
-              {apiData.dayWheaterInfo.main.temp} <span>&#176;C</span>
+              {apiData.dayWeatherInfo.main.temp} <span>&#176;C</span>
             </h1>
             <div className="imgFrame">
               {windowsSize.width > 767 ? (
                 <Image
-                  src={`/icons/${apiData.dayWheaterInfo.weather[0].icon}.svg`}
-                  alt={`Icon of ${apiData.dayWheaterInfo.weather[0].description}`}
+                  src={`/icons/${apiData.dayWeatherInfo.weather[0].icon}.svg`}
+                  alt={`Icon of ${apiData.dayWeatherInfo.weather[0].description}`}
                   width={200}
                   height={190}
                 />
               ) : (
                 <Image
-                  src={`/icons/${apiData.dayWheaterInfo.weather[0].icon}.svg`}
-                  alt={`Icon of ${apiData.dayWheaterInfo.weather[0].description}`}
+                  src={`/icons/${apiData.dayWeatherInfo.weather[0].icon}.svg`}
+                  alt={`Icon of ${apiData.dayWeatherInfo.weather[0].description}`}
                   width={60}
                   height={58}
                 />
               )}
               <p>
-                <small>{apiData.dayWheaterInfo.weather[0].description}</small>{" "}
+                <small>{apiData.dayWeatherInfo.weather[0].description}</small>{" "}
               </p>
             </div>
           </div>
         </>
       ) : (
-        <TextMainLoader />
+        // Render the skeleton loader if is Mobile or desktop
+        <>
+          {windowsSize.width > 767 ? (
+            <TextMainLoader />
+          ) : (
+            <MobileLoaderWeatherCenter>
+              <MobileHeaderLoader />
+            </MobileLoaderWeatherCenter>
+          )}
+        </>
       )}
     </TextMainFrame>
   );
