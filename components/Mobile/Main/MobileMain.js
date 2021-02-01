@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+
 import { Frame80 } from "../../../styles/Main";
 import MobileForecastFrame from "./MobileForecastFrame";
 

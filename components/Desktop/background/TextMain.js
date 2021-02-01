@@ -7,7 +7,6 @@ import dayjs from "dayjs";
 // Custom Hook
 import useWindoSize from "../../../customHooks/useWindowSize";
 
-
 import { TextMainLoader } from "./SkeletonLoadears";
 
 // const MobileHeaderLoader = dynamic(() =>
@@ -86,7 +85,7 @@ const TextMainFrame = styled.article`
     }`}
   }
 `;
-
+// Sekeleton Loader
 const MobileLoaderWeatherCenter = styled.div`
   position: absolute;
   top: 0;
@@ -94,18 +93,20 @@ const MobileLoaderWeatherCenter = styled.div`
 `;
 
 const TextMain = ({ apiData, apiIsReady, mobileDetailInfo }) => {
-  let dateToday = dayjs().format("MM/DD/YYYY");
-  // console.log(fecha); //2021/01/13
-  // console.log(dayjs().add(1, "days").format("ddd, DD MMM"));
+  let dateToday = dayjs().format("MM/DD/YYYY"); //01/13/2021
 
+  // Get the width and height of the browser window
   const windowsSize = useWindoSize();
 
   return (
     <TextMainFrame mobileDetailInfo={mobileDetailInfo}>
+      {/* If the weatheropenmap is loaded, show the html tags */}
       {apiIsReady.dayWeather ? (
         <>
           <h2>
-            {apiData.dayWeatherInfo.name}{" "}
+            {/* City */}
+            {apiData.dayWeatherInfo.name}
+            {/* Country */}
             <span>({apiData.dayWeatherInfo.sys.country})</span>
           </h2>
           <h3>{dateToday}</h3>
@@ -115,6 +116,7 @@ const TextMain = ({ apiData, apiIsReady, mobileDetailInfo }) => {
             </h1>
             <div className="imgFrame">
               {windowsSize.width > 767 ? (
+                // Icon of the weather for DESKTOP
                 <Image
                   src={`/icons/${apiData.dayWeatherInfo.weather[0].icon}.svg`}
                   alt={`Icon of ${apiData.dayWeatherInfo.weather[0].description}`}
@@ -122,6 +124,7 @@ const TextMain = ({ apiData, apiIsReady, mobileDetailInfo }) => {
                   height={190}
                 />
               ) : (
+                // Icon of the weather for MOBIL
                 <Image
                   src={`/icons/${apiData.dayWeatherInfo.weather[0].icon}.svg`}
                   alt={`Icon of ${apiData.dayWeatherInfo.weather[0].description}`}

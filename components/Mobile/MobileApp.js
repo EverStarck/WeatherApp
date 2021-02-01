@@ -11,7 +11,9 @@ const MobileApp = ({
   setSearchValue,
   searchFetchData,
 }) => {
+  // Open a detail info of the weather day
   const [mobileDetailInfo, setMobileDetailInfo] = useState(false);
+  // Test
   const [idForecastButton, setIdForecastButton] = useState({
     id1: { active: false },
     id2: { active: false },
@@ -32,7 +34,6 @@ const MobileApp = ({
         mobileDetailInfo={mobileDetailInfo}
         setMobileDetailInfo={setMobileDetailInfo}
       />
-
 
       {/* Start app */}
       <MobileHeader

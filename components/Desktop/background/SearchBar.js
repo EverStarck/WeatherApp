@@ -12,6 +12,8 @@ const Input = styled.input`
   width: 300px;
   padding: 7px 14px 7px 45px;
   transition: border 0.4s;
+  z-index: 2;
+  position: relative;
   &::placeholder {
     color: var(--gray-search);
   }

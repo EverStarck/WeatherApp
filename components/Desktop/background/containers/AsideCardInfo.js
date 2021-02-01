@@ -1,7 +1,8 @@
 import React from "react";
+import styled from "@emotion/styled";
+
 import CardInfo from "../CardInfo";
 import { AsideCardLoader } from "../SkeletonLoadears";
-import styled from "@emotion/styled";
 
 const AsideCardInfoStyles = styled.aside`
   /* Height overflow for tvs */
@@ -9,7 +10,7 @@ const AsideCardInfoStyles = styled.aside`
     margin-top: 150px;
   }
 `;
-
+// Sekeleton Loader
 const AsideLoaderStyles = styled.section`
   display: flex;
   flex-direction: column;
@@ -22,6 +23,8 @@ const AsideLoaderStyles = styled.section`
 const AsideCardInfo = ({ apiIsReady, apiData }) => {
   return (
     <AsideCardInfoStyles>
+
+      {/* If the openweathermap is loaded, show all the cards */}
       {apiIsReady.dayWeather ? (
         <>
           <CardInfo
@@ -51,6 +54,7 @@ const AsideCardInfo = ({ apiIsReady, apiData }) => {
           />
         </>
       ) : (
+        // Skeleton loader
         <AsideLoaderStyles>
           <AsideCardLoader />
           <AsideCardLoader />

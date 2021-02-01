@@ -32,7 +32,7 @@ export const MobileHeaderLoader = () => (
     backgroundColor="#f3f3f3"
     foregroundColor="#e0e0e0"
   >
-    <rect x="15" y="18" rx="8" ry="8" width="337" height="36" />
+    {/* <rect x="15" y="18" rx="8" ry="8" width="337" height="36" /> */}
     <rect x="129" y="86" rx="3" ry="3" width="84" height="23" />
     <rect x="222" y="90" rx="3" ry="3" width="26" height="14" />
     <rect x="165" y="-48" rx="3" ry="3" width="300" height="35" />

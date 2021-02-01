@@ -5,8 +5,8 @@ import { Frame80 } from "../../../styles/Main";
 import SearchBar from "./SearchBar";
 import TextMain from "./TextMain";
 import AsideCardInfo from "./containers/AsideCardInfo";
-import { BackgroundLoader, TextMainLoader } from "./SkeletonLoadears";
 import ModalWeatherError from "../../ModalWeatherError";
+import { BackgroundLoader, TextMainLoader } from "./SkeletonLoadears";
 
 const ImgFrame = styled.section`
   background-color: var(--gray-search);
@@ -50,6 +50,7 @@ const BacgroundLayout = styled.div`
   }
 `;
 
+// Sekeleton Loader
 const LoaderFlex = styled.section`
   position: absolute;
   top: 0;
@@ -66,6 +67,7 @@ export default function ImageBackground({
 }) {
   return (
     <>
+      {/* If the pixabay is loaded, show all the componentes */}
       {apiIsReady.pixabay ? (
         <>
           <ImgFrame apiData={apiData}>
@@ -84,17 +86,28 @@ export default function ImageBackground({
             </Frame80>
           </ImgFrame>
 
+          {/* Ternary to show the modal */}
           {apiIsReady.modal ? (
-            <ModalWeatherError searchValue={searchValue} apiIsReady={apiIsReady} setApiIsReady={setApiIsReady} />
+            <ModalWeatherError
+              searchValue={searchValue}
+              apiIsReady={apiIsReady}
+              setApiIsReady={setApiIsReady}
+            />
           ) : null}
         </>
       ) : (
         <>
+          {/* Ternary to show the modal */}
+
           {apiIsReady.modal ? (
-            <ModalWeatherError searchValue={searchValue} apiIsReady={apiIsReady} setApiIsReady={setApiIsReady} />
+            <ModalWeatherError
+              searchValue={searchValue}
+              apiIsReady={apiIsReady}
+              setApiIsReady={setApiIsReady}
+            />
           ) : null}
 
-          {/* Loader */}
+          {/* Sekeleton Loader */}
           <BackgroundLoader />
           <LoaderFlex>
             <TextMainLoader />

@@ -1,6 +1,7 @@
 import React from "react";
-import MobileCardForecast from "./MobileCardForecast";
 import dayjs from "dayjs";
+
+import MobileCardForecast from "./MobileCardForecast";
 import { MobileForecasLoader } from "../MobileSkeletonLoader";
 
 const MobileForecastFrame = ({ apiIsReady, apiData, setMobileDetailInfo }) => {
@@ -62,13 +63,13 @@ const MobileForecastFrame = ({ apiIsReady, apiData, setMobileDetailInfo }) => {
           />
         </>
       ) : (
+        // Skeleton Loader
         <>
-          <MobileForecasLoader/>
-          <MobileForecasLoader/>
-          <MobileForecasLoader/>
-          <MobileForecasLoader/>
-          <MobileForecasLoader/>
-
+          <MobileForecasLoader />
+          <MobileForecasLoader />
+          <MobileForecasLoader />
+          <MobileForecasLoader />
+          <MobileForecasLoader />
         </>
       )}
     </>

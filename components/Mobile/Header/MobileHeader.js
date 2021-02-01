@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "@emotion/styled";
+
 import { Frame80 } from "../../../styles/Main";
 import SearchBar from "../../Desktop/background/SearchBar";
 import TextMain from "../../Desktop/background/TextMain";
 import MobileButtonDetails from "./MobileButtonDetails";
 import ModalWeatherError from "../../ModalWeatherError";
 
-// Loader
+// Skeleton Loader
 import { MobileHeaderLoader } from "../MobileSkeletonLoader";
 
 const MobileBackground = styled.div`
@@ -16,7 +17,7 @@ const MobileBackground = styled.div`
   background-color: var(--gray-search);
   background-image: linear-gradient(
       rgba(255, 255, 255, 0.1),
-      rgba(000, 000, 0, 0.5)
+      rgba(000, 000, 0, 0.7)
     ),
     url("${(props) => props.apiData.pixabayBackground.fullHDURL}");
   background-repeat: no-repeat;
@@ -38,6 +39,7 @@ const MobileHeader = ({
 }) => {
   return (
     <>
+      {/* If the pixabay is loaded, show all the componentes */}
       {apiIsReady.pixabay ? (
         <>
           <MobileBackground
@@ -45,16 +47,13 @@ const MobileHeader = ({
             mobileDetailInfo={mobileDetailInfo}
           >
             <Frame80>
+              {/* Hide searchBar if click on details weather */}
               {!mobileDetailInfo ? (
-                <>
-                  {apiIsReady.dayWeather ? (
-                    <SearchBar
-                      searchValue={searchValue}
-                      setSearchValue={setSearchValue}
-                      searchFetchData={searchFetchData}
-                    />
-                  ) : null}
-                </>
+                <SearchBar
+                  searchValue={searchValue}
+                  setSearchValue={setSearchValue}
+                  searchFetchData={searchFetchData}
+                />
               ) : null}
 
               <TextMain
@@ -62,8 +61,11 @@ const MobileHeader = ({
                 apiIsReady={apiIsReady}
                 mobileDetailInfo={mobileDetailInfo}
               />
+
+              {/* Hide button "See Details" if click on details weather */}
               {!mobileDetailInfo ? (
                 <>
+                  {/* Avoid overlap with another skeleton loader */}
                   {apiIsReady.dayWeather ? (
                     <MobileButtonDetails
                       setMobileDetailInfo={setMobileDetailInfo}
@@ -76,6 +78,7 @@ const MobileHeader = ({
             </Frame80>
           </MobileBackground>
 
+          {/* Show a modal if wetheropenmap don't have results */}
           {apiIsReady.modal ? (
             <ModalWeatherError
               searchValue={searchValue}
@@ -86,6 +89,7 @@ const MobileHeader = ({
         </>
       ) : (
         <>
+          {/* Show a modal if wetheropenmap don't have results */}
           {apiIsReady.modal ? (
             <ModalWeatherError
               searchValue={searchValue}
@@ -93,7 +97,6 @@ const MobileHeader = ({
               setApiIsReady={setApiIsReady}
             />
           ) : null}
-          {/* {apiIsReady.dayWeather ? <MobileHeaderLoader /> : null} */}
           <MobileHeaderLoader />
         </>
       )}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-// import dynamic from "next/dynamic";
+import dynamic from "next/dynamic";
 
 // Custom Hook
 import useWindoSize from "../customHooks/useWindowSize";
@@ -16,14 +16,12 @@ export default function Home({ userIpState }) {
   //Data about the user (location)
   const [userDataIp] = useState(userIpState.location);
   const { country, city } = userDataIp;
-
   // All data from the apis. OpenWeatherMap and Pixebay
   const [apiData, setApiData] = useState({
     dayWeatherInfo: {},
     forecastWeatherInfo: {},
     pixabayBackground: {},
   });
-
   //Are the apis loaded when the web is opened? //False
   const [apiIsReady, setApiIsReady] = useState({
     dayWeather: false,
@@ -32,13 +30,15 @@ export default function Home({ userIpState }) {
     modal: false,
   });
 
+  // Get the width and height
   const winwdowsSizeHook = useWindoSize();
 
   // Fetch data at the open of the web
   async function fetchData() {
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=${proccess.env.PIXABAY_KEY}
+      `https://pixabay.com/api/?key=${process.env.NEXT_PUBLIC_PIXABAY_KEY}
+
 &q=${city}&per_page=3`
     );
 
@@ -67,7 +67,7 @@ export default function Home({ userIpState }) {
 
     //DAY Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${proccess.env.OPENWEATHERMAP_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}`
     );
 
     const weatherData = await req.json();
@@ -93,7 +93,8 @@ export default function Home({ userIpState }) {
 
     //FORECAST Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&appid=${proccess.env.OPENWEATHERMAP_KEY}`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}
+`
     );
 
     const forecastWeatherData = await req.json();
@@ -136,7 +137,8 @@ export default function Home({ userIpState }) {
 
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=16548154-${proccess.env.PIXABAY_KEY}
+      `https://pixabay.com/api/?key=${process.env.NEXT_PUBLIC_PIXABAY_KEY}
+
 &q=${searchValue}&per_page=3`
     );
 
@@ -165,7 +167,8 @@ export default function Home({ userIpState }) {
 
     //DAY Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=${proccess.env.OPENWEATHERMAP_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}
+`
     );
 
     const weatherData = await req.json();
@@ -191,7 +194,8 @@ export default function Home({ userIpState }) {
 
     //FORECAST Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&units=metric&appid=${proccess.env.OPENWEATHERMAP_KEY}`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}
+`
     );
 
     const forecastWeatherData = await req.json();
@@ -266,7 +270,7 @@ export default function Home({ userIpState }) {
 export async function getStaticProps() {
   // Fetch data from external API
   let res = await fetch(
-    `https://geo.ipify.org/api/v1?apiKey=${process.env.IPIFY_KEY}`
+    `https://geo.ipify.org/api/v1?apiKey=${process.env.NEXT_PUBLIC_IPIFY_KEY}`
   );
 
   //If the api don't response, show the data of Mountan View
