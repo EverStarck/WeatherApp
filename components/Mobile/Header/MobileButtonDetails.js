@@ -38,23 +38,15 @@ const MobileButtonDetailStyle = styled.div`
   }
 `;
 
-const MobileButtonDetails = ({
-  setMobileDetailInfo,
-  setIdForecastButton,
-  idForecastButton,
-}) => {
-
-  const handleClickId1 = () => {
+const MobileButtonDetails = ({ setMobileDetailInfo, setMobileIndex }) => {
+  const handleClickButton = () => {
+    setMobileIndex(0);
     setMobileDetailInfo(true);
-    setIdForecastButton({
-      ...idForecastButton,
-      id1: { active: true },
-    });
   };
 
   return (
     <MobileButtonDetailStyle>
-      <button onClick={handleClickId1}>
+      <button onClick={handleClickButton}>
         See details <span></span>
       </button>
     </MobileButtonDetailStyle>

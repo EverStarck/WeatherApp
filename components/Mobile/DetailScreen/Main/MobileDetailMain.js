@@ -16,12 +16,12 @@ const MobileDetailMainStyles = styled.main`
   margin-top: -20px;
 `;
 
-const MobileDetailMain = () => {
+const MobileDetailMain = ({getInfoDay}) => {
   return (
     <MobileDetailMainStyles>
       <Frame80>
-        <MobileDetailMainTemps />
-        <MobileDetailMainGrid/>
+        <MobileDetailMainTemps getInfoDay={getInfoDay}/>
+        <MobileDetailMainGrid getInfoDay={getInfoDay}/>
         <MobileDetailMainThanks/>
       </Frame80>
     </MobileDetailMainStyles>

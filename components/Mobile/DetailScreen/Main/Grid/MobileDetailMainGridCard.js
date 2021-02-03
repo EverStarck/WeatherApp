@@ -40,8 +40,10 @@ const MobileDetailMainGridCardStyle = styled.article`
 
 const MobileDetailMainGridCard = ({
   gridArea,
+  cardTittle,
   backgroundCard = false,
   flexCard = false,
+  typeOfData,
 }) => {
   return (
     <MobileDetailMainGridCardStyle
@@ -49,8 +51,8 @@ const MobileDetailMainGridCard = ({
       backgroundCard={backgroundCard}
       flexCard={flexCard}
     >
-      <h4>Humidity</h4>
-      <h3>31</h3>
+      <h4>{cardTittle}</h4>
+      <h3>{typeOfData}</h3>
       <p>
         <small>Amet minim mollit non</small>
       </p>

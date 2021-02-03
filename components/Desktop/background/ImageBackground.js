@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar";
 import TextMain from "./TextMain";
 import AsideCardInfo from "./containers/AsideCardInfo";
 import ModalWeatherError from "../../ModalWeatherError";
-import { BackgroundLoader, TextMainLoader } from "./SkeletonLoadears";
+import { BackgroundLoader, TextMainLoader } from "../SkeletonLoadears";
 
 const ImgFrame = styled.section`
   background-color: var(--gray-search);
@@ -30,26 +30,18 @@ const ImgFrame = styled.section`
     /* background: red; */
   }
 `;
-
-const BacgroundLayout = styled.div`
+const BackgroundLayout = styled.div`
   /* margin-top: 30px; */
   /* background-color: green; */
   height: 75vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  h2 {
-    font-size: 2rem;
-    color: var(--main-bg-color);
-  }
-
   /* Height overflow for tvs */
   @media only screen and (max-height: 889px) {
     overflow: scroll;
   }
 `;
-
 // Sekeleton Loader
 const LoaderFlex = styled.section`
   position: absolute;
@@ -64,6 +56,7 @@ export default function ImageBackground({
   searchValue,
   setSearchValue,
   searchFetchData,
+  datesInfo,
 }) {
   return (
     <>
@@ -79,10 +72,14 @@ export default function ImageBackground({
                   searchFetchData={searchFetchData}
                 />
               </nav>
-              <BacgroundLayout>
-                <TextMain apiData={apiData} apiIsReady={apiIsReady} />
+              <BackgroundLayout>
+                <TextMain
+                  apiData={apiData}
+                  apiIsReady={apiIsReady}
+                  datesInfo={datesInfo}
+                />
                 <AsideCardInfo apiData={apiData} apiIsReady={apiIsReady} />
-              </BacgroundLayout>
+              </BackgroundLayout>
             </Frame80>
           </ImgFrame>
 
@@ -98,7 +95,6 @@ export default function ImageBackground({
       ) : (
         <>
           {/* Ternary to show the modal */}
-
           {apiIsReady.modal ? (
             <ModalWeatherError
               searchValue={searchValue}

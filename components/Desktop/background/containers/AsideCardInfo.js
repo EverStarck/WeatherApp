@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import CardInfo from "../CardInfo";
-import { AsideCardLoader } from "../SkeletonLoadears";
+import { AsideCardLoader } from "../../SkeletonLoadears";
 
 const AsideCardInfoStyles = styled.aside`
   /* Height overflow for tvs */

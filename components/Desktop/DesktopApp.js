@@ -11,6 +11,7 @@ const DesktopApp = ({
   searchValue,
   setSearchValue,
   searchFetchData,
+  datesInfo
 }) => {
   return (
     <>
@@ -21,12 +22,14 @@ const DesktopApp = ({
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         searchFetchData={searchFetchData}
+        datesInfo={datesInfo}
       />
 
       <Frame80>
         <ForecastFrame
           apiData={apiData.forecastWeatherInfo}
           apiIsReady={apiIsReady}
+          datesInfo={datesInfo}
         />
       </Frame80>
     </>

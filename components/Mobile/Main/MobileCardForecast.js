@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
 
-
 const MobileCardForecastStyles = styled.article`
   background-color: var(--mobile-card-color);
   border-radius: var(--border-radius);
@@ -58,33 +57,39 @@ const MobileCardForecastStyles = styled.article`
 `;
 
 const MobileCardForecast = ({
+  data,
+  index,
   mobileDaysForecast,
-  mobileDateCardForecast = mobileDaysForecast.letter,
-  mobileTempForecast,
-  mobileIcon,
-  mobileDescription,
+  mobileDateCardForecast,
   setMobileDetailInfo,
+  setMobileIndex,
 }) => {
+  const handleClick = () => {
+    setMobileDetailInfo(true);
+    // alert(index);
+    setMobileIndex(index);
+  };
+
   return (
-    <MobileCardForecastStyles onClick={() => setMobileDetailInfo(true)}>
+    <MobileCardForecastStyles onClick={handleClick}>
       <div className="dayDate">
         <h2>{mobileDateCardForecast}</h2>
-        <h3>{mobileDaysForecast.number}</h3>
+        <h3>{mobileDaysForecast}</h3>
       </div>
       <div className="imgTempFrame">
         <div className="mobileImg">
           <Image
-            src={`/icons/${mobileIcon}.svg`}
-            alt={`Icon of ${mobileDescription}`}
+            src={`/icons/${data.weather[0].icon}.svg`}
+            alt={`Icon of ${data.weather[0].description}`}
             width={30}
             height={24}
           />
         </div>
         <div className="tempArrow">
           <h2>
-            {mobileTempForecast} <span>&#176;C</span>
+            {data.main.temp} <span>&#176;C</span>
           </h2>
-          <button onClick={() => setMobileDetailInfo(true)}></button>
+          <button onClick={handleClick}></button>
         </div>
       </div>
     </MobileCardForecastStyles>

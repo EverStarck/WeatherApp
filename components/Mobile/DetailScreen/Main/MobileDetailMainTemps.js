@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import MobileError from "../../MobileError";
 
 const MobileDetailTempsFrame = styled.section`
   display: flex;
@@ -18,22 +19,28 @@ const MobileDetailTempsFrame = styled.section`
   }
 `;
 
-const MobileDetailMainTemps = () => {
+const MobileDetailMainTemps = ({ getInfoDay }) => {
   return (
-    <MobileDetailTempsFrame>
-      <article className="mobileDetailTemps">
-        <h3>Min</h3>
-        <h2>
-          4<span>&#176;C</span>
-        </h2>
-      </article>
-      <article className="mobileDetailTemps">
-        <h3>Max</h3>
-        <h2>
-          24<span>&#176;C</span>
-        </h2>
-      </article>
-    </MobileDetailTempsFrame>
+    <>
+      {getInfoDay.length === 0 ? <MobileError/> : (
+        <MobileDetailTempsFrame>
+          <article className="mobileDetailTemps">
+            <h3>Min</h3>
+            <h2>
+              {getInfoDay[0].main.temp_min}
+              <span>&#176;C</span>
+            </h2>
+          </article>
+          <article className="mobileDetailTemps">
+            <h3>Max</h3>
+            <h2>
+              {getInfoDay[0].main.temp_max}
+              <span>&#176;C</span>
+            </h2>
+          </article>
+        </MobileDetailTempsFrame>
+      )}
+    </>
   );
 };
 

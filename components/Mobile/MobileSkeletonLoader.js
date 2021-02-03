@@ -2,7 +2,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 
 const ContentLoader = dynamic(() => import("react-content-loader"), {
-  //   ssr: false,
+    ssr: false,
 });
 
 export const TextMainLoader = () => (

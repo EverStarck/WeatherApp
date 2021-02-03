@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import MobileDetailMainGridCard from "./MobileDetailMainGridCard";
+import MobileError from "../../../MobileError";
 
 const MobileDetailMainGridStyle = styled.section`
   /* background-color: red; */
@@ -14,14 +15,36 @@ const MobileDetailMainGridStyle = styled.section`
   margin-top: 24px;
 `;
 
-const MobileDetailMainGrid = () => {
+const MobileDetailMainGrid = ({ getInfoDay }) => {
   return (
-    <MobileDetailMainGridStyle>
-      <MobileDetailMainGridCard gridArea="card1" />
-      <MobileDetailMainGridCard gridArea="card2" />
-      <MobileDetailMainGridCard gridArea="card3" />
-      <MobileDetailMainGridCard gridArea="cardLong" backgroundCard={true} flexCard={true} />
-    </MobileDetailMainGridStyle>
+    <>
+      {getInfoDay.length === 0 ? <MobileError/> : (
+        <MobileDetailMainGridStyle>
+          <MobileDetailMainGridCard
+            typeOfData={getInfoDay[0].main.humidity}
+            gridArea="card1"
+            cardTittle="Humidity"
+          />
+          <MobileDetailMainGridCard
+            typeOfData={getInfoDay[0].visibility}
+            gridArea="card2"
+            cardTittle="Visibility"
+          />
+          <MobileDetailMainGridCard
+            typeOfData={getInfoDay[0].wind.speed}
+            gridArea="card3"
+            cardTittle="Wind"
+          />
+          <MobileDetailMainGridCard
+            typeOfData="no se"
+            gridArea="cardLong"
+            cardTittle="Predictability"
+            backgroundCard={true}
+            flexCard={true}
+          />
+        </MobileDetailMainGridStyle>
+      )}
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-
+import dayjs from "dayjs";
 // Custom Hook
 import useWindoSize from "../customHooks/useWindowSize";
 
@@ -16,6 +16,8 @@ export default function Home({ userIpState }) {
   //Data about the user (location)
   const [userDataIp] = useState(userIpState.location);
   const { country, city } = userDataIp;
+  // Dates of days
+  const [datesInfo, setDatesInfo] = useState({});
   // All data from the apis. OpenWeatherMap and Pixebay
   const [apiData, setApiData] = useState({
     dayWeatherInfo: {},
@@ -29,9 +31,32 @@ export default function Home({ userIpState }) {
     pixabay: false,
     modal: false,
   });
-
   // Get the width and height
   const winwdowsSizeHook = useWindoSize();
+
+  const mobileDaysForecast = (add) => {
+    return {
+      letter: dayjs().add(add, "days").format("ddd, DD MMM"),
+      number: dayjs().add(add, "days").format("MM/DD/YYYY"),
+    };
+  };
+
+  // Set the days
+  const setTheDays = () => {
+    setDatesInfo({
+      0: {
+        dateInfo: {
+          letter: "Tomorrow",
+          number: mobileDaysForecast(1).number,
+        },
+      },
+      1: { dateInfo: mobileDaysForecast(2) },
+      2: { dateInfo: mobileDaysForecast(3) },
+      3: { dateInfo: mobileDaysForecast(4) },
+      4: { dateInfo: mobileDaysForecast(5) },
+      today: { dateInfo: mobileDaysForecast(0) },
+    });
+  };
 
   // Fetch data at the open of the web
   async function fetchData() {
@@ -93,8 +118,7 @@ export default function Home({ userIpState }) {
 
     //FORECAST Openweathermap
     req = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}
-`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}`
     );
 
     const forecastWeatherData = await req.json();
@@ -108,7 +132,16 @@ export default function Home({ userIpState }) {
     } else {
       setApiData((apiData) => ({
         ...apiData,
-        forecastWeatherInfo: forecastWeatherData,
+        forecastWeatherInfo: {
+          list: [
+            weatherData, //Day
+            forecastWeatherData.list[3], //Tomorrow
+            forecastWeatherData.list[11],
+            forecastWeatherData.list[19],
+            forecastWeatherData.list[27],
+            forecastWeatherData.list[35],
+          ],
+        },
       }));
 
       //forecastWeather is Ready
@@ -121,6 +154,7 @@ export default function Home({ userIpState }) {
 
   useEffect(() => {
     fetchData();
+    setTheDays();
   }, []);
 
   // Fetch data at search city
@@ -209,7 +243,16 @@ export default function Home({ userIpState }) {
     } else {
       setApiData((apiData) => ({
         ...apiData,
-        forecastWeatherInfo: forecastWeatherData,
+        forecastWeatherInfo: {
+          list: [
+            weatherData, //Day
+            forecastWeatherData.list[3], //Tomorrow
+            forecastWeatherData.list[11],
+            forecastWeatherData.list[19],
+            forecastWeatherData.list[27],
+            forecastWeatherData.list[35],
+          ],
+        },
       }));
 
       //forecastWeather is Ready
@@ -250,6 +293,7 @@ export default function Home({ userIpState }) {
           setSearchValue={setSearchValue}
           searchFetchData={searchFetchData}
           setApiIsReady={setApiIsReady}
+          datesInfo={datesInfo}
         />
       ) : (
         <MobileApp
@@ -259,6 +303,7 @@ export default function Home({ userIpState }) {
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           searchFetchData={searchFetchData}
+          datesInfo={datesInfo}
         />
       )}
     </MainFrame>

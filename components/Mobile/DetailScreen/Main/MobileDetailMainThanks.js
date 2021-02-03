@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import styled from "@emotion/styled";
 
 const MobileDetailMainThanksStyled = styled.article`
@@ -20,6 +21,10 @@ const MobileDetailMainThanksStyled = styled.article`
     color: var(--gray-search);
     margin: 8px 0 0 0;
   }
+  a {
+    font-size: clamp(1rem, 3vw, 2.4rem);
+    text-decoration: none;
+  }
 `;
 
 const MobileDetailMainThanks = () => {
@@ -32,8 +37,15 @@ const MobileDetailMainThanks = () => {
         observed temperature (within large megalopolises and urban areas).
       </p>
       <p>
-        This app was made thanks to pixabay, openweathermap, ipify and iconify.
-        Made by EverStarck ♥
+        This app was made thanks to <a href="https://pixabay.com" target="_blank" rel="noopener noreferrer">
+          pixabay
+        </a>, <a href="https://openweathermap.com" target="_blank" rel="noopener noreferrer">
+          openweathermap
+        </a>, <a href="https://www.ipify.org/" target="_blank" rel="noopener noreferrer">
+          ipify
+        </a> and <a href="https://iconify.design/" target="_blank" rel="noopener noreferrer">
+          iconify
+        </a>. Made by EverStarck ♥
       </p>
     </MobileDetailMainThanksStyled>
   );

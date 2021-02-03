@@ -1,66 +1,35 @@
 import React from "react";
-import dayjs from "dayjs";
 
 import MobileCardForecast from "./MobileCardForecast";
 import { MobileForecasLoader } from "../MobileSkeletonLoader";
 
-const MobileForecastFrame = ({ apiIsReady, apiData, setMobileDetailInfo }) => {
-  const mobileDaysForecast = (add) => {
-    return {
-      letter: dayjs().add(add, "days").format("ddd, DD MMM"),
-      number: dayjs().add(add, "days").format("MM/DD/YYYY"),
-    };
-  };
+const MobileForecastFrame = ({
+  apiIsReady,
+  apiData,
+  setMobileDetailInfo,
+  setMobileIndex,
+  datesInfo,
+}) => {
+  // The array of the forecast info
+  let mobileForecast = apiData.forecastWeatherInfo.list;
   return (
     <>
       {apiIsReady.forecastWeather ? (
         <>
-          <MobileCardForecast
-            mobileDateCardForecast="Tomorrow"
-            mobileDaysForecast={mobileDaysForecast(0)}
-            mobileTempForecast={apiData.forecastWeatherInfo.list[3].main.temp}
-            mobileIcon={apiData.forecastWeatherInfo.list[0].weather[0].icon}
-            mobileDescription={
-              apiData.forecastWeatherInfo.list[0].weather[0].description
-            }
-            setMobileDetailInfo={setMobileDetailInfo}
-          />
-          <MobileCardForecast
-            mobileDaysForecast={mobileDaysForecast(1)}
-            mobileTempForecast={apiData.forecastWeatherInfo.list[11].main.temp}
-            mobileIcon={apiData.forecastWeatherInfo.list[11].weather[0].icon}
-            mobileDescriptio={
-              apiData.forecastWeatherInfo.list[11].weather[0].description
-            }
-            setMobileDetailInfo={setMobileDetailInfo}
-          />
-          <MobileCardForecast
-            mobileDaysForecast={mobileDaysForecast(2)}
-            mobileTempForecast={apiData.forecastWeatherInfo.list[19].main.temp}
-            mobileIcon={apiData.forecastWeatherInfo.list[19].weather[0].icon}
-            mobileDescriptio={
-              apiData.forecastWeatherInfo.list[19].weather[0].description
-            }
-            setMobileDetailInfo={setMobileDetailInfo}
-          />
-          <MobileCardForecast
-            mobileDaysForecast={mobileDaysForecast(3)}
-            mobileTempForecast={apiData.forecastWeatherInfo.list[27].main.temp}
-            mobileIcon={apiData.forecastWeatherInfo.list[27].weather[0].icon}
-            mobileDescriptio={
-              apiData.forecastWeatherInfo.list[27].weather[0].description
-            }
-            setMobileDetailInfo={setMobileDetailInfo}
-          />
-          <MobileCardForecast
-            mobileDaysForecast={mobileDaysForecast(4)}
-            mobileTempForecast={apiData.forecastWeatherInfo.list[35].main.temp}
-            mobileIcon={apiData.forecastWeatherInfo.list[27].weather[0].icon}
-            mobileDescriptio={
-              apiData.forecastWeatherInfo.list[27].weather[0].description
-            }
-            setMobileDetailInfo={setMobileDetailInfo}
-          />
+          {/* With slice remove the first array item, the first day */}
+          {mobileForecast.slice(1).map((data, index) => {
+            return (
+              <MobileCardForecast
+                data={data}
+                key={data.dt}
+                index={index + 1}
+                mobileDateCardForecast={datesInfo[index].dateInfo.letter}
+                mobileDaysForecast={datesInfo[index].dateInfo.number}
+                setMobileDetailInfo={setMobileDetailInfo}
+                setMobileIndex={setMobileIndex}
+              />
+            );
+          })}
         </>
       ) : (
         // Skeleton Loader

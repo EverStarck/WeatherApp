@@ -34,8 +34,9 @@ const MobileHeader = ({
   searchFetchData,
   setMobileDetailInfo,
   mobileDetailInfo,
-  setIdForecastButton,
-  idForecastButton,
+  setMobileIndex,
+  getInfoDay,
+  datesInfo,
 }) => {
   return (
     <>
@@ -60,6 +61,8 @@ const MobileHeader = ({
                 apiData={apiData}
                 apiIsReady={apiIsReady}
                 mobileDetailInfo={mobileDetailInfo}
+                getInfoDay={getInfoDay}
+                datesInfo={datesInfo}
               />
 
               {/* Hide button "See Details" if click on details weather */}
@@ -69,8 +72,7 @@ const MobileHeader = ({
                   {apiIsReady.dayWeather ? (
                     <MobileButtonDetails
                       setMobileDetailInfo={setMobileDetailInfo}
-                      setIdForecastButton={setIdForecastButton}
-                      idForecastButton={idForecastButton}
+                      setMobileIndex={setMobileIndex}
                     />
                   ) : null}
                 </>

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MobileHeader from "./Header/MobileHeader";
 import MobileMain from "./Main/MobileMain";
 import MobileDetailWeather from "./DetailScreen/MobileDetailWeather";
+import dayjs from "dayjs";
 
 const MobileApp = ({
   apiData,
@@ -10,18 +11,13 @@ const MobileApp = ({
   searchValue,
   setSearchValue,
   searchFetchData,
+  datesInfo,
 }) => {
   // Open a detail info of the weather day
   const [mobileDetailInfo, setMobileDetailInfo] = useState(false);
-  // Test
-  const [idForecastButton, setIdForecastButton] = useState({
-    id1: { active: false },
-    id2: { active: false },
-    id3: { active: false },
-    id4: { active: false },
-    id5: { active: false },
-    id6: { active: false },
-  });
+  // Set index
+  const [mobileIndex, setMobileIndex] = useState(null);
+
   return (
     <>
       {/* Click on any button? */}
@@ -33,6 +29,8 @@ const MobileApp = ({
         searchFetchData={searchFetchData}
         mobileDetailInfo={mobileDetailInfo}
         setMobileDetailInfo={setMobileDetailInfo}
+        mobileIndex={mobileIndex}
+        datesInfo={datesInfo}
       />
 
       {/* Start app */}
@@ -43,15 +41,17 @@ const MobileApp = ({
         setSearchValue={setSearchValue}
         searchFetchData={searchFetchData}
         setMobileDetailInfo={setMobileDetailInfo}
-        setIdForecastButton={setIdForecastButton}
-        idForecastButton={idForecastButton}
         setApiIsReady={setApiIsReady}
+        setMobileIndex={setMobileIndex}
+        datesInfo={datesInfo}
       />
 
       <MobileMain
         apiData={apiData}
         apiIsReady={apiIsReady}
         setMobileDetailInfo={setMobileDetailInfo}
+        setMobileIndex={setMobileIndex}
+        datesInfo={datesInfo}
       />
     </>
   );

@@ -27,6 +27,8 @@ const MobileMain = ({
   apiIsReady,
   apiData,
   setMobileDetailInfo,
+  setMobileIndex,
+  datesInfo,
 }) => {
   return (
     <MobileMainStyles>
@@ -37,6 +39,8 @@ const MobileMain = ({
           setMobileDetailInfo={setMobileDetailInfo}
           apiIsReady={apiIsReady}
           apiData={apiData}
+          setMobileIndex={setMobileIndex}
+          datesInfo={datesInfo}
         />
       </Frame80>
     </MobileMainStyles>
