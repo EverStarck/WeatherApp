@@ -3,7 +3,7 @@ import Head from "next/head";
 const HeadInfo = ({apiData,apiIsReady }) => {
   return (
     <Head>
-      <html lang="en" />
+      {/* <html lang="en" /> */}
       {/* TITLE */}
       {apiIsReady.dayWeather ? (
         <title>
