@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 const MobileErrorStyle = styled.span`
-  font-size: clamp(1.5rem, 3vw, 2rew);
+  font-size: 12px;
   color: #e05353;
 `;
 

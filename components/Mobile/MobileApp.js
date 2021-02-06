@@ -20,19 +20,6 @@ const MobileApp = ({
 
   return (
     <>
-      {/* Click on any button? */}
-      <MobileDetailWeather
-        apiData={apiData}
-        apiIsReady={apiIsReady}
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        searchFetchData={searchFetchData}
-        mobileDetailInfo={mobileDetailInfo}
-        setMobileDetailInfo={setMobileDetailInfo}
-        mobileIndex={mobileIndex}
-        datesInfo={datesInfo}
-      />
-
       {/* Start app */}
       <MobileHeader
         apiData={apiData}
@@ -51,6 +38,19 @@ const MobileApp = ({
         apiIsReady={apiIsReady}
         setMobileDetailInfo={setMobileDetailInfo}
         setMobileIndex={setMobileIndex}
+        datesInfo={datesInfo}
+      />
+
+      {/* Click on any button? */}
+      <MobileDetailWeather
+        apiData={apiData}
+        apiIsReady={apiIsReady}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        searchFetchData={searchFetchData}
+        mobileDetailInfo={mobileDetailInfo}
+        setMobileDetailInfo={setMobileDetailInfo}
+        mobileIndex={mobileIndex}
         datesInfo={datesInfo}
       />
     </>

@@ -12,7 +12,7 @@ const MobileDetailMainGridStyle = styled.section`
   grid-template-areas:
     "card1 card2 card3"
     "cardLong cardLong cardLong";
-  margin-top: 24px;
+  /* margin-top: 24px; */
 `;
 
 const MobileDetailMainGrid = ({ getInfoDay }) => {

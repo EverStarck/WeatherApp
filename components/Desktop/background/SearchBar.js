@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 const Input = styled.input`
   font-size: clamp(1rem, 10vw, 1.4rem);
-  background: url("https://api.iconify.design/feather-search.svg?color=%23B7B7B7")
+  background: url("./assets/searchIcon.svg")
     no-repeat 15px center / 20px 20px;
   background-color: var(--main-bg-color);
   border: 2px solid var(--main-bg-color);
@@ -38,11 +38,13 @@ const SearchBar = ({ searchValue, setSearchValue, searchFetchData }) => {
 
   return (
     <form onSubmit={searchFetchData}>
+      <label htmlFor="searchBar" style={{display:"none"}}>Search City</label>
       <Input
         type="search"
         placeholder="Search city"
         value={searchValue}
         onChange={refreshInput}
+        id="searchBar" name="Search City Bar"
       />
     </form>
   );
