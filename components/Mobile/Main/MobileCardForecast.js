@@ -63,6 +63,7 @@ const MobileCardForecast = ({
   mobileDateCardForecast,
   setMobileDetailInfo,
   setMobileIndex,
+  ariaLabel
 }) => {
   const handleClick = () => {
     setMobileDetailInfo(true);
@@ -89,7 +90,7 @@ const MobileCardForecast = ({
           <h2>
             {data.main.temp} <span>&#176;C</span>
           </h2>
-          <button onClick={handleClick}></button>
+          <button aria-label={`See details of ${ariaLabel}`} onClick={handleClick}></button>
         </div>
       </div>
     </MobileCardForecastStyles>

@@ -41,10 +41,8 @@ const MobileDetailMainThanks = () => {
           pixabay
         </a>, <a href="https://openweathermap.com" target="_blank" rel="noopener noreferrer">
           openweathermap
-        </a>, <a href="https://www.ipify.org/" target="_blank" rel="noopener noreferrer">
-          ipify
-        </a> and <a href="https://iconify.design/" target="_blank" rel="noopener noreferrer">
-          iconify
+        </a>, and <a href="https://www.ipify.org/" target="_blank" rel="noopener noreferrer">
+          ipify.
         </a>. Made by EverStarck ♥
       </p>
     </MobileDetailMainThanksStyled>

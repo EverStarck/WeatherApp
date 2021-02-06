@@ -27,6 +27,7 @@ const MobileForecastFrame = ({
                 mobileDaysForecast={datesInfo[index].dateInfo.number}
                 setMobileDetailInfo={setMobileDetailInfo}
                 setMobileIndex={setMobileIndex}
+                ariaLabel={datesInfo[index].dateInfo.letter}
               />
             );
           })}
