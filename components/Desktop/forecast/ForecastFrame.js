@@ -40,11 +40,6 @@ const ForecastFrame = ({ apiIsReady, apiData, datesInfo }) => {
             <br key="forecastTooltip03" />,
             "If you see the information similar or exactly the same, is because it is the minimum and maximum currently observed temperature (within large megalopolises and areas)",
           ]}
-
-          //   <b> Left:</b> Min temp <b> Rigtht:</b> Max temp <br /> If you see the
-          // information similar or exactly the same, is because it is the minimum
-          // and maximum currently observed temperature (within large megalopolises
-          // and areas)
         />
       </TextForecast>
       <ForecastFrameLayaout>

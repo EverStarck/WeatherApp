@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Head from "next/head";
 import dynamic from "next/dynamic";
 import dayjs from "dayjs";
 // Custom Hook
@@ -9,6 +8,7 @@ import DesktopApp from "../components/Desktop/DesktopApp";
 import MobileApp from "../components/Mobile/MobileApp";
 
 import { MainFrame } from "../styles/Main";
+import HeadInfo from "../components/HeadInfo";
 
 export default function Home({ userIpState }) {
   //Value of the input search
@@ -74,7 +74,7 @@ export default function Home({ userIpState }) {
       setApiData((apiData) => ({
         ...apiData,
         pixabayBackground: {
-          fullHDURL: "/assets/mountain.jpg",
+          fullHDURL: "/assets/mountain.webp",
         },
       }));
     } else {
@@ -183,7 +183,7 @@ export default function Home({ userIpState }) {
       setApiData((apiData) => ({
         ...apiData,
         pixabayBackground: {
-          fullHDURL: "/assets/mountain.jpg",
+          fullHDURL: "/assets/mountain.webp",
         },
       }));
     } else {
@@ -277,13 +277,9 @@ export default function Home({ userIpState }) {
   //   // { loading: () => <h1>LOADING</h1> }
   // );
   // import MobileApp from "../components/Mobile/MobileApp";
-
   return (
     <MainFrame>
-      <Head>
-        <title>WeatherApp</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <HeadInfo apiData={apiData} apiIsReady={apiIsReady}/>
 
       {winwdowsSizeHook.width > 767 ? (
         <DesktopApp
