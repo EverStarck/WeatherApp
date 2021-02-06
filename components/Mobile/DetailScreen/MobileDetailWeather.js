@@ -19,7 +19,7 @@ const MobileDetailWeatherStyles = styled.section`
   /* width: ${(props) => (props.mobileDetailInfo ? "100%" : "0")};
   height: 100%;
   position: absolute;
-  z-index: 1;
+  z-index: 99999;
   top: 0;
   left: 0;
   background-color: #fff;
@@ -58,27 +58,45 @@ const MobileDetailWeather = ({
   useEffect(() => {
     switch (mobileIndex) {
       case 0:
-        setGetInfoDay([apiData.forecastWeatherInfo.list[0], datesInfo.today.dateInfo.number]);
+        setGetInfoDay([
+          apiData.forecastWeatherInfo.list[0],
+          datesInfo.today.dateInfo.number,
+        ]);
         break;
       case 1:
-        setGetInfoDay([apiData.forecastWeatherInfo.list[1], datesInfo[0].dateInfo.letter]);
+        setGetInfoDay([
+          apiData.forecastWeatherInfo.list[1],
+          datesInfo[0].dateInfo.letter,
+        ]);
         break;
       case 2:
-        setGetInfoDay([apiData.forecastWeatherInfo.list[2], datesInfo[1].dateInfo.number]);
+        setGetInfoDay([
+          apiData.forecastWeatherInfo.list[2],
+          datesInfo[1].dateInfo.number,
+        ]);
         break;
       case 3:
-        setGetInfoDay([apiData.forecastWeatherInfo.list[3], datesInfo[2].dateInfo.number]);
+        setGetInfoDay([
+          apiData.forecastWeatherInfo.list[3],
+          datesInfo[2].dateInfo.number,
+        ]);
         break;
       case 4:
-        setGetInfoDay([apiData.forecastWeatherInfo.list[4], datesInfo[3].dateInfo.number]);
+        setGetInfoDay([
+          apiData.forecastWeatherInfo.list[4],
+          datesInfo[3].dateInfo.number,
+        ]);
         break;
       case 5:
-        setGetInfoDay([apiData.forecastWeatherInfo.list[5], datesInfo[4].dateInfo.number]);
+        setGetInfoDay([
+          apiData.forecastWeatherInfo.list[5],
+          datesInfo[4].dateInfo.number,
+        ]);
         break;
     }
   }, [mobileIndex]);
 
-  console.log(getInfoDay[1])
+  // console.log(getInfoDay[1]);
   return (
     <MobileDetailWeatherStyles mobileDetailInfo={mobileDetailInfo}>
       <MobileDetailButton

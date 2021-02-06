@@ -18,29 +18,39 @@ const MobileDetailMainGridStyle = styled.section`
 const MobileDetailMainGrid = ({ getInfoDay }) => {
   return (
     <>
-      {getInfoDay.length === 0 ? <MobileError/> : (
+      {getInfoDay.length === 0 ? (
+        <MobileError />
+      ) : (
         <MobileDetailMainGridStyle>
           <MobileDetailMainGridCard
             typeOfData={getInfoDay[0].main.humidity}
             gridArea="card1"
             cardTittle="Humidity"
+            descriptionCard="Amount of vapor in the air"
           />
           <MobileDetailMainGridCard
             typeOfData={getInfoDay[0].visibility}
             gridArea="card2"
             cardTittle="Visibility"
+            descriptionCard="Distance at which an object can be discerned"
           />
           <MobileDetailMainGridCard
             typeOfData={getInfoDay[0].wind.speed}
             gridArea="card3"
             cardTittle="Wind"
+            descriptionCard="Atmospheric quantity caused by air moving"
           />
           <MobileDetailMainGridCard
-            typeOfData="no se"
+            typeOfData={
+              getInfoDay[0].weather[0].main === "Rain"
+                ? `${getInfoDay[0].pop}%`
+                : "0%"
+            }
             gridArea="cardLong"
-            cardTittle="Predictability"
+            cardTittle="Probability of Rain"
             backgroundCard={true}
             flexCard={true}
+            descriptionCard="Probability of precipitation"
           />
         </MobileDetailMainGridStyle>
       )}

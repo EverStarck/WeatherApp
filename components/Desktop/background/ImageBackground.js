@@ -7,6 +7,7 @@ import TextMain from "./TextMain";
 import AsideCardInfo from "./containers/AsideCardInfo";
 import ModalWeatherError from "../../ModalWeatherError";
 import { BackgroundLoader, TextMainLoader } from "../SkeletonLoadears";
+import Tooltip from "../Tooltip";
 
 const ImgFrame = styled.section`
   background-color: var(--gray-search);
@@ -21,6 +22,11 @@ const ImgFrame = styled.section`
   width: 100vw;
   height: 80vh;
   /* color: #fff; */
+  .tooltip {
+    position: absolute;
+    top: 75vh;
+    left: 0px;
+  }
   nav {
     height: 5vh;
     width: 100%;
@@ -64,6 +70,14 @@ export default function ImageBackground({
       {apiIsReady.pixabay ? (
         <>
           <ImgFrame apiData={apiData}>
+            <div className="tooltip">
+              <Tooltip
+              textTooltip="Credits to PIXABAY for all the background images"
+              bottomTooltip="-50%"
+              rightTooltip="-1500%"
+              afterTooltip="none"
+              />
+            </div>
             <Frame80>
               <nav>
                 <SearchBar

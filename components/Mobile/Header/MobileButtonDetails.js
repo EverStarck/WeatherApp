@@ -18,8 +18,13 @@ const MobileButtonDetailStyle = styled.div`
     justify-content: center;
     align-items: center;
     span {
-      background-image: url("/assets/buttonArrow.svg");
+      /* background-image: url("/assets/buttonArrow.svg");
       background-repeat: no-repeat;
+      margin-left: 10px;
+      width: 6pt;
+      height: 12pt; */
+      mask: url("/assets/buttonArrow.svg") no-repeat;
+      background-color: var(--main-bg-color);
       margin-left: 10px;
       width: 6pt;
       height: 12pt;
@@ -28,11 +33,9 @@ const MobileButtonDetailStyle = styled.div`
     :focus,
     :hover {
       background-color: var(--main-bg-color);
-      /* border: 2px solid var(--main-color); */
       color: var(--main-color);
       span {
-        filter: brightness(50%) sepia(1) hue-rotate(174deg) saturate(59%)
-          brightness(25%);
+        background-color: var(--main-color);
       }
     }
   }

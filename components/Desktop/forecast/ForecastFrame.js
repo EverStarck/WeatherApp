@@ -1,5 +1,4 @@
 import React from "react";
-import dayjs from "dayjs";
 import styled from "@emotion/styled";
 
 import CardForecast from "./CardForecast";
@@ -27,16 +26,26 @@ const ForecastFrameLayaout = styled.section`
 `;
 
 const ForecastFrame = ({ apiIsReady, apiData, datesInfo }) => {
-  const dateForecast = (add) => {
-    return dayjs().add(add, "days").format("ddd, DD MMM"); //tomorrow //Sat, 16 Jan
-  };
   // The array of the forecast info
   let desktopForecast = apiData.list;
   return (
     <>
       <TextForecast>
         <h2>Next 5 Days</h2>
-        <Tooltip />
+        <Tooltip
+          textTooltip={[
+            <b key="forecastTooltip01">Left:</b>,
+            "Min temp",
+            <b key="forecastTooltip02"> Rigtht:</b>,
+            <br key="forecastTooltip03" />,
+            "If you see the information similar or exactly the same, is because it is the minimum and maximum currently observed temperature (within large megalopolises and areas)",
+          ]}
+
+          //   <b> Left:</b> Min temp <b> Rigtht:</b> Max temp <br /> If you see the
+          // information similar or exactly the same, is because it is the minimum
+          // and maximum currently observed temperature (within large megalopolises
+          // and areas)
+        />
       </TextForecast>
       <ForecastFrameLayaout>
         {apiIsReady.forecastWeather ? (

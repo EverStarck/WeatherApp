@@ -9,8 +9,8 @@ const TooltipStyle = styled.div`
   .tooltipText {
     width: 250px;
     position: absolute;
-    bottom: 120%;
-    right: -675%;
+    bottom: ${(props) => props.bottomTooltip};
+    right: ${(props) => props.rightTooltip};
     color: var(--main-bg-color);
     border-radius: var(--border-radius);
     padding: 10px 20px;
@@ -35,6 +35,7 @@ const TooltipStyle = styled.div`
       border-width: 5px;
       border-style: solid;
       border-color: var(--black-forecast) transparent transparent transparent;
+      display: ${props => props.afterTooltip};
     }
   }
   &:hover {
@@ -44,16 +45,16 @@ const TooltipStyle = styled.div`
     }
   }
 `;
-const Tooltip = () => {
+const Tooltip = ({
+  textTooltip,
+  bottomTooltip = "120%",
+  rightTooltip = "-675%",
+  afterTooltip = "block"
+}) => {
   return (
-    <TooltipStyle>
+    <TooltipStyle bottomTooltip={bottomTooltip} rightTooltip={rightTooltip} afterTooltip = {afterTooltip}>
       &#x1F6C8;
-      <span className="tooltipText">
-        <b> Left:</b> Min temp <b> Rigtht:</b> Max temp <br /> If you see the
-        information similar or exactly the same, is because it is the minimum
-        and maximum currently observed temperature (within large megalopolises
-        and areas)
-      </span>
+      <span className="tooltipText">{textTooltip}</span>
     </TooltipStyle>
   );
 };

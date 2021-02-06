@@ -44,6 +44,8 @@ const MobileDetailMainGridCard = ({
   backgroundCard = false,
   flexCard = false,
   typeOfData,
+  descriptionCard,
+  getInfoDay,
 }) => {
   return (
     <MobileDetailMainGridCardStyle
@@ -54,7 +56,7 @@ const MobileDetailMainGridCard = ({
       <h4>{cardTittle}</h4>
       <h3>{typeOfData}</h3>
       <p>
-        <small>Amet minim mollit non</small>
+        <small>{descriptionCard}</small>
       </p>
     </MobileDetailMainGridCardStyle>
   );
