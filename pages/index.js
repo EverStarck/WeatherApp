@@ -10,7 +10,11 @@ import MobileApp from "../components/Mobile/MobileApp";
 import { MainFrame } from "../styles/Main";
 import HeadInfo from "../components/HeadInfo";
 
-export default function Home({ userIpState }) {
+import {getData} from './api/index';
+
+export default function Home({ userIpState, myData }) {
+  console.log(myData)
+
   //Value of the input search
   const [searchValue, setSearchValue] = useState("");
   //Data about the user (location)
@@ -265,24 +269,22 @@ export default function Home({ userIpState }) {
 
   // Dynamic import
   // Desktop
-  // const DesktopApp = dynamic(
-  //   () => import("../components/Desktop/DesktopApp"),
-  //   // { loading: () => <h1>LOADING</h1> }
-  // );
-  // import DesktopApp from "../components/Desktop/DesktopApp";
+  const DesktopAppDynamic = dynamic(
+    () => import("../components/Desktop/DesktopApp")
+    // { loading: () => <h1>LOADING</h1> }
+  );
 
   // Mobile
-  // const MobileApp = dynamic(
-  //   () => import("../components/Mobile/MobileApp"),
-  //   // { loading: () => <h1>LOADING</h1> }
-  // );
-  // import MobileApp from "../components/Mobile/MobileApp";
+  const MobileAppDynamic = dynamic(
+    () => import("../components/Mobile/MobileApp")
+    // { loading: () => <h1>LOADING</h1> }
+  );
   return (
     <MainFrame>
-      <HeadInfo apiData={apiData} apiIsReady={apiIsReady}/>
+      {/* <HeadInfo apiData={apiData} apiIsReady={apiIsReady}/>
 
       {winwdowsSizeHook.width > 767 ? (
-        <DesktopApp
+        <DesktopAppDynamic
           apiData={apiData}
           apiIsReady={apiIsReady}
           searchValue={searchValue}
@@ -292,7 +294,7 @@ export default function Home({ userIpState }) {
           datesInfo={datesInfo}
         />
       ) : (
-        <MobileApp
+        <MobileAppDynamic
           apiData={apiData}
           apiIsReady={apiIsReady}
           setApiIsReady={setApiIsReady}
@@ -301,7 +303,16 @@ export default function Home({ userIpState }) {
           searchFetchData={searchFetchData}
           datesInfo={datesInfo}
         />
-      )}
+      )} */}
+        {/* <h1>{testApi.ip}</h1> */}
+        <h1>a</h1>
+
+
+      <style jsx>{`
+        h1 {
+          font-size: 48px;
+        }
+      `}</style>
     </MainFrame>
   );
 }
@@ -309,9 +320,11 @@ export default function Home({ userIpState }) {
 // GET IP
 // This gets called on every request
 export async function getStaticProps() {
+  // console.log(req.headers) //see if you have those headers
+
   // Fetch data from external API
   let res = await fetch(
-    `https://geo.ipify.org/api/v1?apiKey=${process.env.NEXT_PUBLIC_IPIFY_KEY}`
+    `https://geo.ipify.org/api/v1?apiKey=aa`
   );
 
   //If the api don't response, show the data of Mountan View
@@ -336,10 +349,19 @@ export async function getStaticProps() {
 
   const userIpState = await res.json();
 
-  console.log("IP," + process.env.IPIFY_KEY);
-  console.log("WEATHER," + process.env.OPENWEATHERMAP_KEY);
-  console.log("PIXABAY," + process.env.PIXABAY_KEY);
+  // Fetch data from external API
+  // let res2 = await fetch(`http://localhost:3000/api`);
+  // const myData = await res2.json();
+  // console.log(myData);
+
+
+  const myData = await getData(req)
+
+
+  console.log("IP," + process.env.NEXT_PUBLIC_IPIFY_KEY);
+  console.log("WEATHER," + process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY);
+  console.log("PIXABAY," + process.env.NEXT_PUBLIC_PIXABAY_KEY);
 
   // Pass data to the page via props
-  return { props: { userIpState } };
+  return { props: { userIpState,myData } };
 }
