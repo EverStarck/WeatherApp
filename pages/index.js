@@ -10,10 +10,15 @@ import MobileApp from "../components/Mobile/MobileApp";
 import { MainFrame } from "../styles/Main";
 import HeadInfo from "../components/HeadInfo";
 
-import {getData} from './api/index';
+import { getData } from "./api/index";
 
-export default function Home({ userIpState, myData }) {
-  console.log(myData)
+import AppRoute from "../router/AppRoute";
+import MobileError from "../components/Mobile/MobileError";
+export const ApiContext = React.createContext({});
+export const userInfo = React.createContext({});
+
+export default function Home({ userIpState }) {
+  // console.log(myData);
 
   //Value of the input search
   const [searchValue, setSearchValue] = useState("");
@@ -66,9 +71,7 @@ export default function Home({ userIpState, myData }) {
   async function fetchData() {
     //Pixabay Background
     let req = await fetch(
-      `https://pixabay.com/api/?key=${process.env.NEXT_PUBLIC_PIXABAY_KEY}
-
-&q=${city}&per_page=3`
+      `https://pixabay.com/api/?key=${process.env.NEXT_PUBLIC_PIXABAY_KEY}&q=${city}&per_page=3`
     );
 
     const pixabayJson = await req.json();
@@ -157,8 +160,8 @@ export default function Home({ userIpState, myData }) {
   }
 
   useEffect(() => {
-    fetchData();
-    setTheDays();
+    // fetchData();
+    // setTheDays();
   }, []);
 
   // Fetch data at search city
@@ -279,6 +282,7 @@ export default function Home({ userIpState, myData }) {
     () => import("../components/Mobile/MobileApp")
     // { loading: () => <h1>LOADING</h1> }
   );
+
   return (
     <MainFrame>
       {/* <HeadInfo apiData={apiData} apiIsReady={apiIsReady}/>
@@ -303,16 +307,26 @@ export default function Home({ userIpState, myData }) {
           searchFetchData={searchFetchData}
           datesInfo={datesInfo}
         />
+      )}
+
+      {/* {apiIsReady.dayWeather &&
+      apiIsReady.forecastWeather &&
+      apiIsReady.pixabay ? (
+        <ApiContext.Provider value={{ apiData }}>
+           <MobileError />
+           <AppRoute/>
+          <h1>Loaded</h1>
+        </ApiContext.Provider>
+      ) : (
+        <h1>Loading</h1>
       )} */}
-        {/* <h1>{testApi.ip}</h1> */}
-        <h1>a</h1>
 
-
-      <style jsx>{`
-        h1 {
-          font-size: 48px;
-        }
-      `}</style>
+      {/* <ApiContext.Provider value={{ apiData }}> */}
+        <AppRoute
+          country={country} city={city}
+        />
+        {/* <MobileError /> */}
+      {/* </ApiContext.Provider> */}
     </MainFrame>
   );
 }
@@ -323,9 +337,7 @@ export async function getStaticProps() {
   // console.log(req.headers) //see if you have those headers
 
   // Fetch data from external API
-  let res = await fetch(
-    `https://geo.ipify.org/api/v1?apiKey=aa`
-  );
+  let res = await fetch(`https://geo.ipify.org/api/v1?apiKey=aa`);
 
   //If the api don't response, show the data of Mountan View
   if (!res.ok) {
@@ -354,14 +366,10 @@ export async function getStaticProps() {
   // const myData = await res2.json();
   // console.log(myData);
 
-
-  const myData = await getData(req)
-
-
   console.log("IP," + process.env.NEXT_PUBLIC_IPIFY_KEY);
   console.log("WEATHER," + process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY);
   console.log("PIXABAY," + process.env.NEXT_PUBLIC_PIXABAY_KEY);
 
   // Pass data to the page via props
-  return { props: { userIpState,myData } };
+  return { props: { userIpState } };
 }
