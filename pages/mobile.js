@@ -1,12 +1,15 @@
 // Render DESKTOP page
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import useWindowSize from "../customHooks/useWindowSize";
 
 ///-------------
 import dynamic from "next/dynamic";
 import MobileError from "../components/Mobile/MobileError";
+
+// Context
 import ApiDataProvider from "../Context/ApiDataContext";
+import DaysInfoProvider from "../Context/DaysInfoContext";
 
 const mobile = () => {
   // Render DESKTOP page
@@ -27,7 +30,9 @@ const mobile = () => {
   // return <MobileAppDynamic/>;
   return (
     <ApiDataProvider ipInfo={router.query}>
-      <MobileError />
+      <DaysInfoProvider>
+        <MobileError />
+      </DaysInfoProvider>
     </ApiDataProvider>
   );
 };

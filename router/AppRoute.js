@@ -30,7 +30,6 @@ const AppRoute = ({ country, city }) => {
     renderDesktopOrMobile();
   }, [winwdowsSizeHook.width]);
 
-  console.log(country, city);
 
   return <h1>LOADING...</h1>;
 };
