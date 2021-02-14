@@ -1,10 +1,12 @@
-import React from "react";
+import { useContext } from "react";
 import styled from "@emotion/styled";
+
+// Context
+import { SearchContext } from "../../../Context/SearchContext";
 
 const Input = styled.input`
   font-size: clamp(1rem, 10vw, 1.4rem);
-  background: url("./assets/searchIcon.svg")
-    no-repeat 15px center / 20px 20px;
+  background: url("./assets/searchIcon.svg") no-repeat 15px center / 20px 20px;
   background-color: var(--main-bg-color);
   border: 2px solid var(--main-bg-color);
   border-radius: var(--border-radius);
@@ -31,20 +33,25 @@ const Input = styled.input`
   }
 `;
 
-const SearchBar = ({ searchValue, setSearchValue, searchFetchData }) => {
+const SearchBar = () => {
+  // Context Data
+  const { searchValue, setSearchValue, searchFetchData } = useContext(SearchContext);
   const refreshInput = (e) => {
     setSearchValue(e.target.value);
   };
 
   return (
     <form onSubmit={searchFetchData}>
-      <label htmlFor="searchBar" style={{display:"none"}}>Search City</label>
+      <label htmlFor="searchBar" style={{ display: "none" }}>
+        Search City
+      </label>
       <Input
         type="search"
         placeholder="Search city"
         value={searchValue}
         onChange={refreshInput}
-        id="searchBar" name="Search City Bar"
+        id="searchBar"
+        name="Search City Bar"
       />
     </form>
   );

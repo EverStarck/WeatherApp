@@ -34,7 +34,7 @@ const MobileHeader = ({
   mobileDetailInfo,
 }) => {
   // Context Data
-  const { apiData, apiIsReady, setApiIsReady } = useContext(ApiDataContext);
+  const { apiData, apiIsReady } = useContext(ApiDataContext);
 
   return (
     <>
@@ -47,14 +47,7 @@ const MobileHeader = ({
           >
             <Frame80>
               {/* Hide searchBar if click on details weather */}
-              {!mobileDetailInfo
-                ? // <SearchBar
-                  //   searchValue={searchValue}
-                  //   setSearchValue={setSearchValue}
-                  //   searchFetchData={searchFetchData}
-                  // />
-                  null
-                : null}
+              {!mobileDetailInfo ? <SearchBar /> : null}
 
               <TextMain mobileDetailInfo={mobileDetailInfo} />
 
@@ -74,26 +67,12 @@ const MobileHeader = ({
           </MobileBackground>
 
           {/* Show a modal if wetheropenmap don't have results */}
-          {apiIsReady.modal
-            ? // <ModalWeatherError
-              //   searchValue={searchValue}
-              //   apiIsReady={apiIsReady}
-              //   setApiIsReady={setApiIsReady}
-              // />
-              null
-            : null}
+          {apiIsReady.modal ? <ModalWeatherError /> : null}
         </>
       ) : (
         <>
           {/* Show a modal if wetheropenmap don't have results */}
-          {apiIsReady.modal
-            ? // <ModalWeatherError
-              //   searchValue={searchValue}
-              //   apiIsReady={apiIsReady}
-              //   setApiIsReady={setApiIsReady}
-              // />
-              null
-            : null}
+          {apiIsReady.modal ? <ModalWeatherError /> : null}
           <MobileHeaderLoader />
         </>
       )}

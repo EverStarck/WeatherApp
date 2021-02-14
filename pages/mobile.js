@@ -1,5 +1,5 @@
-// Render DESKTOP page
-import { useEffect } from "react";
+// Render MOBILE page
+import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import useWindowSize from "../customHooks/useWindowSize";
 
@@ -8,8 +8,9 @@ import dynamic from "next/dynamic";
 import { MainFrame } from "../styles/Main";
 
 // Context
-import ApiDataProvider from "../Context/ApiDataContext";
+import ApiDataProvider, { ApiDataContext } from "../Context/ApiDataContext";
 import DaysInfoProvider from "../Context/DaysInfoContext";
+import SearchProvider from "../Context/SearchContext";
 
 const mobile = () => {
   // Render DESKTOP page
@@ -30,17 +31,11 @@ const mobile = () => {
   return (
     <MainFrame>
       <ApiDataProvider ipInfo={router.query}>
-        <DaysInfoProvider>
-          <MobileAppDynamic
-          // apiData={apiData}
-          // apiIsReady={apiIsReady}
-          // setApiIsReady={setApiIsReady}
-          // searchValue={searchValue}
-          // setSearchValue={setSearchValue}
-          // searchFetchData={searchFetchData}
-          // datesInfo={datesInfo}
-          />
-        </DaysInfoProvider>
+        <SearchProvider>
+          <DaysInfoProvider>
+            <MobileAppDynamic />
+          </DaysInfoProvider>
+        </SearchProvider>
       </ApiDataProvider>
     </MainFrame>
   );

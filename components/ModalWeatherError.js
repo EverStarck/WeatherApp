@@ -1,6 +1,11 @@
-import React from "react";
+import { useContext } from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
+
+// Context
+import { ApiDataContext } from "../Context/ApiDataContext";
+import { SearchContext } from "../Context/SearchContext";
+
 
 const ModalFrame = styled.div`
   position: absolute;
@@ -70,7 +75,11 @@ const ModalBackground = styled.div`
   z-index: 2;
 `;
 
-const ModalWeatherError = ({ searchValue, apiIsReady, setApiIsReady }) => {
+const ModalWeatherError = () => {
+  // Context Data
+  const { apiIsReady, setApiIsReady } = useContext(ApiDataContext);
+  const { searchValue } = useContext(SearchContext);
+
   return (
     <>
       <ModalFrame>
@@ -101,9 +110,7 @@ const ModalWeatherError = ({ searchValue, apiIsReady, setApiIsReady }) => {
             modal: false,
           })
         }
-      >
-        bg
-      </ModalBackground>
+      ></ModalBackground>
     </>
   );
 };
