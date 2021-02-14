@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import MobileCardForecast from "./MobileCardForecast";
 import { MobileForecasLoader } from "../MobileSkeletonLoader";
 
-const MobileForecastFrame = ({
-  apiIsReady,
-  apiData,
-  setMobileDetailInfo,
-  setMobileIndex,
-  datesInfo,
-}) => {
+// Context
+import { ApiDataContext } from "../../../Context/ApiDataContext";
+import { DaysInfoContext } from "../../../Context/DaysInfoContext";
+
+const MobileForecastFrame = ({ setMobileDetailInfo, setMobileIndex }) => {
+  // Context Data
+  const { apiData, apiIsReady } = useContext(ApiDataContext);
+  const { datesInfo } = useContext(DaysInfoContext);
+
   // The array of the forecast info
   let mobileForecast = apiData.forecastWeatherInfo.list;
   return (

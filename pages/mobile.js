@@ -5,7 +5,7 @@ import useWindowSize from "../customHooks/useWindowSize";
 
 ///-------------
 import dynamic from "next/dynamic";
-import MobileError from "../components/Mobile/MobileError";
+import { MainFrame } from "../styles/Main";
 
 // Context
 import ApiDataProvider from "../Context/ApiDataContext";
@@ -27,13 +27,22 @@ const mobile = () => {
     // { loading: () => <h1>LOADING</h1> }
   );
 
-  // return <MobileAppDynamic/>;
   return (
-    <ApiDataProvider ipInfo={router.query}>
-      <DaysInfoProvider>
-        <MobileError />
-      </DaysInfoProvider>
-    </ApiDataProvider>
+    <MainFrame>
+      <ApiDataProvider ipInfo={router.query}>
+        <DaysInfoProvider>
+          <MobileAppDynamic
+          // apiData={apiData}
+          // apiIsReady={apiIsReady}
+          // setApiIsReady={setApiIsReady}
+          // searchValue={searchValue}
+          // setSearchValue={setSearchValue}
+          // searchFetchData={searchFetchData}
+          // datesInfo={datesInfo}
+          />
+        </DaysInfoProvider>
+      </ApiDataProvider>
+    </MainFrame>
   );
 };
 

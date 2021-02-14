@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import dynamic from "next/dynamic";
 import styled from "@emotion/styled";
 
@@ -16,6 +16,10 @@ import DateText from "./containers/textMain/DateText";
 import TempText from "./containers/textMain/TempText";
 import ImgText from "./containers/textMain/ImgText";
 import SmallText from "./containers/textMain/SmallText";
+
+// Context
+import { ApiDataContext } from "../../../Context/ApiDataContext";
+import { GetInfoDayContext } from "../../../Context/Mobile/GetInfoDayContext";
 
 const TextMainFrame = styled.article`
   /* width: 400px; */
@@ -72,41 +76,26 @@ const MobileLoaderWeatherCenter = styled.div`
   left: 0;
 `;
 
-const TextMain = ({
-  apiData,
-  apiIsReady,
-  mobileDetailInfo,
-  getInfoDay,
-  datesInfo,
-}) => {
+const TextMain = ({ mobileDetailInfo }) => {
   // Get the width and height of the browser window
   const windowsSize = useWindoSize();
+  // Context Data
+  const { apiIsReady } = useContext(ApiDataContext);
+
   return (
     <TextMainFrame mobileDetailInfo={mobileDetailInfo}>
       {/* If the weatheropenmap is loaded, show the html tags */}
       {apiIsReady.dayWeather ? (
         <>
-          <CityText apiData={apiData} />
-          <DateText getInfoDay={getInfoDay} datesInfo={datesInfo} />
+          <CityText />
+          <DateText />
           <div className="mobileDetailsFlex">
-            <TempText
-              mobileDetailInfo={mobileDetailInfo}
-              getInfoDay={getInfoDay}
-              apiData={apiData}
-            />
+            <TempText mobileDetailInfo={mobileDetailInfo} />
 
             <div className="imgFrame">
-              <ImgText
-                apiData={apiData}
-                mobileDetailInfo={mobileDetailInfo}
-                getInfoDay={getInfoDay}
-              />
+              <ImgText mobileDetailInfo={mobileDetailInfo} />
               <p>
-                <SmallText
-                  apiData={apiData}
-                  mobileDetailInfo={mobileDetailInfo}
-                  getInfoDay={getInfoDay}
-                />
+                <SmallText mobileDetailInfo={mobileDetailInfo} />
               </p>
             </div>
           </div>

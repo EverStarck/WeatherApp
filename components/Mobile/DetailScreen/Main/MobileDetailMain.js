@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "@emotion/styled";
 import { Frame80 } from "../../../../styles/Main";
 import MobileDetailMainTemps from "./MobileDetailMainTemps";
@@ -16,12 +15,12 @@ const MobileDetailMainStyles = styled.main`
   margin-top: -20px;
 `;
 
-const MobileDetailMain = ({getInfoDay}) => {
+const MobileDetailMain = () => {
   return (
     <MobileDetailMainStyles>
       <Frame80>
-        <MobileDetailMainTemps getInfoDay={getInfoDay}/>
-        <MobileDetailMainGrid getInfoDay={getInfoDay}/>
+        <MobileDetailMainTemps/>
+        <MobileDetailMainGrid/>
         <MobileDetailMainThanks/>
       </Frame80>
     </MobileDetailMainStyles>

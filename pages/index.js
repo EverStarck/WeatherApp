@@ -12,8 +12,6 @@ import MobileError from "../components/Mobile/MobileError";
 
 
 export default function Home({ userIpState }) {
-  //Value of the input search
-  const [searchValue, setSearchValue] = useState("");
   //Data about the user (location, country and city)
   const { country, city } = userIpState.location;
   // Get the width and height

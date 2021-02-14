@@ -1,7 +1,10 @@
-import React from "react";
 import styled from "@emotion/styled";
 import MobileDetailMainGridCard from "./MobileDetailMainGridCard";
 import MobileError from "../../../MobileError";
+
+// Context
+import { useContext } from "react";
+import { GetInfoDayContext } from "../../../../../Context/Mobile/GetInfoDayContext";
 
 const MobileDetailMainGridStyle = styled.section`
   /* background-color: red; */
@@ -15,7 +18,10 @@ const MobileDetailMainGridStyle = styled.section`
   /* margin-top: 24px; */
 `;
 
-const MobileDetailMainGrid = ({ getInfoDay }) => {
+const MobileDetailMainGrid = () => {
+  // Context Data
+  const { getInfoDay } = useContext(GetInfoDayContext);
+
   return (
     <>
       {getInfoDay.length === 0 ? (

@@ -1,12 +1,21 @@
 import styled from "@emotion/styled";
 import MobileError from "../../../../Mobile/MobileError";
 
+// Context
+import { useContext } from "react";
+import { ApiDataContext } from "../../../../../Context/ApiDataContext";
+import { GetInfoDayContext } from "../../../../../Context/Mobile/GetInfoDayContext";
+
 const SmallTextStyles = styled.small`
   color: var(--gray-date);
   text-transform: capitalize;
 `;
 
-const SmallText = ({ mobileDetailInfo, getInfoDay, apiData }) => {
+const SmallText = ({ mobileDetailInfo }) => {
+  // Context Data
+  const { apiData } = useContext(ApiDataContext);
+  const { getInfoDay } = useContext(GetInfoDayContext);
+
   if (mobileDetailInfo) {
     if (getInfoDay.length === 0) {
       return <MobileError />;

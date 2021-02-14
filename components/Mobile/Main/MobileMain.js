@@ -23,13 +23,7 @@ const MobileMainStyles = styled.section`
   }
 `;
 
-const MobileMain = ({
-  apiIsReady,
-  apiData,
-  setMobileDetailInfo,
-  setMobileIndex,
-  datesInfo,
-}) => {
+const MobileMain = ({ setMobileDetailInfo, setMobileIndex }) => {
   return (
     <MobileMainStyles>
       <Frame80>
@@ -37,10 +31,7 @@ const MobileMain = ({
 
         <MobileForecastFrame
           setMobileDetailInfo={setMobileDetailInfo}
-          apiIsReady={apiIsReady}
-          apiData={apiData}
           setMobileIndex={setMobileIndex}
-          datesInfo={datesInfo}
         />
       </Frame80>
     </MobileMainStyles>

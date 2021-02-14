@@ -1,6 +1,9 @@
-import React from "react";
 import styled from "@emotion/styled";
 import MobileError from "../../MobileError";
+
+// Context
+import { useContext } from "react";
+import { GetInfoDayContext } from "../../../../Context/Mobile/GetInfoDayContext";
 
 const MobileDetailTempsFrame = styled.section`
   display: flex;
@@ -19,10 +22,15 @@ const MobileDetailTempsFrame = styled.section`
   }
 `;
 
-const MobileDetailMainTemps = ({ getInfoDay }) => {
+const MobileDetailMainTemps = () => {
+  // Context Data
+  const { getInfoDay } = useContext(GetInfoDayContext);
+
   return (
     <>
-      {getInfoDay.length === 0 ? <MobileError/> : (
+      {getInfoDay.length === 0 ? (
+        <MobileError />
+      ) : (
         <MobileDetailTempsFrame>
           <article className="mobileDetailTemps">
             <h3>Min</h3>

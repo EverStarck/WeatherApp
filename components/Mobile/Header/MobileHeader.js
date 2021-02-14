@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "@emotion/styled";
 
 import { Frame80 } from "../../../styles/Main";
@@ -6,6 +6,9 @@ import SearchBar from "../../Desktop/background/SearchBar";
 import TextMain from "../../Desktop/background/TextMain";
 import MobileButtonDetails from "./MobileButtonDetails";
 import ModalWeatherError from "../../ModalWeatherError";
+
+// Context
+import { ApiDataContext } from "../../../Context/ApiDataContext";
 
 // Skeleton Loader
 import { MobileHeaderLoader } from "../MobileSkeletonLoader";
@@ -26,18 +29,13 @@ const MobileBackground = styled.div`
 `;
 
 const MobileHeader = ({
-  apiData,
-  apiIsReady,
-  setApiIsReady,
-  searchValue,
-  setSearchValue,
-  searchFetchData,
+  setMobileIndex,
   setMobileDetailInfo,
   mobileDetailInfo,
-  setMobileIndex,
-  getInfoDay,
-  datesInfo,
 }) => {
+  // Context Data
+  const { apiData, apiIsReady, setApiIsReady } = useContext(ApiDataContext);
+
   return (
     <>
       {/* If the pixabay is loaded, show all the componentes */}
@@ -49,21 +47,16 @@ const MobileHeader = ({
           >
             <Frame80>
               {/* Hide searchBar if click on details weather */}
-              {!mobileDetailInfo ? (
-                <SearchBar
-                  searchValue={searchValue}
-                  setSearchValue={setSearchValue}
-                  searchFetchData={searchFetchData}
-                />
-              ) : null}
+              {!mobileDetailInfo
+                ? // <SearchBar
+                  //   searchValue={searchValue}
+                  //   setSearchValue={setSearchValue}
+                  //   searchFetchData={searchFetchData}
+                  // />
+                  null
+                : null}
 
-              <TextMain
-                apiData={apiData}
-                apiIsReady={apiIsReady}
-                mobileDetailInfo={mobileDetailInfo}
-                getInfoDay={getInfoDay}
-                datesInfo={datesInfo}
-              />
+              <TextMain mobileDetailInfo={mobileDetailInfo} />
 
               {/* Hide button "See Details" if click on details weather */}
               {!mobileDetailInfo ? (
@@ -81,24 +74,26 @@ const MobileHeader = ({
           </MobileBackground>
 
           {/* Show a modal if wetheropenmap don't have results */}
-          {apiIsReady.modal ? (
-            <ModalWeatherError
-              searchValue={searchValue}
-              apiIsReady={apiIsReady}
-              setApiIsReady={setApiIsReady}
-            />
-          ) : null}
+          {apiIsReady.modal
+            ? // <ModalWeatherError
+              //   searchValue={searchValue}
+              //   apiIsReady={apiIsReady}
+              //   setApiIsReady={setApiIsReady}
+              // />
+              null
+            : null}
         </>
       ) : (
         <>
           {/* Show a modal if wetheropenmap don't have results */}
-          {apiIsReady.modal ? (
-            <ModalWeatherError
-              searchValue={searchValue}
-              apiIsReady={apiIsReady}
-              setApiIsReady={setApiIsReady}
-            />
-          ) : null}
+          {apiIsReady.modal
+            ? // <ModalWeatherError
+              //   searchValue={searchValue}
+              //   apiIsReady={apiIsReady}
+              //   setApiIsReady={setApiIsReady}
+              // />
+              null
+            : null}
           <MobileHeaderLoader />
         </>
       )}

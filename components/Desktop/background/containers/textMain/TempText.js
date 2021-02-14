@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
 import MobileError from "../../../../Mobile/MobileError";
+// Context
+import { useContext } from "react";
+import { ApiDataContext } from "../../../../../Context/ApiDataContext";
+import { GetInfoDayContext } from "../../../../../Context/Mobile/GetInfoDayContext";
 
 const H1Temp = styled.h1`
   font-size: clamp(3.6rem, 10vw, 9.6rem);
@@ -8,7 +12,11 @@ const H1Temp = styled.h1`
   margin: 50px 0;
 `;
 
-const TempText = ({ mobileDetailInfo, getInfoDay, apiData }) => {
+const TempText = ({ mobileDetailInfo }) => {
+  // Context Data
+  const { apiData } = useContext(ApiDataContext);
+  const { getInfoDay } = useContext(GetInfoDayContext);
+
   /* Change the info on detail window */
   if (mobileDetailInfo) {
     if (getInfoDay.length === 0) {

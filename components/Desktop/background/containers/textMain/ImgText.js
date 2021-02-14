@@ -2,8 +2,17 @@ import Image from "next/image";
 import useWindowSize from "../../../../../customHooks/useWindowSize";
 import MobileError from "../../../../Mobile/MobileError";
 
-const ImgText = ({ apiData, mobileDetailInfo, getInfoDay }) => {
+// Context
+import { useContext } from "react";
+import { ApiDataContext } from "../../../../../Context/ApiDataContext";
+import { GetInfoDayContext } from "../../../../../Context/Mobile/GetInfoDayContext";
+
+const ImgText = ({ mobileDetailInfo }) => {
   const windowsSize = useWindowSize();
+
+  // Context Data
+  const { apiData } = useContext(ApiDataContext);
+  const { getInfoDay } = useContext(GetInfoDayContext);
 
   if (windowsSize.width > 767) {
     // Icon of the weather for DESKTOP
@@ -20,7 +29,7 @@ const ImgText = ({ apiData, mobileDetailInfo, getInfoDay }) => {
   // Icon of the weather for MOBIL
   if (mobileDetailInfo) {
     if (getInfoDay.length === 0) {
-      return <MobileError/>;
+      return <MobileError />;
     }
     // Change the img on detail window
     return (

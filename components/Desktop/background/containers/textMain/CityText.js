@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import styled from "@emotion/styled";
+// Context
+import { ApiDataContext } from "../../../../../Context/ApiDataContext";
 
 const H2City = styled.h2`
   /* font-size: 4.8rem; */
@@ -8,7 +11,9 @@ const H2City = styled.h2`
   margin: 0;
 `;
 
-const CityText = ({ apiData }) => {
+const CityText = () => {
+  // Context Data
+  const { apiData } = useContext(ApiDataContext);
   return (
     <H2City>
       {apiData.dayWeatherInfo.name}
