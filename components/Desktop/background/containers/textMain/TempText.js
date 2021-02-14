@@ -4,6 +4,7 @@ import MobileError from "../../../../Mobile/MobileError";
 import { useContext } from "react";
 import { ApiDataContext } from "../../../../../Context/ApiDataContext";
 import { GetInfoDayContext } from "../../../../../Context/Mobile/GetInfoDayContext";
+import { MobileDetailAndIndexContext } from "../../../../../Context/Mobile/MobileDetailAndIndexContext";
 
 const H1Temp = styled.h1`
   font-size: clamp(3.6rem, 10vw, 9.6rem);
@@ -12,10 +13,12 @@ const H1Temp = styled.h1`
   margin: 50px 0;
 `;
 
-const TempText = ({ mobileDetailInfo }) => {
+const TempText = () => {
   // Context Data
   const { apiData } = useContext(ApiDataContext);
   const { getInfoDay } = useContext(GetInfoDayContext);
+  const { mobileDetailInfo } = useContext(MobileDetailAndIndexContext);
+
 
   /* Change the info on detail window */
   if (mobileDetailInfo) {

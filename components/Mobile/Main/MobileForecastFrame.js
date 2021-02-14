@@ -6,11 +6,15 @@ import { MobileForecasLoader } from "../MobileSkeletonLoader";
 // Context
 import { ApiDataContext } from "../../../Context/ApiDataContext";
 import { DaysInfoContext } from "../../../Context/DaysInfoContext";
+import { MobileDetailAndIndexContext } from "../../../Context/Mobile/MobileDetailAndIndexContext";
 
-const MobileForecastFrame = ({ setMobileDetailInfo, setMobileIndex }) => {
+const MobileForecastFrame = () => {
   // Context Data
   const { apiData, apiIsReady } = useContext(ApiDataContext);
   const { datesInfo } = useContext(DaysInfoContext);
+  const { setMobileIndex, setMobileDetailInfo } = useContext(
+    MobileDetailAndIndexContext
+  );
 
   // The array of the forecast info
   let mobileForecast = apiData.forecastWeatherInfo.list;

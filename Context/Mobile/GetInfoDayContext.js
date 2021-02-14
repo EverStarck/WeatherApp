@@ -2,15 +2,18 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { ApiDataContext } from "../ApiDataContext";
 import { DaysInfoContext } from "../DaysInfoContext";
+import { MobileDetailAndIndexContext } from "./MobileDetailAndIndexContext";
 
 export const GetInfoDayContext = React.createContext();
 
-const GetInfoDayProvider = ({ children, mobileIndex }) => {
+const GetInfoDayProvider = ({ children }) => {
   const [getInfoDay, setGetInfoDay] = useState([]);
 
   //   Context
   const { apiData } = useContext(ApiDataContext);
   const { datesInfo } = useContext(DaysInfoContext);
+  const { mobileIndex } = useContext(MobileDetailAndIndexContext);
+
 
   //Set forecast info in array, this depend of where do you make the clic
   useEffect(() => {

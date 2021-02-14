@@ -19,7 +19,7 @@ import SmallText from "./containers/textMain/SmallText";
 
 // Context
 import { ApiDataContext } from "../../../Context/ApiDataContext";
-import { GetInfoDayContext } from "../../../Context/Mobile/GetInfoDayContext";
+import { MobileDetailAndIndexContext } from "../../../Context/Mobile/MobileDetailAndIndexContext";
 
 const TextMainFrame = styled.article`
   /* width: 400px; */
@@ -76,11 +76,12 @@ const MobileLoaderWeatherCenter = styled.div`
   left: 0;
 `;
 
-const TextMain = ({ mobileDetailInfo }) => {
+const TextMain = () => {
   // Get the width and height of the browser window
   const windowsSize = useWindoSize();
   // Context Data
   const { apiIsReady } = useContext(ApiDataContext);
+  const { mobileDetailInfo } = useContext(MobileDetailAndIndexContext);
 
   return (
     <TextMainFrame mobileDetailInfo={mobileDetailInfo}>
@@ -90,12 +91,11 @@ const TextMain = ({ mobileDetailInfo }) => {
           <CityText />
           <DateText />
           <div className="mobileDetailsFlex">
-            <TempText mobileDetailInfo={mobileDetailInfo} />
-
+            <TempText />
             <div className="imgFrame">
-              <ImgText mobileDetailInfo={mobileDetailInfo} />
+              <ImgText />
               <p>
-                <SmallText mobileDetailInfo={mobileDetailInfo} />
+                <SmallText />
               </p>
             </div>
           </div>

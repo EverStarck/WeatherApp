@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "@emotion/styled";
+
+// Context
+import {MobileDetailAndIndexContext} from '../../../Context/Mobile/MobileDetailAndIndexContext';
 
 const MobileButtonDetailStyle = styled.div`
   display: flex;
@@ -41,7 +44,10 @@ const MobileButtonDetailStyle = styled.div`
   }
 `;
 
-const MobileButtonDetails = ({ setMobileDetailInfo, setMobileIndex }) => {
+const MobileButtonDetails = () => {
+  // Context Data
+  const {setMobileDetailInfo, setMobileIndex} = useContext(MobileDetailAndIndexContext);
+
   const handleClickButton = () => {
     setMobileIndex(0);
     setMobileDetailInfo(true);

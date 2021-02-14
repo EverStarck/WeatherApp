@@ -1,4 +1,4 @@
-import React from "react";
+import { useContext } from "react";
 import styled from "@emotion/styled";
 
 import { Frame80 } from "../../../styles/Main";
@@ -23,16 +23,12 @@ const MobileMainStyles = styled.section`
   }
 `;
 
-const MobileMain = ({ setMobileDetailInfo, setMobileIndex }) => {
+const MobileMain = () => {
   return (
     <MobileMainStyles>
       <Frame80>
         <h3 className="next5daysh3">Next 5 days</h3>
-
-        <MobileForecastFrame
-          setMobileDetailInfo={setMobileDetailInfo}
-          setMobileIndex={setMobileIndex}
-        />
+        <MobileForecastFrame/>
       </Frame80>
     </MobileMainStyles>
   );

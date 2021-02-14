@@ -8,9 +8,11 @@ import dynamic from "next/dynamic";
 import { MainFrame } from "../styles/Main";
 
 // Context
-import ApiDataProvider, { ApiDataContext } from "../Context/ApiDataContext";
+import ApiDataProvider from "../Context/ApiDataContext";
 import DaysInfoProvider from "../Context/DaysInfoContext";
 import SearchProvider from "../Context/SearchContext";
+import MobileDetailProvider from "../Context/Mobile/MobileDetailAndIndexContext";
+import GetInfoDayProvider from "../Context/Mobile/GetInfoDayContext";
 
 const mobile = () => {
   // Render DESKTOP page
@@ -33,7 +35,11 @@ const mobile = () => {
       <ApiDataProvider ipInfo={router.query}>
         <SearchProvider>
           <DaysInfoProvider>
-            <MobileAppDynamic />
+            <MobileDetailProvider>
+              <GetInfoDayProvider >
+                <MobileAppDynamic />
+              </GetInfoDayProvider>
+            </MobileDetailProvider>
           </DaysInfoProvider>
         </SearchProvider>
       </ApiDataProvider>

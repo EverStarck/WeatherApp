@@ -4,7 +4,8 @@ import MobileDetailMain from "./Main/MobileDetailMain";
 
 // Context
 import { useContext } from "react";
-import {GetInfoDayContext} from "../../../Context/Mobile/GetInfoDayContext"
+import { GetInfoDayContext } from "../../../Context/Mobile/GetInfoDayContext";
+import { MobileDetailAndIndexContext } from "../../../Context/Mobile/MobileDetailAndIndexContext";
 
 const MobileDetailWeatherStyles = styled.section`
   transform: ${(props) =>
@@ -45,22 +46,22 @@ const MobileDetailButton = styled.button`
   left: 5%;
 `;
 
-const MobileDetailWeather = ({ mobileDetailInfo, setMobileDetailInfo }) => {
+const MobileDetailWeather = () => {
   // Context Data
-  const {setGetInfoDay} = useContext(GetInfoDayContext)
+  const { setGetInfoDay } = useContext(GetInfoDayContext);
+  const { mobileDetailInfo, setMobileDetailInfo } = useContext(
+    MobileDetailAndIndexContext
+  );
 
   const backArrowClick = () => {
     setMobileDetailInfo(false);
-    setGetInfoDay([])
-
+    setGetInfoDay([]);
   };
 
   return (
     <MobileDetailWeatherStyles mobileDetailInfo={mobileDetailInfo}>
       <MobileDetailButton onClick={backArrowClick}></MobileDetailButton>
-
-      <MobileHeader mobileDetailInfo={mobileDetailInfo} />
-
+      <MobileHeader />
       <MobileDetailMain />
     </MobileDetailWeatherStyles>
   );

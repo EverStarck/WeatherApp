@@ -9,6 +9,7 @@ import ModalWeatherError from "../../ModalWeatherError";
 
 // Context
 import { ApiDataContext } from "../../../Context/ApiDataContext";
+import { MobileDetailAndIndexContext } from "../../../Context/Mobile/MobileDetailAndIndexContext";
 
 // Skeleton Loader
 import { MobileHeaderLoader } from "../MobileSkeletonLoader";
@@ -28,13 +29,10 @@ const MobileBackground = styled.div`
   background-size: cover;
 `;
 
-const MobileHeader = ({
-  setMobileIndex,
-  setMobileDetailInfo,
-  mobileDetailInfo,
-}) => {
+const MobileHeader = () => {
   // Context Data
   const { apiData, apiIsReady } = useContext(ApiDataContext);
+  const { mobileDetailInfo } = useContext(MobileDetailAndIndexContext);
 
   return (
     <>
@@ -49,18 +47,13 @@ const MobileHeader = ({
               {/* Hide searchBar if click on details weather */}
               {!mobileDetailInfo ? <SearchBar /> : null}
 
-              <TextMain mobileDetailInfo={mobileDetailInfo} />
+              <TextMain />
 
               {/* Hide button "See Details" if click on details weather */}
               {!mobileDetailInfo ? (
                 <>
                   {/* Avoid overlap with another skeleton loader */}
-                  {apiIsReady.dayWeather ? (
-                    <MobileButtonDetails
-                      setMobileDetailInfo={setMobileDetailInfo}
-                      setMobileIndex={setMobileIndex}
-                    />
-                  ) : null}
+                  {apiIsReady.dayWeather ? <MobileButtonDetails /> : null}
                 </>
               ) : null}
             </Frame80>

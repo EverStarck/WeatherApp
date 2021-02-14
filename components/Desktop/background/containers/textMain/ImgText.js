@@ -6,13 +6,16 @@ import MobileError from "../../../../Mobile/MobileError";
 import { useContext } from "react";
 import { ApiDataContext } from "../../../../../Context/ApiDataContext";
 import { GetInfoDayContext } from "../../../../../Context/Mobile/GetInfoDayContext";
+import { MobileDetailAndIndexContext } from "../../../../../Context/Mobile/MobileDetailAndIndexContext";
 
-const ImgText = ({ mobileDetailInfo }) => {
+const ImgText = () => {
   const windowsSize = useWindowSize();
 
   // Context Data
   const { apiData } = useContext(ApiDataContext);
   const { getInfoDay } = useContext(GetInfoDayContext);
+  const { mobileDetailInfo } = useContext(MobileDetailAndIndexContext);
+
 
   if (windowsSize.width > 767) {
     // Icon of the weather for DESKTOP

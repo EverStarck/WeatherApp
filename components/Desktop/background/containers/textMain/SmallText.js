@@ -5,16 +5,18 @@ import MobileError from "../../../../Mobile/MobileError";
 import { useContext } from "react";
 import { ApiDataContext } from "../../../../../Context/ApiDataContext";
 import { GetInfoDayContext } from "../../../../../Context/Mobile/GetInfoDayContext";
+import { MobileDetailAndIndexContext } from "../../../../../Context/Mobile/MobileDetailAndIndexContext";
 
 const SmallTextStyles = styled.small`
   color: var(--gray-date);
   text-transform: capitalize;
 `;
 
-const SmallText = ({ mobileDetailInfo }) => {
+const SmallText = () => {
   // Context Data
   const { apiData } = useContext(ApiDataContext);
   const { getInfoDay } = useContext(GetInfoDayContext);
+  const { mobileDetailInfo } = useContext(MobileDetailAndIndexContext);
 
   if (mobileDetailInfo) {
     if (getInfoDay.length === 0) {
