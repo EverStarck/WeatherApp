@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 export const ApiDataContext = React.createContext();
 
 const ApiDataProvider = ({ children, ipInfo }) => {
-  const {city, country} = ipInfo;
+  const { city = "Mountain View", country = "US" } = ipInfo;
   // All data from the apis. OpenWeatherMap and Pixebay
   const [apiData, setApiData] = useState({
     dayWeatherInfo: {},
@@ -55,6 +55,7 @@ const ApiDataProvider = ({ children, ipInfo }) => {
     );
 
     const weatherData = await req.json();
+
     //If the api don't response, show error text
     if (!req.ok || weatherData.cod === "404") {
       setApiIsReady((apiIsReady) => ({
@@ -81,6 +82,7 @@ const ApiDataProvider = ({ children, ipInfo }) => {
     );
 
     const forecastWeatherData = await req.json();
+
     //If the api don't response, show error text
     if (!req.ok || forecastWeatherData.cod === "404") {
       setApiIsReady((apiIsReady) => ({
@@ -116,7 +118,9 @@ const ApiDataProvider = ({ children, ipInfo }) => {
   }, []);
 
   return (
-    <ApiDataContext.Provider value={{ apiData, setApiData, apiIsReady, setApiIsReady }}>
+    <ApiDataContext.Provider
+      value={{ apiData, setApiData, apiIsReady, setApiIsReady }}
+    >
       {children}
     </ApiDataContext.Provider>
   );
