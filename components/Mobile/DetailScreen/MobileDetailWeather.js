@@ -8,7 +8,7 @@ import { GetInfoDayContext } from "../../../Context/Mobile/GetInfoDayContext";
 import { MobileDetailAndIndexContext } from "../../../Context/Mobile/MobileDetailAndIndexContext";
 
 const MobileDetailWeatherStyles = styled.section`
-  transform: ${(props) =>
+  /* transform: ${(props) =>
     props.mobileDetailInfo ? "translateY(0);" : "translateY(110%);"};
   width: 100%;
   height: 100%;
@@ -18,17 +18,24 @@ const MobileDetailWeatherStyles = styled.section`
   left: 0;
   background-color: #fff;
   overflow: hidden;
-  transition: 0.5s;
+  transition: 0.5s; */
 
-  /* width: ${(props) => (props.mobileDetailInfo ? "100%" : "0")};
-  height: 100%;
+  opacity: ${(props) => props.mobileDetailInfo ? "1" : "0"};
+  z-index: ${(props) => props.mobileDetailInfo ? "9999" : "-1"};
+
+  
+  /* transform: ${(props) =>
+    props.mobileDetailInfo ? "pointer-events: none" : "pointer-events: auto"}; */
   position: absolute;
-  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: calc(100% + 16px);
+  padding-bottom: 16px;
   top: 0;
   left: 0;
   background-color: #fff;
-  overflow-x: hidden;
-  transition: 0.5s; */
+  /* overflow: hidden; */
 `;
 
 const MobileDetailButton = styled.button`
@@ -49,13 +56,14 @@ const MobileDetailButton = styled.button`
 const MobileDetailWeather = () => {
   // Context Data
   const { setGetInfoDay } = useContext(GetInfoDayContext);
-  const { mobileDetailInfo, setMobileDetailInfo } = useContext(
+  const { mobileDetailInfo, setMobileDetailInfo, setMobileIndex } = useContext(
     MobileDetailAndIndexContext
   );
 
   const backArrowClick = () => {
     setMobileDetailInfo(false);
     setGetInfoDay([]);
+    setMobileIndex(null);
   };
 
   return (
