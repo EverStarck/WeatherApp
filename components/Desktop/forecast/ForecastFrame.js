@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "@emotion/styled";
 
 import CardForecast from "./CardForecast";
 import { ForecastCardLoader } from "../SkeletonLoadears";
 import Tooltip from "../Tooltip";
+
+// Context
+import { ApiDataContext } from "../../../Context/ApiDataContext";
+import { DaysInfoContext } from "../../../Context/DaysInfoContext";
 
 const TextForecast = styled.div`
   display: flex;
@@ -25,9 +29,13 @@ const ForecastFrameLayaout = styled.section`
   }
 `;
 
-const ForecastFrame = ({ apiIsReady, apiData, datesInfo }) => {
+const ForecastFrame = () => {
+  // Context Data
+  const { apiIsReady, apiData } = useContext(ApiDataContext);
+  const { datesInfo } = useContext(DaysInfoContext);
+
   // The array of the forecast info
-  let desktopForecast = apiData.list;
+  let desktopForecast = apiData.forecastWeatherInfo.list;
   return (
     <>
       <TextForecast>

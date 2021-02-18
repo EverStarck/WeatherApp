@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "@emotion/styled";
 
 import { Frame80 } from "../../../styles/Main";
@@ -8,6 +8,9 @@ import AsideCardInfo from "./containers/AsideCardInfo";
 import ModalWeatherError from "../../ModalWeatherError";
 import { BackgroundLoader, TextMainLoader } from "../SkeletonLoadears";
 import Tooltip from "../Tooltip";
+
+// Context
+import { ApiDataContext } from "../../../Context/ApiDataContext";
 
 const ImgFrame = styled.section`
   background-color: var(--gray-search);
@@ -55,15 +58,10 @@ const LoaderFlex = styled.section`
   left: 18%;
 `;
 
-export default function ImageBackground({
-  apiIsReady,
-  apiData,
-  setApiIsReady,
-  searchValue,
-  setSearchValue,
-  searchFetchData,
-  datesInfo,
-}) {
+export default function ImageBackground() {
+  // Context data
+  const { apiIsReady, apiData } = useContext(ApiDataContext);
+
   return (
     <>
       {/* If the pixabay is loaded, show all the componentes */}
@@ -72,50 +70,30 @@ export default function ImageBackground({
           <ImgFrame apiData={apiData}>
             <div className="tooltip">
               <Tooltip
-              textTooltip="Credits to PIXABAY for all the background images"
-              bottomTooltip="-50%"
-              rightTooltip="-1500%"
-              afterTooltip="none"
+                textTooltip="Credits to PIXABAY for all the background images"
+                bottomTooltip="-50%"
+                rightTooltip="-1500%"
+                afterTooltip="none"
               />
             </div>
             <Frame80>
               <nav>
-                <SearchBar
-                  searchValue={searchValue}
-                  setSearchValue={setSearchValue}
-                  searchFetchData={searchFetchData}
-                />
+                <SearchBar />
               </nav>
               <BackgroundLayout>
-                <TextMain
-                  apiData={apiData}
-                  apiIsReady={apiIsReady}
-                  datesInfo={datesInfo}
-                />
-                <AsideCardInfo apiData={apiData} apiIsReady={apiIsReady} />
+                <TextMain/>
+                <AsideCardInfo />
               </BackgroundLayout>
             </Frame80>
           </ImgFrame>
 
           {/* Ternary to show the modal */}
-          {apiIsReady.modal ? (
-            <ModalWeatherError
-              searchValue={searchValue}
-              apiIsReady={apiIsReady}
-              setApiIsReady={setApiIsReady}
-            />
-          ) : null}
+          {apiIsReady.modal ? <ModalWeatherError /> : null}
         </>
       ) : (
         <>
           {/* Ternary to show the modal */}
-          {apiIsReady.modal ? (
-            <ModalWeatherError
-              searchValue={searchValue}
-              apiIsReady={apiIsReady}
-              setApiIsReady={setApiIsReady}
-            />
-          ) : null}
+          {apiIsReady.modal ? <ModalWeatherError /> : null}
 
           {/* Sekeleton Loader */}
           <BackgroundLoader />

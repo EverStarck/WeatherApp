@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "@emotion/styled";
 
 import CardInfo from "../CardInfo";
 import { AsideCardLoader } from "../../SkeletonLoadears";
+
+// Context
+import {ApiDataContext} from '../../../../Context/ApiDataContext'
 
 const AsideCardInfoStyles = styled.aside`
   /* Height overflow for tvs */
@@ -20,7 +23,9 @@ const AsideLoaderStyles = styled.section`
   }
 `;
 
-const AsideCardInfo = ({ apiIsReady, apiData }) => {
+const AsideCardInfo = () => {
+  // Context Data
+  const {apiIsReady, apiData} = useContext(ApiDataContext)
   return (
     <AsideCardInfoStyles>
 

@@ -12,6 +12,7 @@ const MobileMainStyles = styled.section`
   background-color: aliceblue;
   border-radius: 16px 16px 0 0;
   margin-top: -20px;
+  padding-bottom: 20px;
 
   .next5daysh3 {
     font-size: clamp(1.6rem, 3vw, 2.6rem);

@@ -27,6 +27,12 @@ const MobileBackground = styled.div`
   background-repeat: no-repeat;
   background-position: 50% 25%;
   background-size: cover;
+
+  /* MOBILE 375 */
+  @media only screen and (max-height: 660px) {
+    max-height: ${(props) => (props.mobileDetailInfo ? "40vh" : "75vh")};
+    min-height: ${(props) => (props.mobileDetailInfo ? "40vh" : "75vh")};
+  }
 `;
 
 const MobileHeader = () => {
