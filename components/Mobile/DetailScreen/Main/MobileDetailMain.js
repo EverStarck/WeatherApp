@@ -10,7 +10,7 @@ const MobileDetailMainStyles = styled.main`
   /* max-height: 100%; */
   /* min-width: 100vw; */
   /* max-width: 100vw; */
-  background-color: aliceblue;
+  background-color: var(--main-bg-color);
   border-radius: 16px 16px 0 0;
   margin-top: -20px;
 `;

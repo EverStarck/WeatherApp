@@ -33,6 +33,7 @@ const MobileBackground = styled.div`
     max-height: ${(props) => (props.mobileDetailInfo ? "40vh" : "75vh")};
     min-height: ${(props) => (props.mobileDetailInfo ? "40vh" : "75vh")};
   }
+  /* transition: .1s cubic-bezier(.54,.51,.74,.72); */
 `;
 
 const MobileHeader = () => {

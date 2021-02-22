@@ -8,34 +8,20 @@ import { GetInfoDayContext } from "../../../Context/Mobile/GetInfoDayContext";
 import { MobileDetailAndIndexContext } from "../../../Context/Mobile/MobileDetailAndIndexContext";
 
 const MobileDetailWeatherStyles = styled.section`
-  /* transform: ${(props) =>
-    props.mobileDetailInfo ? "translateY(0);" : "translateY(110%);"};
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 9999;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  overflow: hidden;
-  transition: 0.5s; */
-
-  opacity: ${(props) => props.mobileDetailInfo ? "1" : "0"};
-  z-index: ${(props) => props.mobileDetailInfo ? "9999" : "-1"};
-
-  
-  /* transform: ${(props) =>
-    props.mobileDetailInfo ? "pointer-events: none" : "pointer-events: auto"}; */
+  transform: ${(props) =>
+    props.mobileDetailInfo ? "scale(1, 1)" : "scale(0.9, 0.9)"};
+  opacity: ${(props) => (props.mobileDetailInfo ? "1" : "0")};
+  transform-origin: center center;
   position: absolute;
+  overflow-x: hidden;
   top: 0;
   left: 0;
   width: 100%;
   min-height: calc(100% + 16px);
   padding-bottom: 16px;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  /* overflow: hidden; */
+  pointer-events: ${(props) => (props.mobileDetailInfo ? "auto" : "none")};
+  transition: 0.5s cubic-bezier(0.54, 0.51, 0.74, 0.72);
+  /* transition-delay: .4s; */
 `;
 
 const MobileDetailButton = styled.button`

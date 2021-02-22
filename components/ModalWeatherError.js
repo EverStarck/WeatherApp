@@ -1,12 +1,16 @@
 import { useContext } from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
+import { keyframes } from "@emotion/react";
 
 // Context
 import { ApiDataContext } from "../Context/ApiDataContext";
 import { SearchContext } from "../Context/SearchContext";
 
-
+const fade = keyframes`
+  from {opacity: 0;}
+  to {opacity: 1;}
+`;
 const ModalFrame = styled.div`
   position: absolute;
   top: 50%;
@@ -24,6 +28,7 @@ const ModalFrame = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: ${fade} 1s cubic-bezier(0.54, 0.51, 0.74, 0.72);
 
   article {
     display: flex;
@@ -65,6 +70,7 @@ const ModalFrame = styled.div`
     width: 90vw;
   }
 `;
+
 const ModalBackground = styled.div`
   position: fixed;
   top: 0;

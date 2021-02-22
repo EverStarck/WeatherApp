@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import styled from "@emotion/styled";
 
 import { Frame80 } from "../../../styles/Main";
@@ -9,7 +8,7 @@ const MobileMainStyles = styled.section`
   max-height: calc(100% + 16px);
   /* min-width: 100vw; */
   /* max-width: 100vw; */
-  background-color: aliceblue;
+  background-color: var(--main-bg-color);
   border-radius: 16px 16px 0 0;
   margin-top: -20px;
   padding-bottom: 20px;
