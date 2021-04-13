@@ -10,7 +10,7 @@ export const MainFrame = styled.main`
   --gray-search: #b7b7b7;
   --gray-date: #e5e5e5;
   --card-info-color: #fcfafa;
-  --mobile-card-color: #DFE3EE;
+  --mobile-card-color: #ffffff;
   --border-radius: 8px;
 
   /* Desktop */

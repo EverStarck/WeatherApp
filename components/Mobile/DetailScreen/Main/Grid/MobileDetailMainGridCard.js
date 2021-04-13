@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 const MobileDetailMainGridCardStyle = styled.article`
   background-color: var(--mobile-card-color);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
   padding: 10px;
   /* width: 100%; */
   border-radius: var(--border-radius);

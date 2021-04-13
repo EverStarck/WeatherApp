@@ -7,6 +7,7 @@ import { imgSelecter } from "../../../helpers/ImageSelector";
 const MobileCardForecastStyles = styled.article`
   background-color: var(--mobile-card-color);
   border-radius: var(--border-radius);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
   padding: 10px 20px;
   display: flex;
   align-items: center;
