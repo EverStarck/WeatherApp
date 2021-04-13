@@ -40,8 +40,8 @@ const ImgText = () => {
     // Change the img on detail window
     return (
       <Image
-        src={`/icons/${imgSelecter(apiData.dayWeatherInfo.weather[0].icon)}.svg`}
-        alt={`Icon of ${apiData.dayWeatherInfo.weather[0].description}`}
+        src={`/icons/${imgSelecter(getInfoDay[0].weather[0].icon)}.svg`}
+        alt={`Icon of ${getInfoDay[0].weather[0].description}`}
         layout="fill"
         objectFit="contain"
     />
