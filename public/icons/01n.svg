@@ -1,4 +1,22 @@
-<svg width="209" height="210" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M170.579 24.364c1.147 6.671 1.668 13.448 1.668 20.432 0 67.97-54.135 123.013-120.891 123.013-11.682 0-22.843-1.668-33.483-4.795 18.671 27.834 50.485 46.182 86.575 46.182 57.577 0 104.307-46.704 104.307-104.249 0-32.42-14.812-61.402-38.176-80.583z" fill="#5C5840"/>
-  <path d="M172.247 44.796c0-6.984-.626-13.76-1.669-20.433C152.637 9.665 129.585.803 104.552.803 46.974.803.245 47.507.245 105.052c0 21.475 6.467 41.49 17.628 58.066a118.714 118.714 0 0033.482 4.795c66.757 0 120.892-55.147 120.892-123.117z" fill="#5C5840"/>
+<svg width="60" height="62" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="45.667" cy="32.678" r="1.103" fill="#9B70FF"/>
+  <circle cx="9.776" cy="11.277" r="1.103" fill="#9B70FF"/>
+  <circle cx="9.776" cy="55.194" r="1.103" fill="#9B70FF"/>
+  <circle cx="49.922" cy="19.312" r="1.103" fill="#9B70FF" fill-opacity=".3"/>
+  <circle cx="1.602" cy="44.239" r="1.103" fill="#9B70FF" fill-opacity=".3"/>
+  <path d="M44.64 38.618a19.182 19.182 0 01-10.16 12.22c-9.567 4.639-21.089.65-25.727-8.917a19.253 19.253 0 0124.815-26.14 13.897 13.897 0 0011.071 22.837z" fill="url(#Moon__paint0_linear)"/>
+  <g opacity=".945" filter="url(#Moon__filter0_f)">
+    <path d="M29.258 34.548c3.029 4.297 6.847 5.183 8.564 7.04 2.566 2.772 7.201-2.128 6.107.879-1.812 4.978-10.923 5.428-17.925 2.88-7.002-2.55-9.89-17-8.077-21.979 1.22-3.355 8.708-7.472 13.128-7.633 1.12-.04-2.882 2.706-3.7 7.045-.7 3.72.494 9.77 1.902 11.768z" fill="#7C37FD"/>
+  </g>
+  <defs>
+    <linearGradient id="Moon__paint0_linear" x1="18.217" y1="15.858" x2="30.754" y2="52.27" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B9A0FF"/>
+      <stop offset="1" stop-color="#855AFF"/>
+    </linearGradient>
+    <filter id="Moon__filter0_f" x="2.398" y=".734" width="56.694" height="61.135" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="7.5" result="effect1_foregroundBlur"/>
+    </filter>
+  </defs>
 </svg>

@@ -29,12 +29,20 @@ const TextMainFrame = styled.article`
   color: #fff;
   /* background-color: red; */
   .mobileDetailsFlex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .imgFrame {
+      display: flex;
+      flex-direction: column-reverse;
       font-size: clamp(2.4rem, 3vw, 4rem);
-      p {
-        margin-top: 5px;
-        margin-bottom: 0;
-      }
+      position: relative;
+      height: 200px;
+      width: 200px;
+    }
+    p {
+      margin-top: 5px;
+      margin-bottom: 0;
     }
   }
 
@@ -48,7 +56,6 @@ const TextMainFrame = styled.article`
   /* MOBILE */
   @media only screen and (max-width: 767px) {
     padding-top: ${(props) => (props.mobileDetailInfo ? "16px" : "25px")};
-
     ${(props) =>
       props.mobileDetailInfo
         ? `.mobileDetailsFlex {
@@ -67,6 +74,16 @@ const TextMainFrame = styled.article`
         margin: 30px 0 20px 0;
       }
     }`}
+    .mobileDetailsFlex {
+      .imgFrame {
+        font-size: clamp(2.4rem, 3vw, 4rem);
+        height: 100px;
+        width: 100px;
+        p {
+          margin-bottom: -5px;
+        }
+      }
+    }
   }
 `;
 // Sekeleton Loader

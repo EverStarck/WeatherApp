@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 import useWindowSize from "../customHooks/useWindowSize";
 
 ///-------------
-import dynamic from "next/dynamic";
 import { MainFrame } from "../styles/Main";
+import MobileApp from "../components/Mobile/MobileApp";
 
 // Context
 import ApiDataProvider from "../Context/ApiDataContext";
@@ -24,12 +24,6 @@ const mobile = () => {
     }
   }, [winwdowsSizeHook.width]);
 
-  //------------------------
-  const MobileAppDynamic = dynamic(
-    () => import("../components/Mobile/MobileApp")
-    // { loading: () => <h1>LOADING</h1> }
-  );
-
   return (
     <MainFrame>
       <ApiDataProvider ipInfo={router.query}>
@@ -37,7 +31,7 @@ const mobile = () => {
           <DaysInfoProvider>
             <MobileDetailProvider>
               <GetInfoDayProvider >
-                <MobileAppDynamic />
+                <MobileApp/>
               </GetInfoDayProvider>
             </MobileDetailProvider>
           </DaysInfoProvider>

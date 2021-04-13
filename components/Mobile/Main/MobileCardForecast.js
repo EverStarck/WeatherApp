@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
 
+import { imgSelecter } from "../../../helpers/ImageSelector";
+
 const MobileCardForecastStyles = styled.article`
   background-color: var(--mobile-card-color);
   border-radius: var(--border-radius);
@@ -29,8 +31,9 @@ const MobileCardForecastStyles = styled.article`
     align-items: center;
     /* background-color: green; */
     .mobileImg {
-      width: 30px;
-      height: 100%;
+      position: relative;
+      width: 50px;
+      height: 50px;
       margin-right: 22px;
       /* background-color: red; */
     }
@@ -63,7 +66,7 @@ const MobileCardForecast = ({
   mobileDateCardForecast,
   setMobileDetailInfo,
   setMobileIndex,
-  ariaLabel
+  ariaLabel,
 }) => {
   const handleClick = () => {
     setMobileDetailInfo(true);
@@ -80,17 +83,21 @@ const MobileCardForecast = ({
       <div className="imgTempFrame">
         <div className="mobileImg">
           <Image
-            src={`/icons/${data.weather[0].icon}.svg`}
+            src={`/icons/${imgSelecter(data.weather[0].icon)}.svg`}
             alt={`Icon of ${data.weather[0].description}`}
-            width={30}
-            height={24}
+            layout="fill"
+            objectFit="contain"
+            objectPosition="center center"
           />
         </div>
         <div className="tempArrow">
           <h2>
             {data.main.temp} <span>&#176;C</span>
           </h2>
-          <button aria-label={`See details of ${ariaLabel}`} onClick={handleClick}></button>
+          <button
+            aria-label={`See details of ${ariaLabel}`}
+            onClick={handleClick}
+          ></button>
         </div>
       </div>
     </MobileCardForecastStyles>

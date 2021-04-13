@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
+import { imgSelecter } from "../../../helpers/ImageSelector";
 
 const CardForecastFrame = styled.article`
   min-width: 200px;
@@ -31,6 +32,10 @@ const CardForecastFrame = styled.article`
   }
   .imgForecast {
     margin: 10px 0;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    align-self: center;
   }
   .degreesForecast {
     display: flex;
@@ -65,10 +70,12 @@ const CardForecast = ({
       <h2>{date}</h2>
       <div className="imgForecast">
         <Image
-          src={`/icons/${icon}.svg`}
+          src={`/icons/${imgSelecter(icon)}.svg`}
           alt={`Icon of ${iconDescription}`}
-          width={30}
-          height={28}
+          layout="fill"
+          objectFit="contain"
+          objectPosition="center center"
+          title={iconDescription}
         />
       </div>
       <div className="degreesForecast">
