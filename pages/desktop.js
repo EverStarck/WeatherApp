@@ -1,5 +1,5 @@
 // Render Desktop page
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 // Hook
@@ -9,15 +9,27 @@ import useWindowSize from "../customHooks/useWindowSize";
 import { MainFrame } from "../styles/Main";
 
 // Context
-import ApiDataProvider from "../Context/ApiDataContext";
+import ApiDataProvider, { ApiDataContext } from "../Context/ApiDataContext";
 import SearchProvider from "../Context/SearchContext";
 import DaysInfoProvider from "../Context/DaysInfoContext";
 import GetInfoDayProvider from "../Context/Mobile/GetInfoDayContext";
 
 const desktop = () => {
+  // Context
+  const { apiData } = useContext(ApiDataContext);
   // Render MOBILE page
   const router = useRouter();
   const winwdowsSizeHook = useWindowSize();
+
+  // Avoid don't load nothing because the provider don't have info.
+  useEffect(() => {
+    if (Object.keys(apiData.dayWeatherInfo).length === 0) {
+      router.push({
+        pathname: "/",
+      });
+    }
+  }, []);
+
   useEffect(() => {
     if (winwdowsSizeHook.width < 767) {
       router.replace("/");
@@ -32,13 +44,13 @@ const desktop = () => {
   return (
     <MainFrame>
       {/* <ApiDataProvider ipInfo={router.query}> */}
-        <SearchProvider>
-          <DaysInfoProvider>
-            <GetInfoDayProvider>
-              <DesktopAppDynamic />
-            </GetInfoDayProvider>
-          </DaysInfoProvider>
-        </SearchProvider>
+      <SearchProvider>
+        <DaysInfoProvider>
+          <GetInfoDayProvider>
+            <DesktopAppDynamic />
+          </GetInfoDayProvider>
+        </DaysInfoProvider>
+      </SearchProvider>
       {/* </ApiDataProvider> */}
     </MainFrame>
   );

@@ -8,16 +8,29 @@ import { MainFrame } from "../styles/Main";
 import MobileApp from "../components/Mobile/MobileApp";
 
 // Context
-import ApiDataProvider from "../Context/ApiDataContext";
+import { ApiDataContext } from "../Context/ApiDataContext";
 import DaysInfoProvider from "../Context/DaysInfoContext";
 import SearchProvider from "../Context/SearchContext";
 import MobileDetailProvider from "../Context/Mobile/MobileDetailAndIndexContext";
 import GetInfoDayProvider from "../Context/Mobile/GetInfoDayContext";
 
 const mobile = () => {
+  // Context
+  const { apiData } = useContext(ApiDataContext);
+
   // Render Mobile page
   const router = useRouter();
   const winwdowsSizeHook = useWindowSize();
+
+  // Avoid don't load nothing because the provider don't have info.
+  useEffect(() => {
+    if (Object.keys(apiData.dayWeatherInfo).length === 0) {
+      router.push({
+        pathname: "/",
+      });
+    }
+  }, []);
+
   useEffect(() => {
     if (winwdowsSizeHook.width > 767) {
       router.replace("/");
@@ -26,17 +39,15 @@ const mobile = () => {
 
   return (
     <MainFrame>
-      {/* <ApiDataProvider ipInfo={router.query}> */}
-        <SearchProvider>
-          <DaysInfoProvider>
-            <MobileDetailProvider>
-              <GetInfoDayProvider >
-                <MobileApp/>
-              </GetInfoDayProvider>
-            </MobileDetailProvider>
-          </DaysInfoProvider>
-        </SearchProvider>
-      {/* </ApiDataProvider> */}
+      <SearchProvider>
+        <DaysInfoProvider>
+          <MobileDetailProvider>
+            <GetInfoDayProvider>
+              <MobileApp />
+            </GetInfoDayProvider>
+          </MobileDetailProvider>
+        </DaysInfoProvider>
+      </SearchProvider>
     </MainFrame>
   );
 };
