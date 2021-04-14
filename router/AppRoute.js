@@ -2,7 +2,7 @@ import useWindowSize from "../customHooks/useWindowSize";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-const AppRoute = ({ country, city }) => {
+const AppRoute = () => {
   const router = useRouter();
   // Get the width and height
   const winwdowsSizeHook = useWindowSize();
@@ -13,14 +13,12 @@ const AppRoute = ({ country, city }) => {
         await import("../pages/desktop.js");
         router.push({
           pathname: "/desktop",
-          // query: { country, city },
         });
         break;
       case winwdowsSizeHook.width < 767:
         await import("../pages/mobile.js");
         router.push({
           pathname: "/mobile",
-          // query: { country, city },
         });
         break;
     }

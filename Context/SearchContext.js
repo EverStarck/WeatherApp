@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { fetcher } from "../helpers/fetcher";
 import { ApiDataContext } from "./ApiDataContext";
 
 export const SearchContext = React.createContext();
@@ -23,17 +24,18 @@ const SearchProvider = ({ children }) => {
       modal: false,
     }));
 
-    //Pixabay Background
-    let req = await fetch(
-      `https://pixabay.com/api/?key=${process.env.NEXT_PUBLIC_PIXABAY_KEY}
+    // --------------------------------------------------------------------------
 
-&q=${searchValue}&per_page=3`
+    // Fetch Pixabay Background
+    const fetchPixabay = await fetcher(
+      `https://pixabay.com/api/?key=${process.env.NEXT_PUBLIC_PIXABAY_KEY}&q=${searchValue}&per_page=3`
     );
 
-    const pixabayJson = await req.json();
-
     //If the API don't have imgs, put one
-    if (!req.ok || pixabayJson.total === 0) {
+    if (
+      fetchPixabay === "Error calling to the api" ||
+      fetchPixabay.total === 0
+    ) {
       setApiData((apiData) => ({
         ...apiData,
         pixabayBackground: {
@@ -44,24 +46,25 @@ const SearchProvider = ({ children }) => {
       //Set the first img only
       setApiData((apiData) => ({
         ...apiData,
-        pixabayBackground: pixabayJson.hits[0],
+        pixabayBackground: fetchPixabay.hits[0],
       }));
     }
-    //pixabay is Ready
+
+    //Set Pixabay to Ready
     setApiIsReady((apiIsReady) => ({
       ...apiIsReady,
       pixabay: true,
     }));
 
-    //DAY Openweathermap
-    req = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}
-`
+    // --------------------------------------------------------------------------
+
+    // Fetch DAY Openweathermap
+    const fetchDayWeather = await fetcher(
+      `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}`
     );
 
-    const weatherData = await req.json();
     //If the api don't response, show error text
-    if (!req.ok || weatherData.cod === "404") {
+    if (fetchDayWeather === "Error calling to the api") {
       setApiIsReady((apiIsReady) => ({
         ...apiIsReady,
         dayWeather: false,
@@ -69,26 +72,26 @@ const SearchProvider = ({ children }) => {
     } else {
       setApiData((apiData) => ({
         ...apiData,
-        dayWeatherInfo: weatherData,
+        dayWeatherInfo: fetchDayWeather,
         modal: true,
       }));
 
-      //dayWeather is Ready
+      //Set dayWeather to Ready
       setApiIsReady((apiIsReady) => ({
         ...apiIsReady,
         dayWeather: true,
       }));
     }
 
-    //FORECAST Openweathermap
-    req = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}
-`
+    // --------------------------------------------------------------------------
+
+    // Fetch FORECAST Openweathermap
+    const fetchForecastWeather = await fetcher(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}`
     );
 
-    const forecastWeatherData = await req.json();
     //If the api don't response, show error text
-    if (!req.ok || forecastWeatherData.cod === "404") {
+    if (fetchForecastWeather === "Error calling to the api") {
       setApiIsReady((apiIsReady) => ({
         ...apiIsReady,
         forecastWeather: false,
@@ -99,17 +102,17 @@ const SearchProvider = ({ children }) => {
         ...apiData,
         forecastWeatherInfo: {
           list: [
-            weatherData, //Day
-            forecastWeatherData.list[3], //Tomorrow
-            forecastWeatherData.list[11],
-            forecastWeatherData.list[19],
-            forecastWeatherData.list[27],
-            forecastWeatherData.list[35],
+            fetchDayWeather, //Day
+            fetchForecastWeather.list[3], //Tomorrow
+            fetchForecastWeather.list[11],
+            fetchForecastWeather.list[19],
+            fetchForecastWeather.list[27],
+            fetchForecastWeather.list[35],
           ],
         },
       }));
 
-      //forecastWeather is Ready
+      //Set forecastWeather to Ready
       setApiIsReady((apiIsReady) => ({
         ...apiIsReady,
         forecastWeather: true,

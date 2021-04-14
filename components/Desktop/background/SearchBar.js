@@ -4,10 +4,6 @@ import styled from "@emotion/styled";
 // Context
 import { SearchContext } from "../../../Context/SearchContext";
 
-const Form = styled.form`
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
-`;
-
 const Input = styled.input`
   font-size: clamp(1rem, 10vw, 1.4rem);
   background: url("./assets/searchIcon.svg") no-repeat 15px center / 20px 20px;
@@ -20,6 +16,7 @@ const Input = styled.input`
   transition: border 0.4s;
   z-index: 2;
   position: relative;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
   &::placeholder {
     color: var(--gray-search);
   }
@@ -47,7 +44,7 @@ const SearchBar = () => {
   };
 
   return (
-    <Form onSubmit={searchFetchData}>
+    <form onSubmit={searchFetchData}>
       <label htmlFor="searchBar" style={{ display: "none" }}>
         Search City
       </label>
@@ -59,7 +56,7 @@ const SearchBar = () => {
         id="searchBar"
         name="Search City Bar"
       />
-    </Form>
+    </form>
   );
 };
 
