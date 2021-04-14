@@ -7,7 +7,7 @@ export const MainFrame = styled.main`
   --main-bg-color: #fff;
   --main-color: #1d3b88;
   --black-forecast: #0c193b;
-  --gray-search: #b7b7b7;
+  --gray-search: #494D55;
   --gray-date: #e5e5e5;
   --card-info-color: #fcfafa;
   --mobile-card-color: #ffffff;

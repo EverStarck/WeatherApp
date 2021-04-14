@@ -1,11 +1,8 @@
-import HeadInfo from "../components/HeadInfo";
 import { fetcher } from "../helpers/fetcher";
 import SetFetchInContext from "../helpers/SetFetchInContext";
 import AppRoute from "../router/AppRoute";
-
 export default function Home({ fetchDay, fetchForecast }) {
   return (
-    //  <HeadInfo apiData={apiData} apiIsReady={apiIsReady}/>
     <>
       <SetFetchInContext fetchDay={fetchDay} fetchForecast={fetchForecast} />
       <AppRoute />

@@ -1,4 +1,4 @@
-import React from "react";
+import Image from "next/image";
 import styled from "@emotion/styled";
 
 const MobileDetailMainGridCardStyle = styled.article`
@@ -12,15 +12,9 @@ const MobileDetailMainGridCardStyle = styled.article`
   flex-direction: column;
   justify-content: center;
   align-items: ${(props) => (props.flexCard ? "flex-start" : "center")};
-
-  ${(props) =>
-    props.backgroundCard
-      ? `  background-image: url("/assets/cloud.svg");
-  background-repeat: no-repeat;
-  background-position: 110% top;`
-      : null};
+  position: relative;
   h4 {
-    font-size: clamp(1.4rem, 3vw, 2.4rem);
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
     font-weight: 400;
     color: var(--main-color);
     margin: 0;
@@ -32,11 +26,20 @@ const MobileDetailMainGridCardStyle = styled.article`
     margin: 10px 0;
   }
   p {
-    font-size: clamp(0.9rem, 3vw, 1.9rem);
+    font-size: clamp(1.2rem, 3vw, 1.9rem);
     font-weight: 400;
     color: var(--gray-search);
     margin: 0;
   }
+`;
+
+const ImageFrame = styled.div`
+  position: absolute;
+  width: 120px;
+  height: 100px;
+  top: 0;
+  right: -15px;
+  /* background-color: red; */
 `;
 
 const MobileDetailMainGridCard = ({
@@ -46,7 +49,6 @@ const MobileDetailMainGridCard = ({
   flexCard = false,
   typeOfData,
   descriptionCard,
-  getInfoDay,
 }) => {
   return (
     <MobileDetailMainGridCardStyle
@@ -56,9 +58,19 @@ const MobileDetailMainGridCard = ({
     >
       <h4>{cardTittle}</h4>
       <h3>{typeOfData}</h3>
-      <p>
-        <small>{descriptionCard}</small>
-      </p>
+      <p>{descriptionCard}</p>
+
+      {backgroundCard && (
+        <ImageFrame>
+          <div className="tes">
+            <Image
+              src="/assets/backgroundRain.svg"
+              alt="Image of a cloud with rain"
+              layout="fill"
+            />
+          </div>
+        </ImageFrame>
+      )}
     </MobileDetailMainGridCardStyle>
   );
 };

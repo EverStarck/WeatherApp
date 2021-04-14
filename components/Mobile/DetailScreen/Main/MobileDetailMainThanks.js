@@ -10,19 +10,19 @@ const MobileDetailMainThanksStyled = styled.article`
     margin: 20px 0 0 0;
   }
   p:first-of-type {
-    font-size: clamp(1.1rem, 3vw, 2.1rem);
+    font-size: clamp(1.2rem, 3vw, 2.1rem);
     font-weight: 400;
     color: var(--gray-search);
     margin: 12px 0 0 0;
   }
   p:last-of-type {
-    font-size: clamp(0.9rem, 3vw, 1.9rem);
+    font-size: clamp(1.2rem, 3vw, 1.9rem);
     font-weight: 400;
     color: var(--gray-search);
     margin: 8px 0 0 0;
   }
   a {
-    font-size: clamp(1rem, 3vw, 2.4rem);
+    font-size: clamp(1.3rem, 3vw, 2.4rem);
     text-decoration: none;
   }
 `;
@@ -39,10 +39,8 @@ const MobileDetailMainThanks = () => {
       <p>
         This app was made thanks to <a href="https://pixabay.com" target="_blank" rel="noopener noreferrer">
           pixabay
-        </a>, <a href="https://openweathermap.com" target="_blank" rel="noopener noreferrer">
-          openweathermap
-        </a>, and <a href="https://www.ipify.org/" target="_blank" rel="noopener noreferrer">
-          ipify.
+        </a>, <a href="https://openweathermap.com" target="_blank" rel="noopener noreferrer"> and openweathermap
+
         </a>. Made by EverStarck ♥
       </p>
     </MobileDetailMainThanksStyled>

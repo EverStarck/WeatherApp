@@ -24,7 +24,10 @@ const mobile = () => {
 
   // Avoid don't load nothing because the provider don't have info.
   useEffect(() => {
-    if (Object.keys(apiData.dayWeatherInfo).length === 0 && apiIsReady.modal === false) {
+    if (
+      Object.keys(apiData.dayWeatherInfo).length === 0 &&
+      apiIsReady.modal === false
+    ) {
       router.push({
         pathname: "/",
       });
