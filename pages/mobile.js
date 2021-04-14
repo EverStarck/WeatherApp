@@ -16,7 +16,7 @@ import GetInfoDayProvider from "../Context/Mobile/GetInfoDayContext";
 
 const mobile = () => {
   // Context
-  const { apiData } = useContext(ApiDataContext);
+  const { apiData, apiIsReady } = useContext(ApiDataContext);
 
   // Render Mobile page
   const router = useRouter();
@@ -24,7 +24,7 @@ const mobile = () => {
 
   // Avoid don't load nothing because the provider don't have info.
   useEffect(() => {
-    if (Object.keys(apiData.dayWeatherInfo).length === 0) {
+    if (Object.keys(apiData.dayWeatherInfo).length === 0 && apiIsReady.modal === false) {
       router.push({
         pathname: "/",
       });

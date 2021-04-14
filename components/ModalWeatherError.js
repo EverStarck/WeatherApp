@@ -23,7 +23,7 @@ const ModalFrame = styled.div`
   /* font-size: clamp(1rem, 10vw, 2rem); */
   transform: translate(-50%, -50%);
   outline: transparent;
-  z-index: 9999;
+  z-index: 999999;
 
   display: flex;
   flex-direction: column;
@@ -89,7 +89,7 @@ const ModalWeatherError = () => {
   return (
     <>
       <ModalFrame>
-        <Image src={`/icons/09d.svg`} alt="Icon of" width={200} height={190} />
+        <Image src={`/icons/09.svg`} alt="Icon of" width={250} height={190} />
         <article>
           <p className="errorName">Oh no :(</p>
           <p>

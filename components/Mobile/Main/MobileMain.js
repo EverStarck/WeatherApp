@@ -13,7 +13,7 @@ const MobileMainStyles = styled.section`
   margin-top: -20px;
   padding-bottom: 20px;
   position: relative;
-  z-index: 99999;
+  z-index: 1;
   .next5daysh3 {
     font-size: clamp(1.6rem, 3vw, 2.6rem);
     font-weight: 400;
