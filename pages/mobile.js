@@ -15,7 +15,7 @@ import MobileDetailProvider from "../Context/Mobile/MobileDetailAndIndexContext"
 import GetInfoDayProvider from "../Context/Mobile/GetInfoDayContext";
 
 const mobile = () => {
-  // Render DESKTOP page
+  // Render Mobile page
   const router = useRouter();
   const winwdowsSizeHook = useWindowSize();
   useEffect(() => {
@@ -26,7 +26,7 @@ const mobile = () => {
 
   return (
     <MainFrame>
-      <ApiDataProvider ipInfo={router.query}>
+      {/* <ApiDataProvider ipInfo={router.query}> */}
         <SearchProvider>
           <DaysInfoProvider>
             <MobileDetailProvider>
@@ -36,7 +36,7 @@ const mobile = () => {
             </MobileDetailProvider>
           </DaysInfoProvider>
         </SearchProvider>
-      </ApiDataProvider>
+      {/* </ApiDataProvider> */}
     </MainFrame>
   );
 };

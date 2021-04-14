@@ -13,14 +13,14 @@ const AppRoute = ({ country, city }) => {
         await import("../pages/desktop.js");
         router.push({
           pathname: "/desktop",
-          query: { country, city },
+          // query: { country, city },
         });
         break;
       case winwdowsSizeHook.width < 767:
         await import("../pages/mobile.js");
         router.push({
           pathname: "/mobile",
-          query: { country, city },
+          // query: { country, city },
         });
         break;
     }

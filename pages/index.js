@@ -1,56 +1,39 @@
 import HeadInfo from "../components/HeadInfo";
+import { fetcher } from "../helpers/fetcher";
+import SetFetchInContext from "../helpers/SetFetchInContext";
 import AppRoute from "../router/AppRoute";
 
-export default function Home({ userIpState }) {
+export default function Home({ userIpState, fetchDay, fetchForecast }) {
   //Data about the user (location, country and city)
   const { country, city } = userIpState.location;
-
   return (
     //  <HeadInfo apiData={apiData} apiIsReady={apiIsReady}/>
-
-    <AppRoute country={country} city={city} />
+    <>
+      <SetFetchInContext fetchDay={fetchDay} fetchForecast={fetchForecast} />
+      <AppRoute
+      // country={country} city={city}
+      />
+    </>
   );
 }
 
-// GET IP
-// This gets called on every request
-export async function getStaticProps() {
-  // console.log(req.headers) //see if you have those headers
+export const getStaticProps = async () => {
+  // Date of the initial location
+  const userIpState = {
+    location: {
+      country: "US",
+      city: "Mountain View",
+    },
+  };
 
-  // Fetch data from external API
-  let res = await fetch(`https://geo.ipify.org/api/v1?apiKey=aa`);
+  // Fetch day wehather info
+  const fetchDay = await fetcher(
+    `https://api.openweathermap.org/data/2.5/weather?q=US,Mountain View&units=metric&appid=dsa${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}`
+  );
+  // Fetch forecast info
+  const fetchForecast = await fetcher(
+    `https://api.openweathermap.org/data/2.5/forecast?q=US,Mountain View&units=metric&appid=dad${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}`
+  );
 
-  //If the api don't response, show the data of Mountan View
-  if (!res.ok) {
-    return {
-      props: {
-        userIpState: {
-          location: {
-            country: "US",
-            region: "California",
-            city: "Mountain View",
-            lat: 37.40599,
-            lng: -122.078514,
-            postalCode: "94043",
-            timezone: "-07:00",
-            geonameId: 5375481,
-          },
-        },
-      },
-    };
-  }
-
-  const userIpState = await res.json();
-
-  // Fetch data from external API
-  // let res2 = await fetch(`http://localhost:3000/api`);
-  // const myData = await res2.json();
-  // console.log(myData);
-
-  console.log("IP," + process.env.NEXT_PUBLIC_IPIFY_KEY);
-  console.log("WEATHER," + process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY);
-  console.log("PIXABAY," + process.env.NEXT_PUBLIC_PIXABAY_KEY);
-
-  // Pass data to the page via props
-  return { props: { userIpState } };
-}
+  return { props: { userIpState, fetchDay, fetchForecast }, revalidate: 86400 };
+};

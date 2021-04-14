@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { Fragment, useContext } from "react";
 import styled from "@emotion/styled";
 // Context
 import { DaysInfoContext } from "../../../../../Context/DaysInfoContext";
@@ -16,7 +16,15 @@ const DateText = () => {
   const { getInfoDay } = useContext(GetInfoDayContext);
 
   if (getInfoDay.length == 0) {
-    return <H3Date>{datesInfo.today.dateInfo.number}</H3Date>;
+    return (
+      <Fragment>
+        {Object.keys(datesInfo).length === 0 ? (
+          <p> Loading...</p>
+        ) : (
+          <H3Date>{datesInfo.today.dateInfo.number}</H3Date>
+        )}
+      </Fragment>
+    );
   }
   return <H3Date>{getInfoDay[1]}</H3Date>;
 };

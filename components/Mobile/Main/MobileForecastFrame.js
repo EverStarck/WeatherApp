@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { Fragment, useContext } from "react";
 
 import MobileCardForecast from "./MobileCardForecast";
 import { MobileForecasLoader } from "../MobileSkeletonLoader";
@@ -25,16 +25,22 @@ const MobileForecastFrame = () => {
           {/* With slice remove the first array item, the first day */}
           {mobileForecast.slice(1).map((data, index) => {
             return (
-              <MobileCardForecast
-                data={data}
-                key={data.dt}
-                index={index + 1}
-                mobileDateCardForecast={datesInfo[index].dateInfo.letter}
-                mobileDaysForecast={datesInfo[index].dateInfo.number}
-                setMobileDetailInfo={setMobileDetailInfo}
-                setMobileIndex={setMobileIndex}
-                ariaLabel={datesInfo[index].dateInfo.letter}
-              />
+              <Fragment key={data.dt}>
+                {Object.keys(datesInfo).length === 0 ? (
+                  <p> Loading...</p>
+                ) : (
+                  <MobileCardForecast
+                    data={data}
+                    // key={data.dt}
+                    index={index + 1}
+                    mobileDateCardForecast={datesInfo[index].dateInfo.letter}
+                    mobileDaysForecast={datesInfo[index].dateInfo.number}
+                    setMobileDetailInfo={setMobileDetailInfo}
+                    setMobileIndex={setMobileIndex}
+                    ariaLabel={datesInfo[index].dateInfo.letter}
+                  />
+                )}
+              </Fragment>
             );
           })}
         </>

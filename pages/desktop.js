@@ -31,7 +31,7 @@ const desktop = () => {
   );
   return (
     <MainFrame>
-      <ApiDataProvider ipInfo={router.query}>
+      {/* <ApiDataProvider ipInfo={router.query}> */}
         <SearchProvider>
           <DaysInfoProvider>
             <GetInfoDayProvider>
@@ -39,7 +39,7 @@ const desktop = () => {
             </GetInfoDayProvider>
           </DaysInfoProvider>
         </SearchProvider>
-      </ApiDataProvider>
+      {/* </ApiDataProvider> */}
     </MainFrame>
   );
 };
