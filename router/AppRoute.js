@@ -1,6 +1,7 @@
 import useWindowSize from "../customHooks/useWindowSize";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Loader from '../components/Loader';
 
 const AppRoute = () => {
   const router = useRouter();
@@ -29,7 +30,7 @@ const AppRoute = () => {
   }, [winwdowsSizeHook.width]);
 
 
-  return <h1>LOADING...</h1>;
+  return <Loader/>;
 };
 
 export default AppRoute;

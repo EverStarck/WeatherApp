@@ -52,7 +52,7 @@ const MobileDetailWeather = () => {
 
   return (
     <MobileDetailWeatherStyles mobileDetailInfo={mobileDetailInfo}>
-      <MobileDetailButton onClick={backArrowClick}></MobileDetailButton>
+      <MobileDetailButton onClick={backArrowClick} aria-label="go back"></MobileDetailButton>
       <MobileHeader />
       <MobileDetailMain />
     </MobileDetailWeatherStyles>
