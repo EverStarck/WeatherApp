@@ -1,34 +1,86 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Twitter Follow](https://img.shields.io/twitter/follow/EverStarck?style=social)
+
+<!-- PROJECT LOGO -->
+<hr />
+<br />
+<p align="center">
+  <a href="https://weather.everstarck.com">
+    <img src="./public/icons/01d.svg" alt="Logo" width="64" height="63">
+  </a>
+  <h2 align="center">Weather App</h2>
+  <p align="center">
+    🔎 Get the latest weather information for today and the next 5 days and also enjoy beautiful images of it!
+    <br />
+    <br />
+    <a href="https://weather.everstarck.com">Visit site</a>
+    ·
+    <a href="https://github.com/EverStarck/WeatherApp/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/EverStarck/WeatherApp/issues">Request Feature</a>
+
+  </p>
+</p>
+
+<!-- ABOUT THE PROJECT -->
+<br />
+
+## Google Clone
+
+[![ScreenShot of the google clone project][product-screenshot]](https://weather.everstarck.com)
+
+Made by EverStarck. Thanks to Pixabay and OpenWeatherMaps
+
+<!-- GETTING STARTED -->
 
 ## Getting Started
 
-First, run the development server:
+It is easy to run this site on your computer, you only need `Node` and `NPM`.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/EverStarck/WeatherApp.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Create `.env.development.local` in root
+4. Put your keys in the env
+ ```JS
+NEXT_PUBLIC_IPIFY_KEY=YOURAPIKEY
+NEXT_PUBLIC_OPENWEATHERMAP_KEY=YOURAPIKEY
+NEXT_PUBLIC_PIXABAY_KEY=YOURAPIKEY
+   ```
+   <!-- USAGE EXAMPLES -->
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Usage
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Just run `npm run dev` in your terminal.
 
-## Learn More
+<!-- CONTRIBUTING -->
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## Deploy on Vercel
+## Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[@EverStarck](https://twitter.com/EverStarck)
+[https://github.com/EverStarck/WeatherApp](https://github.com/EverStarck/WeatherApp)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[product-screenshot]: public/MetaTagImage.png
