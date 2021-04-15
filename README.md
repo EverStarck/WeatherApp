@@ -26,7 +26,7 @@
 
 ## Google Clone
 
-[![ScreenShot of the google clone project][product-screenshot]](https://weather.everstarck.com)
+[![ScreenShot of the weather app project][product-screenshot]](https://weather.everstarck.com)
 
 Made by EverStarck. Thanks to Pixabay and OpenWeatherMaps
 
@@ -51,10 +51,9 @@ It is easy to run this site on your computer, you only need `Node` and `NPM`.
    ```sh
    npm install
    ```
-3. Create `.env.development.local` in root
+3. Create `.env` in root
 4. Put your keys in the env
  ```JS
-NEXT_PUBLIC_IPIFY_KEY=YOURAPIKEY
 NEXT_PUBLIC_OPENWEATHERMAP_KEY=YOURAPIKEY
 NEXT_PUBLIC_PIXABAY_KEY=YOURAPIKEY
    ```
