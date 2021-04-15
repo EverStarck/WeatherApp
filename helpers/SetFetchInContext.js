@@ -7,7 +7,7 @@ const SetFetchInContext = ({ fetchDay, fetchForecast }) => {
 
   function setData() {
     // Check if the api fetch well
-    if (fetchDay || fetchForecast === "Error calling to the api") {
+    if (fetchDay === "Error calling to the api" || fetchForecast === "Error calling to the api") {
       setApiData({
         dayWeatherInfo: {
           coord: { lon: -122.0838, lat: 37.3861 },

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useContext } from "react";
 import { ApiDataContext } from "../Context/ApiDataContext";
+import { imgSelecter } from "../helpers/ImageSelector";
 
 const HeadInfo = () => {
   // Context
@@ -22,7 +23,8 @@ const HeadInfo = () => {
         <link
           rel="icon"
           type="image/svg+xml"
-          href={`/icons/${apiData.dayWeatherInfo.weather[0].icon}.svg`}
+          // href={`/icons/${apiData.dayWeatherInfo.weather[0].icon}.svg`}
+          href={`/icons/${imgSelecter(apiData.dayWeatherInfo.weather[0].icon)}.svg`}
         />
       ) : (
         <link rel="icon" type="image/svg+xml" href="/icons/01d.svg" />
