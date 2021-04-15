@@ -1,0 +1,40 @@
+<svg width="69" height="52" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path opacity=".522" d="M34.828 20.208a11.562 11.562 0 00-9.513-5.78A11.572 11.572 0 0013.24 25.474" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M61.954 27.855a13.587 13.587 0 00-13.552-13.587 13.587 13.587 0 10-27.174 0h-.036a13.587 13.587 0 10.354 27.17v.005h27.175v-.005a13.587 13.587 0 0013.233-13.583z" fill="#F7F9FF"/>
+  <g filter="url(#Nube__filter0_f)">
+    <path d="M29.851 23.2c3.84 3.972 3.827 10.215-.03 13.943-3.857 3.728-10.097 3.53-13.937-.443-3.84-3.972-3.825-10.215.031-13.943 3.857-3.728 10.097-3.53 13.936.443z" fill="url(#Nube__paint0_linear)"/>
+  </g>
+  <g filter="url(#Nube__filter1_f)">
+    <path d="M49.029 39.352c-3.479.108-9.329-.272-10.888-.272-8.394 0-11.38-4.732-14.512-10.28-3.131-5.547 6.634-18.343 10.8-20.099 1.34-.565 5.445 1.365 6.545 4.129.827 2.077 1 8.105 4.015 9.452 3.363 1.503 6.002 1.976 7.827 2.684 4.655.627 8.183 3.613 8.183 7.203 0 4.045-4.48 7.324-10.004 7.324-.658 0-1.315-.047-1.966-.141z" fill="url(#Nube__paint1_linear)"/>
+  </g>
+  <g opacity=".349" filter="url(#Nube__filter2_f)">
+    <path d="M33.248 23.086c1.98 5.158 1.81 10.02-.38 10.861-2.188.84-5.568-2.66-7.548-7.818-1.98-5.158-1.81-10.02.379-10.86 2.189-.841 5.569 2.659 7.549 7.817z" fill="#fff"/>
+  </g>
+  <defs>
+    <filter id="Nube__filter0_f" x=".932" y="8.007" width="43.872" height="43.886" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur"/>
+    </filter>
+    <filter id="Nube__filter1_f" x="15.021" y=".603" width="53.978" height="46.891" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur"/>
+    </filter>
+    <filter id="Nube__filter2_f" x="13.735" y="5.747" width="31.098" height="37.722" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur"/>
+    </filter>
+    <linearGradient id="Nube__paint0_linear" x1="35.146" y1="17.721" x2="12.326" y2="40.119" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0E8FF" stop-opacity="0"/>
+      <stop offset=".845" stop-color="#C7D4FF" stop-opacity=".847"/>
+      <stop offset="1" stop-color="#C9D6FD"/>
+    </linearGradient>
+    <linearGradient id="Nube__paint1_linear" x1="41.516" y1="-3.507" x2="41.843" y2="47.341" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0E8FF" stop-opacity="0"/>
+      <stop offset=".845" stop-color="#C7D4FF" stop-opacity=".847"/>
+      <stop offset="1" stop-color="#C9D6FD"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,145 @@
+<svg width="66" height="47" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path opacity=".522" d="M25.387 17.29a9.115 9.115 0 00-7.497-4.556 9.12 9.12 0 00-9.516 8.705" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M46.765 23.316a10.708 10.708 0 00-10.68-10.708 10.708 10.708 0 00-21.417 0h-.027a10.708 10.708 0 10.278 21.413v.003h21.417v-.003a10.708 10.708 0 0010.429-10.705z" fill="#F7F9FF"/>
+  <g filter="url(#Rain__filter0_f)">
+    <path d="M21.465 19.647c3.026 3.13 3.015 8.05-.024 10.989-3.04 2.938-7.957 2.782-10.983-.349-3.027-3.13-3.016-8.05.024-10.989 3.04-2.938 7.957-2.782 10.983.35z" fill="url(#Rain__paint0_linear)"/>
+  </g>
+  <g filter="url(#Rain__filter1_f)">
+    <path d="M36.579 32.376c-2.742.086-7.352-.214-8.581-.214-6.615 0-8.969-3.73-11.437-8.101-2.468-4.372 5.228-14.456 8.512-15.84 1.056-.446 4.29 1.075 5.158 3.253.651 1.638.788 6.388 3.164 7.45 2.65 1.184 4.73 1.557 6.168 2.115 3.67.494 6.449 2.847 6.449 5.677 0 3.188-3.53 5.772-7.884 5.772-.519 0-1.036-.037-1.55-.112z" fill="url(#Rain__paint1_linear)"/>
+  </g>
+  <g opacity=".349" filter="url(#Rain__filter2_f)">
+    <path d="M24.141 19.557c1.56 4.065 1.427 7.898-.298 8.56-1.726.662-4.39-2.096-5.95-6.161-1.56-4.065-1.426-7.897.3-8.56 1.724-.662 4.388 2.096 5.948 6.161z" fill="#fff"/>
+  </g>
+  <path opacity=".522" d="M37.355 20.757a9.112 9.112 0 00-7.496-4.555 9.12 9.12 0 00-9.516 8.705" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M58.734 26.783a10.708 10.708 0 00-10.68-10.707 10.708 10.708 0 10-21.417 0h-.027a10.708 10.708 0 10.278 21.412v.004h21.417v-.004a10.708 10.708 0 0010.429-10.705z" fill="#F7F9FF"/>
+  <g filter="url(#Rain__filter3_f)">
+    <path d="M33.434 23.114c3.026 3.131 3.015 8.05-.024 10.989-3.04 2.938-7.957 2.782-10.983-.349-3.027-3.13-3.016-8.05.024-10.988 3.04-2.938 7.957-2.782 10.983.348z" fill="url(#Rain__paint2_linear)"/>
+  </g>
+  <g filter="url(#Rain__filter4_f)">
+    <path d="M48.547 35.844c-2.741.085-7.352-.215-8.58-.215-6.615 0-8.969-3.729-11.437-8.101-2.468-4.372 5.228-14.456 8.512-15.84 1.056-.445 4.29 1.076 5.158 3.254.651 1.637.788 6.388 3.164 7.45 2.65 1.184 4.73 1.556 6.168 2.114 3.67.494 6.449 2.848 6.449 5.677 0 3.188-3.53 5.772-7.884 5.772-.519 0-1.036-.036-1.55-.111z" fill="url(#Rain__paint3_linear)"/>
+  </g>
+  <g opacity=".349" filter="url(#Rain__filter5_f)">
+    <path d="M36.11 23.025c1.56 4.065 1.427 7.897-.298 8.56-1.725.661-4.39-2.097-5.95-6.162-1.56-4.065-1.426-7.897.299-8.56 1.725-.662 4.389 2.097 5.95 6.162z" fill="#fff"/>
+  </g>
+  <path d="M47.14 41.57a1.46 1.46 0 01-1.033-2.494l3.998-3.992a1.461 1.461 0 012.064 2.068l-3.998 3.99a1.454 1.454 0 01-1.032.428z" fill="url(#Rain__paint4_linear)"/>
+  <path d="M25.184 40.652a1.46 1.46 0 01-1.032-2.494l3.998-3.992a1.46 1.46 0 012.064 2.068l-3.998 3.99a1.456 1.456 0 01-1.032.428z" fill="url(#Rain__paint5_linear)"/>
+  <path d="M42.876 37.06a1.46 1.46 0 01-1.05-2.476l3.256-3.367a1.46 1.46 0 012.1 2.03l-3.256 3.367a1.458 1.458 0 01-1.05.445z" fill="url(#Rain__paint6_linear)"/>
+  <path d="M36.708 42.158a1.461 1.461 0 01-1.025-2.501l2.06-2.028a1.46 1.46 0 012.05 2.08l-2.06 2.029c-.273.27-.641.42-1.025.42z" fill="url(#Rain__paint7_linear)"/>
+  <path d="M34.025 37.77a1.46 1.46 0 01-1.05-2.475l3.256-3.367a1.46 1.46 0 112.1 2.03l-3.256 3.367a1.456 1.456 0 01-1.05.445z" fill="url(#Rain__paint8_linear)"/>
+  <g filter="url(#Rain__filter6_f)">
+    <path d="M47.014 41.079c-.23 0 .029.049-.146-.132-.348-.36.34-.045 1.373-1.188C49.275 38.615 51 36.373 51 36.373a.872.872 0 011.264 0c.348.36-1.336 1.698-1.685 2.058l-3.089 2.648c-.174.18-.247 0-.475 0z" fill="#529BED"/>
+  </g>
+  <g filter="url(#Rain__filter7_f)">
+    <path d="M25.006 40.235c-.23 0 .03.049-.145-.132-.349-.36.34-.044 1.373-1.188 1.032-1.143 2.757-3.386 2.757-3.386a.875.875 0 011.264 0c.349.361-1.336 1.698-1.685 2.058l-3.089 2.648c-.174.18-.247 0-.475 0z" fill="#529BED"/>
+  </g>
+  <g filter="url(#Rain__filter8_f)">
+    <path d="M34.076 37.212c-.229 0 .03.049-.145-.132-.349-.36-.433.448.6-.696 1.032-1.143 2.757-3.386 2.757-3.386a.875.875 0 011.264 0c.348.361-1.336 1.698-1.685 2.058l-2.315 2.156c-.175.18-.248 0-.476 0z" fill="#529BED"/>
+  </g>
+  <g filter="url(#Rain__filter9_f)">
+    <path d="M42.935 36.439c-.229 0 .03.048-.145-.132-.348-.36-.433.447.6-.696s2.758-3.386 2.758-3.386a.875.875 0 011.263 0c.349.36-1.336 1.698-1.685 2.057l-2.315 2.157c-.175.18-.247 0-.476 0z" fill="#529BED"/>
+  </g>
+  <g filter="url(#Rain__filter10_f)">
+    <path d="M36.647 41.62c-.229 0 .03.048-.145-.132-.349-.36-.433.447.6-.697a15.201 15.201 0 001.733-2.38.872.872 0 011.264.002c.348.36-1.336 1.697-1.685 2.057l-1.291 1.15c-.174.179-.247 0-.476 0z" fill="#529BED"/>
+  </g>
+  <circle cx="19.294" cy="35.713" r=".703" fill="#60A4F5"/>
+  <circle cx="29.939" cy="45.746" r=".703" fill="#60A4F5"/>
+  <circle cx="45.679" cy="44.34" r=".703" fill="#60A4F5"/>
+  <circle cx="42.119" cy="41.862" r=".703" fill="#60A4F5" fill-opacity=".3"/>
+  <defs>
+    <filter id="Rain__filter0_f" x=".195" y="9.193" width="31.532" height="31.548" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur"/>
+    </filter>
+    <filter id="Rain__filter1_f" x="8.082" y=".143" width="45.93" height="40.345" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur"/>
+    </filter>
+    <filter id="Rain__filter2_f" x="8.805" y="5.298" width="24.424" height="30.917" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur"/>
+    </filter>
+    <filter id="Rain__filter3_f" x="12.164" y="12.66" width="31.532" height="31.548" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur"/>
+    </filter>
+    <filter id="Rain__filter4_f" x="20.05" y="3.61" width="45.93" height="40.345" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur"/>
+    </filter>
+    <filter id="Rain__filter5_f" x="20.774" y="8.765" width="24.424" height="30.917" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur"/>
+    </filter>
+    <filter id="Rain__filter6_f" x="43.777" y="33.103" width="11.533" height="11.056" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="1.5" result="effect1_foregroundBlur"/>
+    </filter>
+    <filter id="Rain__filter7_f" x="21.769" y="32.26" width="11.533" height="11.056" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="1.5" result="effect1_foregroundBlur"/>
+    </filter>
+    <filter id="Rain__filter8_f" x="30.694" y="29.729" width="10.905" height="10.563" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="1.5" result="effect1_foregroundBlur"/>
+    </filter>
+    <filter id="Rain__filter9_f" x="39.553" y="28.955" width="10.905" height="10.563" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="1.5" result="effect1_foregroundBlur"/>
+    </filter>
+    <filter id="Rain__filter10_f" x="33.265" y="35.143" width="9.88" height="9.557" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="1.5" result="effect1_foregroundBlur"/>
+    </filter>
+    <linearGradient id="Rain__paint0_linear" x1="25.637" y1="15.329" x2="7.654" y2="32.981" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0E8FF" stop-opacity="0"/>
+      <stop offset=".845" stop-color="#C7D4FF" stop-opacity=".847"/>
+      <stop offset="1" stop-color="#C9D6FD"/>
+    </linearGradient>
+    <linearGradient id="Rain__paint1_linear" x1="30.658" y1="-1.4" x2="30.915" y2="38.672" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0E8FF" stop-opacity="0"/>
+      <stop offset=".845" stop-color="#C7D4FF" stop-opacity=".847"/>
+      <stop offset="1" stop-color="#C9D6FD"/>
+    </linearGradient>
+    <linearGradient id="Rain__paint2_linear" x1="37.606" y1="18.796" x2="19.622" y2="36.448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0E8FF" stop-opacity="0"/>
+      <stop offset=".845" stop-color="#C7D4FF" stop-opacity=".847"/>
+      <stop offset="1" stop-color="#C9D6FD"/>
+    </linearGradient>
+    <linearGradient id="Rain__paint3_linear" x1="42.627" y1="2.067" x2="42.884" y2="42.14" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0E8FF" stop-opacity="0"/>
+      <stop offset=".845" stop-color="#C7D4FF" stop-opacity=".847"/>
+      <stop offset="1" stop-color="#C9D6FD"/>
+    </linearGradient>
+    <linearGradient id="Rain__paint4_linear" x1="50.197" y1="38.639" x2="47.832" y2="37.351" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#57AAFF"/>
+      <stop offset="1" stop-color="#B7DAFF"/>
+    </linearGradient>
+    <linearGradient id="Rain__paint5_linear" x1="28.242" y1="37.721" x2="25.877" y2="36.433" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#57AAFF"/>
+      <stop offset="1" stop-color="#B7DAFF"/>
+    </linearGradient>
+    <linearGradient id="Rain__paint6_linear" x1="45.447" y1="34.395" x2="43.319" y2="33.258" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#57AAFF"/>
+      <stop offset="1" stop-color="#B7DAFF"/>
+    </linearGradient>
+    <linearGradient id="Rain__paint7_linear" x1="38.5" y1="40.059" x2="36.801" y2="39.13" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#57AAFF"/>
+      <stop offset="1" stop-color="#B7DAFF"/>
+    </linearGradient>
+    <linearGradient id="Rain__paint8_linear" x1="36.602" y1="35.102" x2="34.471" y2="33.963" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#57AAFF"/>
+      <stop offset="1" stop-color="#B7DAFF"/>
+    </linearGradient>
+  </defs>
+</svg>
