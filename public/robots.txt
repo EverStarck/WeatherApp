@@ -1,0 +1,6 @@
+Sitemap: https://weather.everstarck.com/sitemap.xml
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*

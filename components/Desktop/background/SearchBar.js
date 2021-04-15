@@ -44,7 +44,7 @@ const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={searchFetchData}>
+    <form onSubmit={searchFetchData} aria-labelledby="searchBar">
       <label htmlFor="searchBar" style={{ display: "none" }}>
         Search City
       </label>

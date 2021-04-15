@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+      <urlset xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+      xmlns:xhtml="http://www.w3.org/1999/xhtml">
+      
+	<url>
+		<loc>https://yt2img.everstarck.com/desktop</loc>
+		<lastmod>2021-04-14</lastmod>
+	</url>
+
+	<url>
+		<loc>https://yt2img.everstarck.com/mobile</loc>
+		<lastmod>2021-04-14</lastmod>
+	</url>
+
+	<url>
+		<loc>https://yt2img.everstarck.com/</loc>
+		<lastmod>2021-04-14</lastmod>
+	</url>
+</urlset>

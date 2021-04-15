@@ -13,12 +13,12 @@ export default function Home({ fetchDay, fetchForecast }) {
 export const getStaticProps = async () => {
   // Fetch day wehather info
   const fetchDay = await fetcher(
-    `https://api.openweathermap.org/data/2.5/weather?q=US,Mountain View&units=metric&appid=dsa${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}`
+    `https://api.openweathermap.org/data/2.5/weather?q=US,Mountain View&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}`
   );
   // Fetch forecast info
   const fetchForecast = await fetcher(
-    `https://api.openweathermap.org/data/2.5/forecast?q=US,Mountain View&units=metric&appid=dad${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}`
+    `https://api.openweathermap.org/data/2.5/forecast?q=US,Mountain View&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHERMAP_KEY}`
   );
 
-  return { props: { fetchDay, fetchForecast }, revalidate: 86400 };
+  return { props: { fetchDay, fetchForecast }, revalidate: 3600 };
 };
