@@ -24,7 +24,7 @@
 <!-- ABOUT THE PROJECT -->
 <br />
 
-## Google Clone
+## Weather App
 
 [![ScreenShot of the weather app project][product-screenshot]](https://weather.everstarck.com)
 
